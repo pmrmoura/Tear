@@ -72,7 +72,7 @@ git pull develop
 6. Solves conflicts in Xcode, and commit your changes
 7. Add reviewers to your Pull Request and wait for approval.
 
-### Pull Request Template
+## Pull Request Template
 ```sh
 ### Issue Name
 **What I did:**
