@@ -62,7 +62,7 @@ This section should list any major frameworks that you built your project using.
 <!-- Git Flow -->
 ## Git Flow
 
-## Add new Feature or fix a Bug
+### Add new Feature or fix a Bug
 
 1. Create your Feature or Fix Branch
   * `git checkout -b feature/AmazingFeature`
