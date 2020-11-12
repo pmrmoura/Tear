@@ -35,6 +35,7 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Contributing](#git-flow)
+  * [Add new feature or fix a bug](#add-new-feature-or-fix-a-bug)
   * [Pull Request Template](#pull-request-template)
 
 
@@ -61,7 +62,7 @@ This section should list any major frameworks that you built your project using.
 <!-- Git Flow -->
 ## Git Flow
 
-Follow this steps to adding a new Feature or fix a Bug
+## Add new Feature or fix a Bug
 
 1. Create your Feature or Fix Branch
   * `git checkout -b feature/AmazingFeature`
