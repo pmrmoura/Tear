@@ -47,8 +47,8 @@ Fill with details about how great Tear is
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Swift](https://getbootstrap.com)
-* [SceneKit](https://getbootstrap.com)
+* [Swift](https://swift.org/)
+* [SceneKit](https://developer.apple.com/documentation/scenekit/)
 
 <!-- Git Flow -->
 ## Git Flow
@@ -58,7 +58,7 @@ This section should list any major frameworks that you built your project using.
 1. Create your Feature or Fix Branch
   * `git checkout -b feature/AmazingFeature`
   * `git checkout -b fix/AmazingFix`
-2. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+2. Commit your Changes
   * `git commit -m 'Feature(AmazingFeature): Add some AmazingFeature`
   * `git commit -m 'Fix(AmazingFix): Fixes a bug`
 3. Push to the Branch
