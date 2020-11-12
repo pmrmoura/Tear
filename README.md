@@ -92,11 +92,11 @@ git pull develop
 [contributors-url]: https://github.com/pmrmoura/Tear/graphs/contributors
 
 [forks-shield]: https://img.shields.io/github/forks/pmrmoura/Tear.svg?style=flat-square
-[forks-url]: https://github.com/pmrmoura/Tear/network/members
+[forks-url]: https://img.shields.io/github/forks/pmrmoura/Tear
 [commits-shield]: https://img.shields.io/github/last-commit/pmrmoura/Tear.svg?style=flat-square
 [commits-url]: https://img.shields.io/github/last-commit/pmrmoura/Tear
 [stars-shield]: https://img.shields.io/github/stars/pmrmoura/Tear.svg?style=flat-square
-[stars-url]: https://github.com/pmrmoura/Tear/stargazers
+[stars-url]: https://img.shields.io/github/starts/pmrmoura/Tear
 [issues-shield]: https://img.shields.io/github/issues/pmrmoura/Tear.svg?style=flat-square
-[issues-url]: https://github.com/pmrmoura/Tear/issues
+[issues-url]: https://img.shields.io/github/issues/pmrmoura/Tear
 [product-screenshot]: images/screenshot.png
