@@ -35,6 +35,7 @@
 * [About the Project](#about-the-project)
   * [Built With](#built-with)
 * [Contributing](#git-flow)
+  * [Pull Request Template](#pull-request-template)
 
 
 
@@ -71,13 +72,27 @@ Follow this steps to adding a new Feature or fix a Bug
 3. Push to the Branch
   * `git push origin feature/AmazingFeature`
   * `git push origin fix/AmazingFix`
-4. Open a Pull Request in Github's Pull request tab.
+4. Open a Pull Request in Github's Pull request tab and fill it with the above Pull Request Template.
 5. If the Pull Request is not able to merge automatically do the following steps while on your branch:
 ```sh
 git pull develop
 ```
 6. Solves conflicts in Xcode, and commit your changes
 7. Add reviewers to your Pull Request and wait for approval.
+
+### Pull Request Template
+```sh
+### Issue Name
+**What I did:**
+
+- First thing I did...
+
+- Second thing I did...
+
+**How to test:**
+
+- Brief notes on how to check if the feature works correctly.
+```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
