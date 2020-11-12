@@ -89,7 +89,7 @@ git pull develop
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/pmrmoura/Tear.svg?style=flat-square
-[contributors-url]: https://github.com/pmrmoura/Tear/graphs/contributors
+[contributors-url]: https://img.shields.io/github/contributors/pmrmoura/Tear
 
 [forks-shield]: https://img.shields.io/github/forks/pmrmoura/Tear.svg?style=flat-square
 [forks-url]: https://img.shields.io/github/forks/pmrmoura/Tear
