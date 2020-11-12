@@ -7,7 +7,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/pmrmoura/Tear">
     <img src="assets/logo.png" alt="Logo" width="108.73" height="210">
   </a>
 
