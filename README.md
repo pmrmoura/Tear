@@ -16,14 +16,14 @@
   <p align="center">
     An awesome iOS simulation game
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/pmrmoura/Tear"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">TestFlight(soon)</a>
+    <a href="https://github.com/pmrmoura/Tear">TestFlight(soon)</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/pmrmoura/Tear/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/pmrmoura/Tear/issues">Request Feature</a>
   </p>
 </p>
 
