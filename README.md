@@ -43,7 +43,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Fill with details about how great Tear is
+<img src="assets/Concluiu%20o%20jogo.png" alt="Logo" width="187.5" height="406"> <img src="assets/Mapa.png" alt="Logo" width="187.5" height="406">
+<img src="assets/Menu%20de%20Status%201.png" alt="Logo" width="187.5" height="406">
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
