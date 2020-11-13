@@ -15,7 +15,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         // create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "./art.scnassets/ship.scn")!
         
         // create and add a camera to the scene
         let cameraNode = SCNNode()
