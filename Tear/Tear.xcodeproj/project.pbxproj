@@ -74,6 +74,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C9341D9255EC403008FF592 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0C9341DA255EC409008FF592 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0CFE0141255D836A00C00084 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0C9341DB255EC40D008FF592 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0CFE013F255D836A00C00084 /* GameViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		0CFE012F255D836A00C00084 = {
 			isa = PBXGroup;
 			children = (
@@ -97,10 +120,11 @@
 		0CFE013A255D836A00C00084 /* Tear */ = {
 			isa = PBXGroup;
 			children = (
+				0C9341DB255EC40D008FF592 /* Controllers */,
+				0C9341DA255EC409008FF592 /* Views */,
+				0C9341D9255EC403008FF592 /* Models */,
 				0CFE013B255D836A00C00084 /* AppDelegate.swift */,
 				0CFE013D255D836A00C00084 /* art.scnassets */,
-				0CFE013F255D836A00C00084 /* GameViewController.swift */,
-				0CFE0141255D836A00C00084 /* Main.storyboard */,
 				0CFE0144255D836B00C00084 /* Assets.xcassets */,
 				0CFE0146255D836B00C00084 /* Info.plist */,
 			);
