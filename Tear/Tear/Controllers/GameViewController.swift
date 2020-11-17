@@ -13,7 +13,7 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         // create a new scene
         let scene = SCNScene(named: "./art.scnassets/ship.scn")!
         
@@ -46,6 +46,7 @@ class GameViewController: UIViewController {
         ship.runAction(SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: 2, z: 0, duration: 1)))
         
         // retrieve the SCNView
+        self.view = SCNView()
         let scnView = self.view as! SCNView
         
         // set the scene to the view
