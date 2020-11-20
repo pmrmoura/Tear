@@ -91,11 +91,16 @@ class TrashNinjaViewController: UIViewController {
     @objc func touchedDisplay(sender: UIButton) {
         switch sender.tag {
             case 0:
-                self.game.leave()
+                self.game.restart()
+                let homeVC = GameViewController()
+                homeVC.modalPresentationStyle = .fullScreen
+                self.present(homeVC, animated: true, completion: nil)
             case 1:
                 self.game.pause()
                 self.gameScene.isPaused = self.game.state == .Paused ? true : false
             case 2:
+                self.gameScene.clearAll()
+                self.gameHUD.restart()
                 self.game.restart()
             default:
                 self.game.mute()
@@ -109,7 +114,8 @@ class TrashNinjaViewController: UIViewController {
             
             node.removeFromParentNode()
         } else if node.name == "BAD" {
-            self.game.errors += 1
+            let errors = self.game.changeScore(type: "BAD")
+            self.gameHUD.updateErrors(errors)
             node.removeFromParentNode()
         }
     }
@@ -123,7 +129,7 @@ extension TrashNinjaViewController: SCNSceneRendererDelegate {
         if game.state == .Playing {
           if time > spawnTime {
             self.gameScene.spawnShape()
-            spawnTime = time + TimeInterval(Float.random(min: 0.2, max: 1.5))
+            spawnTime = time + TimeInterval(Float.random(min: 2.2, max: 3.5))
           }
             self.gameScene.clean()
         }

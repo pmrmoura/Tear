@@ -60,21 +60,21 @@ class GameHUD: UIView, CodeView {
         
         NSLayoutConstraint.activate([
             self.pauseButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.pauseButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 40),
+            self.pauseButton.topAnchor.constraint(equalTo: self.leaveButton.bottomAnchor, constant: 20),
             self.pauseButton.heightAnchor.constraint(equalToConstant: 14.73),
             self.pauseButton.widthAnchor.constraint(equalToConstant: 15.42)
         ])
         
         NSLayoutConstraint.activate([
             self.restartButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.restartButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 60),
+            self.restartButton.topAnchor.constraint(equalTo: self.pauseButton.bottomAnchor, constant: 20),
             self.restartButton.heightAnchor.constraint(equalToConstant: 14.73),
             self.restartButton.widthAnchor.constraint(equalToConstant: 15.42)
         ])
         
         NSLayoutConstraint.activate([
             self.audioButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.audioButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
+            self.audioButton.topAnchor.constraint(equalTo: self.restartButton.bottomAnchor, constant: 20),
             self.audioButton.heightAnchor.constraint(equalToConstant: 14.73),
             self.audioButton.widthAnchor.constraint(equalToConstant: 15.42)
         ])
@@ -102,50 +102,33 @@ class GameHUD: UIView, CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        let color = #colorLiteral(red: 0.1921568627, green: 0.4588235294, blue: 0.4039215686, alpha: 1)
-
-        self.leaveButton.backgroundColor = .white
-        self.leaveButton.layer.cornerRadius = 8
-        self.leaveButton.setTitle("Pausar", for: .normal)
-        self.leaveButton.setTitleColor(color, for: .normal)
-        self.leaveButton.layer.borderWidth = 1.25
-        self.leaveButton.layer.borderColor = color.cgColor
+        let leaveButtonBackground = #imageLiteral(resourceName: "Asset40")
+        let pauseButtonBackground = #imageLiteral(resourceName: "Asset 43")
+        let restartButtonBackground = #imageLiteral(resourceName: "Asset 41")
+        let audioButtonBackground = #imageLiteral(resourceName: "Asset 39")
+        
         self.leaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        self.leaveButton.setBackgroundImage(leaveButtonBackground, for: .normal)
         self.leaveButton.tag = 0
         
-        self.pauseButton.backgroundColor = .white
-        self.pauseButton.layer.cornerRadius = 8
-        self.pauseButton.setTitle("Pausar", for: .normal)
-        self.pauseButton.setTitleColor(color, for: .normal)
-        self.pauseButton.layer.borderWidth = 1.25
-        self.pauseButton.layer.borderColor = color.cgColor
         self.pauseButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        self.pauseButton.setBackgroundImage(pauseButtonBackground, for: .normal)
         self.pauseButton.tag = 1
         
-        self.restartButton.backgroundColor = .white
-        self.restartButton.layer.cornerRadius = 8
-        self.restartButton.setTitle("Pausar", for: .normal)
-        self.restartButton.setTitleColor(color, for: .normal)
-        self.restartButton.layer.borderWidth = 1.25
-        self.restartButton.layer.borderColor = color.cgColor
         self.restartButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        self.restartButton.setBackgroundImage(restartButtonBackground, for: .normal)
         self.restartButton.tag = 2
         
-        self.audioButton.backgroundColor = .white
-        self.audioButton.layer.cornerRadius = 8
-        self.audioButton.setTitle("Pausar", for: .normal)
-        self.audioButton.setTitleColor(color, for: .normal)
-        self.audioButton.layer.borderWidth = 1.25
-        self.audioButton.layer.borderColor = color.cgColor
-        self.audioButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        self.audioButton.titleLabel?.font = UIFont.systemFont(ofSize: 5, weight: .semibold)
+        self.audioButton.setBackgroundImage(audioButtonBackground, for: .normal)
         self.audioButton.tag = 3
         
         self.scoreLabel.text = "0/5"
-        self.scoreLabel.textColor = .white
+        self.scoreLabel.textColor = .black
         self.scoreLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
         
-        self.errorsLabel.text = "X X X"
-        self.errorsLabel.textColor = .white
+        self.errorsLabel.text = ""
+        self.errorsLabel.textColor = .black
         self.errorsLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
     }
     
@@ -153,4 +136,12 @@ class GameHUD: UIView, CodeView {
         self.scoreLabel.text = "\(actual)/5"
     }
     
+    func updateErrors(_ actual: Int){
+        self.errorsLabel.text = self.errorsLabel.text! + "X "
+    }
+    
+    func restart(){
+        self.scoreLabel.text = "0/5"
+        self.errorsLabel.text = ""
+    }
 }

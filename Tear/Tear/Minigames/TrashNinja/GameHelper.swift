@@ -46,10 +46,6 @@ class GameHelper {
         self.state = GameStateType.TapToPlay
     }
     
-    func leave(){
-        print("leave")
-    }
-    
     func mute(){
         print("mute")
     }
