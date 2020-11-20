@@ -129,7 +129,7 @@ extension TrashNinjaViewController: SCNSceneRendererDelegate {
         if game.state == .Playing {
           if time > spawnTime {
             self.gameScene.spawnShape()
-            spawnTime = time + TimeInterval(Float.random(min: 2.2, max: 3.5))
+            spawnTime = time + TimeInterval(Float.random(min: 0.2, max: 1.5))
           }
             self.gameScene.clean()
         }

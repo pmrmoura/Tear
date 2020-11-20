@@ -15,7 +15,6 @@ class GameScene: SCNScene{
     override init(){
         super.init()
         self.setupCamera()
-        self.createApple()
         self.background.contents = "GeometryFighter.scnassets/Textures/Background.png"
     }
     
@@ -31,7 +30,7 @@ class GameScene: SCNScene{
         self.rootNode.addChildNode(self.cameraNode)
     }
     
-    func createApple(){
+    func createApple() -> SCNNode {
         let appleScene = SCNScene(named: "art.scnassets/apple.dae")!
         let appleNode = SCNNode()
         
@@ -41,7 +40,7 @@ class GameScene: SCNScene{
             appleNode.addChildNode(childNode as SCNNode)
         }
         
-        self.appleNode = appleNode
+        return appleNode
         
     }
     
@@ -65,7 +64,7 @@ class GameScene: SCNScene{
                 geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         }
         
-        let geometryNode = self.appleNode!
+        let geometryNode = SCNNode(geometry: geometry)//self.createApple()
         let color = UIColor.random()
         
         geometry.materials.first?.diffuse.contents = color
@@ -74,12 +73,12 @@ class GameScene: SCNScene{
         let randomX = Float.random(min: -2, max: 2)
         let randomY = Float.random(min: 10, max: 18)
         let force = SCNVector3(x: randomX, y: randomY , z: 0)
-        let position = SCNVector3(x: 2.05, y: 0.05, z: 0.05)
+        let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
         geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
 
         //Definition of good and bad itens
-        geometry.name = color == UIColor.blue ? "GOOD" : "BAD"
+        geometryNode.name = color == UIColor.blue ? "GOOD" : "BAD"
         
         self.rootNode.addChildNode(geometryNode)
     }
