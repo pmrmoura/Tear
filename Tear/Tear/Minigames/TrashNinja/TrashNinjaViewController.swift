@@ -113,9 +113,10 @@ class TrashNinjaViewController: UIViewController {
             self.gameHUD.updateScore(score)
             
             node.removeFromParentNode()
-        } else if node.name == "BAD" {
+        } else if node.name == "Icosphere" {
             let errors = self.game.changeScore(type: "BAD")
             self.gameHUD.updateErrors(errors)
+            
             node.removeFromParentNode()
         }
     }

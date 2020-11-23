@@ -20,6 +20,9 @@ class GameHUD: UIView, CodeView {
     var scoreLabel: UILabel = UILabel()
     var errorsLabel: UILabel = UILabel()
     
+    var popUpView: UIView = UIView()
+    var endGameLabel: UILabel = UILabel()
+    
     public init() {
         super.init(frame: .zero)
         self.setupView()
@@ -38,6 +41,9 @@ class GameHUD: UIView, CodeView {
         self.addSubview(lifesLabel)
         self.addSubview(scoreLabel)
         self.addSubview(errorsLabel)
+        
+        self.addSubview(popUpView)
+        self.addSubview(endGameLabel)
     }
     
     func setupContraints() {
@@ -50,6 +56,8 @@ class GameHUD: UIView, CodeView {
         self.scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         self.errorsLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        self.popUpView.translatesAutoresizingMaskIntoConstraints = false
+        self.endGameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             self.leaveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -99,6 +107,18 @@ class GameHUD: UIView, CodeView {
             self.errorsLabel.heightAnchor.constraint(equalToConstant: 20),
             self.errorsLabel.widthAnchor.constraint(equalToConstant: 100)
         ])
+        
+        NSLayoutConstraint.activate([
+            self.popUpView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.popUpView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.popUpView.heightAnchor.constraint(equalToConstant: 200),
+            self.popUpView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.endGameLabel.centerXAnchor.constraint(equalTo: self.popUpView.centerXAnchor),
+            self.endGameLabel.centerYAnchor.constraint(equalTo: self.popUpView.centerYAnchor),
+        ])
     }
     
     func setupAdditionalConfiguration() {
@@ -130,6 +150,21 @@ class GameHUD: UIView, CodeView {
         self.errorsLabel.text = ""
         self.errorsLabel.textColor = .black
         self.errorsLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        
+        self.popUpView.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 229/255, alpha: 1)
+        self.popUpView.layer.borderWidth = 3
+        self.popUpView.layer.borderColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1).cgColor
+        self.popUpView.layer.cornerRadius = 30
+        
+        let cor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
+        
+        self.endGameLabel.text = "Você ganhou"
+        self.endGameLabel.textColor = cor
+        
+        self.popUpView.isHidden = true
+        self.endGameLabel.isHidden = true
+        
+        self.endGameLabel.font = UIFont.systemFont(ofSize: 30, weight: .medium)
     }
     
     func updateScore(_ actual: Int){

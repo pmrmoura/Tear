@@ -35,13 +35,10 @@ class GameScene: SCNScene{
         let appleNode = SCNNode()
         
         for childNode in appleScene.rootNode.childNodes {
-            childNode.geometry?.firstMaterial?.lightingModel = .physicallyBased
-            childNode.movabilityHint = .movable
             appleNode.addChildNode(childNode as SCNNode)
         }
         
         return appleNode
-        
     }
     
     func spawnShape(){
@@ -64,19 +61,27 @@ class GameScene: SCNScene{
                 geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         }
         
-        let geometryNode = SCNNode(geometry: geometry)//self.createApple()
+        let geometryNode = self.createApple() //SCNNode(geometry: geometry)
         let color = UIColor.random()
         
-        geometry.materials.first?.diffuse.contents = color
-        geometryNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        let appleBody =  geometryNode.childNode(withName: "Icosphere", recursively: true)
+        let appleLeaf = geometryNode.childNode(withName: "Cube", recursively: true)
+        let appleTalo = geometryNode.childNode(withName: "Cylinder", recursively: true)
         
+        geometry.materials.first?.diffuse.contents = color
+        geometryNode.childNode(withName: "Icosphere", recursively: true)?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+    
+        let constraint = SCNReplicatorConstraint(target: appleBody)
+        constraint.scaleOffset = SCNVector3(0.1, 0.1, 0.1)
+        appleTalo?.constraints = [constraint]
+
         let randomX = Float.random(min: -2, max: 2)
         let randomY = Float.random(min: 10, max: 18)
         let force = SCNVector3(x: randomX, y: randomY , z: 0)
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
-        geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
-
+        geometryNode.childNode(withName: "Icosphere", recursively: true)?.physicsBody?.applyForce(force, at: position, asImpulse: true)
+        
         //Definition of good and bad itens
         geometryNode.name = color == UIColor.blue ? "GOOD" : "BAD"
         
