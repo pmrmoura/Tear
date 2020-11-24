@@ -69,7 +69,7 @@ class GameScene: SCNScene{
         let appleTalo = geometryNode.childNode(withName: "Cylinder", recursively: true)
         
         geometry.materials.first?.diffuse.contents = color
-        geometryNode.childNode(withName: "Icosphere", recursively: true)?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        appleBody?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
     
         let constraint = SCNReplicatorConstraint(target: appleBody)
         constraint.scaleOffset = SCNVector3(0.1, 0.1, 0.1)
@@ -80,7 +80,7 @@ class GameScene: SCNScene{
         let force = SCNVector3(x: randomX, y: randomY , z: 0)
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
-        geometryNode.childNode(withName: "Icosphere", recursively: true)?.physicsBody?.applyForce(force, at: position, asImpulse: true)
+       appleBody?.physicsBody?.applyForce(force, at: position, asImpulse: true)
         
         //Definition of good and bad itens
         geometryNode.name = color == UIColor.blue ? "GOOD" : "BAD"

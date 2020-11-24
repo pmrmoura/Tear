@@ -92,9 +92,9 @@ class TrashNinjaViewController: UIViewController {
         switch sender.tag {
             case 0:
                 self.game.restart()
-                let homeVC = GameViewController()
-                homeVC.modalPresentationStyle = .fullScreen
-                self.present(homeVC, animated: true, completion: nil)
+                let mapVC = MapViewController()
+                mapVC.modalPresentationStyle = .fullScreen
+                self.present(mapVC, animated: true, completion: nil)
             case 1:
                 self.game.pause()
                 self.gameScene.isPaused = self.game.state == .Paused ? true : false
