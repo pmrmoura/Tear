@@ -4,7 +4,6 @@
 //
 //  Created by Danilo Araújo on 11/11/20.
 //
-
 import UIKit
 import QuartzCore
 import SceneKit
@@ -161,4 +160,3 @@ extension TrashNinjaViewController: SCNSceneRendererDelegate {
         }
     }
 }
-
