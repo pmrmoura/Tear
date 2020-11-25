@@ -47,7 +47,7 @@ class MapViewController: UIViewController {
     }
     
     func handleTouchFor(node: SCNNode) {
-        if node.name == "Cube-001" {
+        if node.name == "apple" {
             let trashNinjaVC = TrashNinjaViewController()
             trashNinjaVC.modalPresentationStyle = .fullScreen
             self.present(trashNinjaVC, animated: true, completion: nil)
