@@ -12,7 +12,12 @@ class AnimationViewController: UIViewController {
     
     let imageView: UIImageView = {
         let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 960, height: 540))
-        imageView.image = UIImage(named: "drop_png0006")
+        let color = UIColor(red: 255, green: 252, blue: 203, alpha: 1)
+        let image =  UIImage(named: "drop_png0006")
+        
+        imageView.image = image
+        imageView.backgroundColor = color
+        
         return imageView
     }()
     
@@ -26,9 +31,7 @@ class AnimationViewController: UIViewController {
         super.viewDidLayoutSubviews()
         imageView.center = view.center
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            self.animate()
-        })
+        self.animate()
     }
     
     func animate(){
@@ -48,6 +51,18 @@ class AnimationViewController: UIViewController {
         
         self.imageView.animationImages = images
         self.imageView.animationDuration = 4
+        self.imageView.animationRepeatCount = 1
         self.imageView.startAnimating()
+        
+        DispatchQueue.main.async {
+            let mapVC = MapViewController()
+            sleep(4)
+            self.changeVC(mapVC: mapVC)
+        }
+    }
+    
+    func changeVC(mapVC: MapViewController){
+        mapVC.modalPresentationStyle = .fullScreen
+        self.present(mapVC, animated: true, completion: nil)
     }
 }
