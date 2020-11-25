@@ -11,6 +11,7 @@ import SceneKit
 class GameScene: SCNScene{
     var cameraNode: SCNNode!
     var appleNode: SCNNode!
+    var phase: Int = 1
     
     override init(){
         super.init()
@@ -30,60 +31,45 @@ class GameScene: SCNScene{
         self.rootNode.addChildNode(self.cameraNode)
     }
     
-    func createApple() -> SCNNode {
-        let appleScene = SCNScene(named: "art.scnassets/apple.dae")!
-        let appleNode = SCNNode()
-        
-        for childNode in appleScene.rootNode.childNodes {
-            appleNode.addChildNode(childNode as SCNNode)
-        }
-        
-        return appleNode
+    func createApple(name: String) -> SCNNode {
+        let appleScene = SCNScene(named: "art.scnassets/\(name).dae")!
+        return appleScene.rootNode.childNodes[0]
     }
     
     func spawnShape(){
-        var geometry:SCNGeometry
-                
+        var geometryNode: SCNNode
+        
         switch ShapeType.random() {
-            case ShapeType.pyramid:
-                geometry = SCNPyramid(width: 1.0, height: 1.0, length: 1.0)
-            case ShapeType.torus:
-                geometry = SCNTorus()
-            case ShapeType.capsule:
-                geometry = SCNCapsule(capRadius: 1.0, height: 1.0)
-            case ShapeType.cylinder:
-                geometry = SCNCylinder(radius: 1.0, height: 1.0)
-            case ShapeType.cone:
-                geometry = SCNCone()
-            case ShapeType.tube:
-                geometry = SCNTube()
+            case ShapeType.apple:
+                geometryNode = self.createApple(name: "apple")
+            case ShapeType.banana:
+                geometryNode = self.createApple(name: "banana")
+            case ShapeType.whiteEgg:
+                geometryNode = self.createApple(name: "whiteEgg")
             default:
-                geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
+                geometryNode = self.createApple(name: "countryEgg")
         }
         
-        let geometryNode = self.createApple() //SCNNode(geometry: geometry)
-        let color = UIColor.random()
-        
-        let appleBody =  geometryNode.childNode(withName: "Icosphere", recursively: true)
-        let appleLeaf = geometryNode.childNode(withName: "Cube", recursively: true)
-        let appleTalo = geometryNode.childNode(withName: "Cylinder", recursively: true)
-        
-        geometry.materials.first?.diffuse.contents = color
-        appleBody?.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-    
-        let constraint = SCNReplicatorConstraint(target: appleBody)
-        constraint.scaleOffset = SCNVector3(0.1, 0.1, 0.1)
-        appleTalo?.constraints = [constraint]
+        let color: UIColor = .blue
+        geometryNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
 
         let randomX = Float.random(min: -2, max: 2)
         let randomY = Float.random(min: 10, max: 18)
         let force = SCNVector3(x: randomX, y: randomY , z: 0)
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
-       appleBody?.physicsBody?.applyForce(force, at: position, asImpulse: true)
+       geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
         
         //Definition of good and bad itens
-        geometryNode.name = color == UIColor.blue ? "GOOD" : "BAD"
+        if self.phase == 1 {
+            geometryNode.name = geometryNode.name == "apple" ? "GOOD" : "BAD"
+            geometryNode.name = geometryNode.name == "whiteEgg" ? "GOOD" : "BAD"
+        } else if self.phase == 2 {
+            
+        } else if self.phase == 3 {
+            
+        }
+        
         
         self.rootNode.addChildNode(geometryNode)
     }

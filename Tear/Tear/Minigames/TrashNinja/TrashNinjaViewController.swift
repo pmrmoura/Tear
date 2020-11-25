@@ -106,7 +106,6 @@ class TrashNinjaViewController: UIViewController {
                 self.game.restart()
             case 3:
                 self.nextPhase()
-            
             default:
                 self.game.mute()
         }
@@ -119,7 +118,7 @@ class TrashNinjaViewController: UIViewController {
             node.removeFromParentNode()
             self.checkGameState()
             
-        } else if node.name == "Icosphere" {
+        } else if node.name == "BAD" {
             let errors = self.game.changeScore(type: "BAD")
             self.gameHUD.updateErrors(errors)
             node.removeFromParentNode()
