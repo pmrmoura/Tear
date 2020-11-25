@@ -48,7 +48,9 @@ class TrashNinjaViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if game.state == GameStateType.GameOver || game.state == GameStateType.Paused {
+        if game.state == GameStateType.GameLost ||
+           game.state == GameStateType.Paused  ||
+           game.state == GameStateType.GameWin {
             return
         }
         
@@ -85,7 +87,8 @@ class TrashNinjaViewController: UIViewController {
         self.gameHUD.pauseButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
         self.gameHUD.restartButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
         self.gameHUD.audioButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
-        
+        self.gameHUD.leaveGameButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
+        self.gameHUD.nextPhaseButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
     }
         
     @objc func touchedDisplay(sender: UIButton) {
@@ -102,6 +105,9 @@ class TrashNinjaViewController: UIViewController {
                 self.gameScene.clearAll()
                 self.gameHUD.restart()
                 self.game.restart()
+            case 3:
+                self.nextPhase()
+            
             default:
                 self.game.mute()
         }
@@ -111,14 +117,33 @@ class TrashNinjaViewController: UIViewController {
         if node.name == "GOOD" {
             let score = self.game.changeScore(type: "GOOD")
             self.gameHUD.updateScore(score)
-            
             node.removeFromParentNode()
+            self.checkGameState()
+            
         } else if node.name == "Icosphere" {
             let errors = self.game.changeScore(type: "BAD")
             self.gameHUD.updateErrors(errors)
-            
             node.removeFromParentNode()
+            self.checkGameState()
         }
+    }
+    
+    func checkGameState(){
+        if self.game.state == GameStateType.GameWin {
+            self.gameHUD.popUpView.isHidden = false
+            self.gameHUD.endGameLabel.text = "Parabéns, você ganhou"
+            
+        } else if self.game.state == GameStateType.GameLost {
+            self.gameHUD.popUpView.isHidden = false
+            self.gameHUD.endGameLabel.text = "Perdeu, você é um lixo"
+        }
+    }
+    
+    func nextPhase(){
+        self.game.restart()
+        self.gameHUD.restart()
+        self.gameHUD.popUpView.isHidden = true
+        self.game.phase += 1
     }
     
 }

@@ -22,6 +22,8 @@ class GameHUD: UIView, CodeView {
     
     var popUpView: UIView = UIView()
     var endGameLabel: UILabel = UILabel()
+    var nextPhaseButton: UIButton = UIButton()
+    var leaveGameButton: UIButton = UIButton()
     
     public init() {
         super.init(frame: .zero)
@@ -43,7 +45,9 @@ class GameHUD: UIView, CodeView {
         self.addSubview(errorsLabel)
         
         self.addSubview(popUpView)
-        self.addSubview(endGameLabel)
+        self.popUpView.addSubview(endGameLabel)
+        self.popUpView.addSubview(nextPhaseButton)
+        self.popUpView.addSubview(leaveGameButton)
     }
     
     func setupContraints() {
@@ -58,10 +62,12 @@ class GameHUD: UIView, CodeView {
         
         self.popUpView.translatesAutoresizingMaskIntoConstraints = false
         self.endGameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.nextPhaseButton.translatesAutoresizingMaskIntoConstraints = false
+        self.leaveGameButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             self.leaveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.leaveButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            self.leaveButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
             self.leaveButton.heightAnchor.constraint(equalToConstant: 14.73),
             self.leaveButton.widthAnchor.constraint(equalToConstant: 15.42)
         ])
@@ -96,7 +102,7 @@ class GameHUD: UIView, CodeView {
         
         NSLayoutConstraint.activate([
             self.scoreLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            self.scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
             self.scoreLabel.heightAnchor.constraint(equalToConstant: 30),
             self.scoreLabel.widthAnchor.constraint(equalToConstant: 100)
         ])
@@ -119,6 +125,18 @@ class GameHUD: UIView, CodeView {
             self.endGameLabel.centerXAnchor.constraint(equalTo: self.popUpView.centerXAnchor),
             self.endGameLabel.centerYAnchor.constraint(equalTo: self.popUpView.centerYAnchor),
         ])
+        
+        NSLayoutConstraint.activate([
+            self.nextPhaseButton.leadingAnchor.constraint(equalTo: self.popUpView.leadingAnchor),
+            self.nextPhaseButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor, constant: -20),
+            self.nextPhaseButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 0.5)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.leaveGameButton.trailingAnchor.constraint(equalTo: self.popUpView.trailingAnchor),
+            self.leaveGameButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor, constant: -20),
+            self.leaveGameButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 0.5)
+        ])
     }
     
     func setupAdditionalConfiguration() {
@@ -126,6 +144,7 @@ class GameHUD: UIView, CodeView {
         let pauseButtonBackground = #imageLiteral(resourceName: "Asset 43")
         let restartButtonBackground = #imageLiteral(resourceName: "Asset 41")
         let audioButtonBackground = #imageLiteral(resourceName: "Asset 39")
+        let color = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         
         self.leaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         self.leaveButton.setBackgroundImage(leaveButtonBackground, for: .normal)
@@ -155,16 +174,24 @@ class GameHUD: UIView, CodeView {
         self.popUpView.layer.borderWidth = 3
         self.popUpView.layer.borderColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1).cgColor
         self.popUpView.layer.cornerRadius = 30
-        
-        let cor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
-        
-        self.endGameLabel.text = "Você ganhou"
-        self.endGameLabel.textColor = cor
-        
         self.popUpView.isHidden = true
-        self.endGameLabel.isHidden = true
         
+        self.endGameLabel.textColor = color
         self.endGameLabel.font = UIFont.systemFont(ofSize: 30, weight: .medium)
+        
+        self.nextPhaseButton.setTitle("Próxima", for: .normal)
+        self.nextPhaseButton.layer.borderColor = color.cgColor
+        self.nextPhaseButton.layer.borderWidth = 3
+        self.nextPhaseButton.setTitleColor(UIColor(red: 77/255, green: 87/255, blue: 62/255, alpha: 1), for: .normal)
+        self.nextPhaseButton.tag = 3
+        
+        self.leaveGameButton.setTitle("Sair", for: .normal)
+        self.leaveGameButton.layer.borderColor = color.cgColor
+        self.leaveGameButton.layer.borderWidth = 3
+        self.leaveGameButton.setTitleColor(UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1), for: .normal)
+        self.leaveGameButton.tintColor = .black
+        self.leaveGameButton.tag = 0
+        
     }
     
     func updateScore(_ actual: Int){

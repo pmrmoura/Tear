@@ -55,13 +55,13 @@ class AnimationViewController: UIViewController {
         self.imageView.startAnimating()
         
         DispatchQueue.main.async {
-            let mapVC = MapViewController()
-            sleep(4)
+            let mapVC = TrashNinjaViewController()
+            //sleep(4)
             self.changeVC(mapVC: mapVC)
         }
     }
     
-    func changeVC(mapVC: MapViewController){
+    func changeVC(mapVC: TrashNinjaViewController){
         mapVC.modalPresentationStyle = .fullScreen
         self.present(mapVC, animated: true, completion: nil)
     }
