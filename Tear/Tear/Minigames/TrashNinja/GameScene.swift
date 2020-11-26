@@ -38,38 +38,32 @@ class GameScene: SCNScene{
     
     func spawnShape(){
         var geometryNode: SCNNode
-        
-        switch ShapeType.random() {
-            case ShapeType.apple:
-                geometryNode = self.createApple(name: "apple")
-            case ShapeType.banana:
-                geometryNode = self.createApple(name: "banana")
-            case ShapeType.whiteEgg:
-                geometryNode = self.createApple(name: "whiteEgg")
-            default:
-                geometryNode = self.createApple(name: "countryEgg")
-        }
-        
-        let color: UIColor = .blue
-        geometryNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-
         let randomX = Float.random(min: -2, max: 2)
         let randomY = Float.random(min: 10, max: 18)
         let force = SCNVector3(x: randomX, y: randomY , z: 0)
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
-       geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
-        
-        //Definition of good and bad itens
-        if self.phase == 1 {
-            geometryNode.name = geometryNode.name == "apple" ? "GOOD" : "BAD"
-            geometryNode.name = geometryNode.name == "whiteEgg" ? "GOOD" : "BAD"
-        } else if self.phase == 2 {
-            
-        } else if self.phase == 3 {
-            
+        switch ShapeType.random() {
+        case ShapeType.apple:
+            geometryNode = self.createApple(name: "apple")
+        case ShapeType.banana:
+            geometryNode = self.createApple(name: "banana")
+        case ShapeType.whiteEgg:
+            geometryNode = self.createApple(name: "whiteEgg")
+        default:
+            geometryNode = self.createApple(name: "countryEgg")
         }
         
+        geometryNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
+        
+        if self.phase == 1 {
+            geometryNode.name = geometryNode.name == "apple" ? "GOOD" : "BAD"
+        } else if self.phase == 2 {
+            geometryNode.name = geometryNode.name == "banana" ? "GOOD" : "BAD"
+        } else if self.phase == 3 {
+            geometryNode.name = geometryNode.name == "countryEgg" ? "GOOD" : "BAD"
+        }
         
         self.rootNode.addChildNode(geometryNode)
     }

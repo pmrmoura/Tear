@@ -128,12 +128,9 @@ class TrashNinjaViewController: UIViewController {
     
     func checkGameState(){
         if self.game.state == GameStateType.GameWin {
-            self.gameHUD.popUpView.isHidden = false
-            self.gameHUD.endGameLabel.text = "Parabéns, você ganhou"
-            
+            self.gameHUD.gameWin()
         } else if self.game.state == GameStateType.GameLost {
-            self.gameHUD.popUpView.isHidden = false
-            self.gameHUD.endGameLabel.text = "Perdeu, você é um lixo"
+            self.gameHUD.gameLost()
         }
     }
     
@@ -142,6 +139,7 @@ class TrashNinjaViewController: UIViewController {
         self.gameHUD.restart()
         self.gameHUD.popUpView.isHidden = true
         self.game.phase += 1
+        self.gameScene.phase = self.game.phase
     }
     
 }

@@ -25,9 +25,26 @@ class GameHUD: UIView, CodeView {
     var nextPhaseButton: UIButton = UIButton()
     var leaveGameButton: UIButton = UIButton()
     
+    var leaveGameButtonLostConstraints: [NSLayoutConstraint] = []
+    var leaveGameButtonWinConstraints: [NSLayoutConstraint] = []
+    
     public init() {
         super.init(frame: .zero)
         self.setupView()
+        
+        
+        self.leaveGameButtonLostConstraints = [
+            self.leaveGameButton.leadingAnchor.constraint(equalTo: self.popUpView.leadingAnchor),
+            self.leaveGameButton.trailingAnchor.constraint(equalTo: self.popUpView.trailingAnchor),
+            self.leaveGameButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor),
+            self.leaveGameButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 1)
+        ]
+        
+        self.leaveGameButtonWinConstraints = [
+            self.leaveGameButton.trailingAnchor.constraint(equalTo: self.popUpView.trailingAnchor),
+            self.leaveGameButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor),
+            self.leaveGameButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 0.5)
+        ]
     }
     
     required init?(coder: NSCoder) {
@@ -128,15 +145,26 @@ class GameHUD: UIView, CodeView {
         
         NSLayoutConstraint.activate([
             self.nextPhaseButton.leadingAnchor.constraint(equalTo: self.popUpView.leadingAnchor),
-            self.nextPhaseButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor, constant: -20),
+            self.nextPhaseButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor),
             self.nextPhaseButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 0.5)
         ])
+
+    }
+    
+    func gameLost() {
+        self.nextPhaseButton.isHidden = true
+        self.popUpView.isHidden = false
+        self.endGameLabel.text = "Perdeu, você é um lixo"
         
-        NSLayoutConstraint.activate([
-            self.leaveGameButton.trailingAnchor.constraint(equalTo: self.popUpView.trailingAnchor),
-            self.leaveGameButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor, constant: -20),
-            self.leaveGameButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 0.5)
-        ])
+        NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
+        NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
+    }
+    
+    func gameWin() {
+        self.endGameLabel.text = "Parabéns, você ganhou"
+        self.popUpView.isHidden = false
+        
+        NSLayoutConstraint.activate(self.leaveGameButtonWinConstraints)
     }
     
     func setupAdditionalConfiguration() {
