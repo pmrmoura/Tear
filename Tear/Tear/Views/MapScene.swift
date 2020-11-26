@@ -11,7 +11,7 @@ import SceneKit
 class MapScene: SCNScene{
     var cameraNode: SCNNode!
     var floorNode: SCNNode!
-    
+
     override init(){
         super.init()
         self.setupCamera()

@@ -25,6 +25,8 @@
 		0CFE0145255D836B00C00084 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE0144255D836B00C00084 /* Assets.xcassets */; };
 		0CFE0150255D836B00C00084 /* TearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE014F255D836B00C00084 /* TearTests.swift */; };
 		0CFE015B255D836B00C00084 /* TearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE015A255D836B00C00084 /* TearUITests.swift */; };
+		C1C224BB256FDDAF00DAD429 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */; };
+		C1C224C0256FFA8E00DAD429 /* progressIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C224BF256FFA8E00DAD429 /* progressIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		0CFE0156255D836B00C00084 /* TearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE015A255D836B00C00084 /* TearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TearUITests.swift; sourceTree = "<group>"; };
 		0CFE015C255D836B00C00084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
+		C1C224BF256FFA8E00DAD429 /* progressIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			children = (
 				0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */,
 				0C0FF7B2256D2D5000B941B0 /* MapScene.swift */,
+				C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,6 +180,7 @@
 				0CFE013B255D836A00C00084 /* AppDelegate.swift */,
 				0CFE013D255D836A00C00084 /* art.scnassets */,
 				0CFE0144255D836B00C00084 /* Assets.xcassets */,
+				C1C224BF256FFA8E00DAD429 /* progressIcon.png */,
 				0CFE0146255D836B00C00084 /* Info.plist */,
 			);
 			path = Tear;
@@ -302,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C0FF7B8256D3DB800B941B0 /* Launch Screen.storyboard in Resources */,
+				C1C224C0256FFA8E00DAD429 /* progressIcon.png in Resources */,
 				0CFE013E255D836A00C00084 /* art.scnassets in Resources */,
 				0CFE0145255D836B00C00084 /* Assets.xcassets in Resources */,
 			);
@@ -330,6 +337,7 @@
 			files = (
 				0C77FCA52566BCBC002D9322 /* GameScene.swift in Sources */,
 				0C0F173625640AD100C97208 /* GameHelper.swift in Sources */,
+				C1C224BB256FDDAF00DAD429 /* ProgressCircle.swift in Sources */,
 				0C0F174025640ADB00C97208 /* ShapeTypes.swift in Sources */,
 				0C0FF7C3256D4D9400B941B0 /* AnimationViewController.swift in Sources */,
 				0CFE0140255D836A00C00084 /* MapViewController.swift in Sources */,
@@ -504,6 +512,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaawa.tear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -523,6 +532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tomaawa.tear;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
