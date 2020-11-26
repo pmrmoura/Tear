@@ -31,7 +31,7 @@ class GameScene: SCNScene{
         self.rootNode.addChildNode(self.cameraNode)
     }
     
-    func createApple(name: String) -> SCNNode {
+    func createObject(name: String) -> SCNNode {
         let appleScene = SCNScene(named: "art.scnassets/\(name).dae")!
         return appleScene.rootNode.childNodes[0]
     }
@@ -40,18 +40,20 @@ class GameScene: SCNScene{
         var geometryNode: SCNNode
         let randomX = Float.random(min: -2, max: 2)
         let randomY = Float.random(min: 10, max: 18)
-        let force = SCNVector3(x: randomX, y: randomY , z: 0)
+        let force = SCNVector3(x: randomX, y: randomY, z: 0)
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
         switch ShapeType.random() {
         case ShapeType.apple:
-            geometryNode = self.createApple(name: "apple")
+            geometryNode = self.createObject(name: "apple")
         case ShapeType.banana:
-            geometryNode = self.createApple(name: "banana")
+            geometryNode = self.createObject(name: "banana")
         case ShapeType.whiteEgg:
-            geometryNode = self.createApple(name: "whiteEgg")
+            geometryNode = self.createObject(name: "whiteEgg")
+        case ShapeType.toiletPaper:
+            geometryNode = self.createObject(name: "toiletPaper")
         default:
-            geometryNode = self.createApple(name: "countryEgg")
+            geometryNode = self.createObject(name: "countryEgg")
         }
         
         geometryNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)

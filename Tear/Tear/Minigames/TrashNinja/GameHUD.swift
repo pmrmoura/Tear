@@ -25,6 +25,16 @@ class GameHUD: UIView, CodeView {
     var nextPhaseButton: UIButton = UIButton()
     var leaveGameButton: UIButton = UIButton()
     
+    var tapToPlayLabel: UILabel = UILabel()
+    
+    var errorView: UIView = UIView()
+    var errorView1: UIView = UIView()
+    var errorView2: UIView = UIView()
+    
+    var materialDescription: UILabel = UILabel()
+    
+    let game = GameHelper.sharedInstance
+    
     var leaveGameButtonLostConstraints: [NSLayoutConstraint] = []
     var leaveGameButtonWinConstraints: [NSLayoutConstraint] = []
     
@@ -62,6 +72,14 @@ class GameHUD: UIView, CodeView {
         self.addSubview(errorsLabel)
         
         self.addSubview(popUpView)
+        self.addSubview(tapToPlayLabel)
+        
+        self.addSubview(errorView)
+        self.addSubview(errorView1)
+        self.addSubview(errorView2)
+        
+        self.addSubview(materialDescription)
+        
         self.popUpView.addSubview(endGameLabel)
         self.popUpView.addSubview(nextPhaseButton)
         self.popUpView.addSubview(leaveGameButton)
@@ -81,6 +99,14 @@ class GameHUD: UIView, CodeView {
         self.endGameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.nextPhaseButton.translatesAutoresizingMaskIntoConstraints = false
         self.leaveGameButton.translatesAutoresizingMaskIntoConstraints = false
+        self.tapToPlayLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.errorsLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.errorView.translatesAutoresizingMaskIntoConstraints = false
+        self.errorView1.translatesAutoresizingMaskIntoConstraints = false
+        self.errorView2.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.materialDescription.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             self.leaveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -118,15 +144,22 @@ class GameHUD: UIView, CodeView {
         ])
         
         NSLayoutConstraint.activate([
+            self.materialDescription.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            self.materialDescription.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            self.materialDescription.widthAnchor.constraint(equalToConstant: 100),
+            self.materialDescription.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
+        NSLayoutConstraint.activate([
             self.scoreLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            self.scoreLabel.topAnchor.constraint(equalTo: self.materialDescription.topAnchor, constant: 30),
             self.scoreLabel.heightAnchor.constraint(equalToConstant: 30),
             self.scoreLabel.widthAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
-            self.errorsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-            self.errorsLabel.topAnchor.constraint(equalTo: self.scoreLabel.bottomAnchor, constant: 10),
+            self.errorsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            self.errorsLabel.topAnchor.constraint(equalTo: self.scoreLabel.bottomAnchor, constant: 40),
             self.errorsLabel.heightAnchor.constraint(equalToConstant: 20),
             self.errorsLabel.widthAnchor.constraint(equalToConstant: 100)
         ])
@@ -148,25 +181,37 @@ class GameHUD: UIView, CodeView {
             self.nextPhaseButton.bottomAnchor.constraint(equalTo: self.popUpView.bottomAnchor),
             self.nextPhaseButton.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, multiplier: 0.5)
         ])
+        
+        NSLayoutConstraint.activate([
+            self.tapToPlayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            self.tapToPlayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            self.tapToPlayLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.errorView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            self.errorView.topAnchor.constraint(equalTo: self.scoreLabel.topAnchor, constant: 50),
+            self.errorView.heightAnchor.constraint(equalToConstant: 20),
+            self.errorView.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.errorView1.leadingAnchor.constraint(equalTo: self.errorView.leadingAnchor, constant: 30),
+            self.errorView1.topAnchor.constraint(equalTo: self.scoreLabel.topAnchor, constant: 50),
+            self.errorView1.heightAnchor.constraint(equalToConstant: 20),
+            self.errorView1.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.errorView2.leadingAnchor.constraint(equalTo: self.errorView1.leadingAnchor, constant: 30),
+            self.errorView2.topAnchor.constraint(equalTo: self.scoreLabel.topAnchor, constant: 50),
+            self.errorView2.heightAnchor.constraint(equalToConstant: 20),
+            self.errorView2.widthAnchor.constraint(equalToConstant: 20)
+        ])
+        
 
     }
-    
-    func gameLost() {
-        self.nextPhaseButton.isHidden = true
-        self.popUpView.isHidden = false
-        self.endGameLabel.text = "Perdeu, você é um lixo"
         
-        NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
-        NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
-    }
-    
-    func gameWin() {
-        self.endGameLabel.text = "Parabéns, você ganhou"
-        self.popUpView.isHidden = false
-        
-        NSLayoutConstraint.activate(self.leaveGameButtonWinConstraints)
-    }
-    
     func setupAdditionalConfiguration() {
         let leaveButtonBackground = #imageLiteral(resourceName: "Asset40")
         let pauseButtonBackground = #imageLiteral(resourceName: "Asset 43")
@@ -190,7 +235,7 @@ class GameHUD: UIView, CodeView {
         self.audioButton.setBackgroundImage(audioButtonBackground, for: .normal)
         self.audioButton.tag = 3
         
-        self.scoreLabel.text = "0/5"
+        self.scoreLabel.text = "\(game.score)/\(game.goal)"
         self.scoreLabel.textColor = .black
         self.scoreLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
         
@@ -220,18 +265,64 @@ class GameHUD: UIView, CodeView {
         self.leaveGameButton.tintColor = .black
         self.leaveGameButton.tag = 0
         
+        self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
+        self.tapToPlayLabel.textColor = UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1)
+        
+        self.errorView.backgroundColor = .gray
+        self.errorView.layer.borderWidth = 3
+        self.errorView.layer.cornerRadius = 10
+        
+        self.errorView1.backgroundColor = .gray
+        self.errorView1.layer.borderWidth = 3
+        self.errorView1.layer.cornerRadius = 10
+        
+        self.errorView2.backgroundColor = .gray
+        self.errorView2.layer.borderWidth = 3
+        self.errorView2.layer.cornerRadius = 10
+        
+        self.materialDescription.text = "ORGÂNICO"
     }
     
-    func updateScore(_ actual: Int){
-        self.scoreLabel.text = "\(actual)/5"
+    func gameLost() {
+        self.nextPhaseButton.isHidden = true
+        self.popUpView.isHidden = false
+        self.endGameLabel.text = "Perdeu, você é um lixo"
+        
+        NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
+        NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
     }
     
-    func updateErrors(_ actual: Int){
-        self.errorsLabel.text = self.errorsLabel.text! + "X "
+    func gameWin() {
+        self.endGameLabel.text = "Parabéns, você ganhou"
+        self.popUpView.isHidden = false
+        
+        NSLayoutConstraint.activate(self.leaveGameButtonWinConstraints)
+    }
+    
+    func updateScore(){
+        self.scoreLabel.text = "\(game.score)/\(game.goal)"
+    }
+    
+    func updateErrors(){
+        
+        if game.errors == 0{
+            self.errorView.backgroundColor = .gray
+            self.errorView1.backgroundColor = .gray
+            self.errorView2.backgroundColor = .gray
+        }
+        
+        if game.errors == 1 {
+            self.errorView.backgroundColor = .red
+        } else if game.errors == 2 {
+            self.errorView1.backgroundColor = .red
+        } else if game.errors == 3 {
+            self.errorView2.backgroundColor = .red
+        }
     }
     
     func restart(){
-        self.scoreLabel.text = "0/5"
-        self.errorsLabel.text = ""
+        self.updateScore()
+        self.updateErrors()
+        self.popUpView.isHidden = true
     }
 }

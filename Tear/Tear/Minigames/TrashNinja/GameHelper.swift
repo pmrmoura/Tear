@@ -22,6 +22,7 @@ class GameHelper {
     var errors:Int
     var goal: Int
     var phase: Int
+    var totalPhases = 6
     var audioIsEnabled: Bool
     var state = GameStateType.TapToPlay
     static let sharedInstance = GameHelper()
@@ -53,24 +54,20 @@ class GameHelper {
         print("mute")
     }
     
-    func changeScore(type: String) -> Int{
-        if type == "GOOD" {
-            self.score += 1
-            
-            if self.score == self.goal {
-                self.state = GameStateType.GameWin
-            }
-            
-        } else if type == "BAD" {
-            self.errors += 1
-            
-            if self.errors == 3 {
-                self.state = GameStateType.GameLost
-            }
-            return errors
-        }
+    func hit(){
+        self.score += 1
         
-        return score
+        if self.score == self.goal {
+            self.state = GameStateType.GameWin
+        }
+    }
+    
+    func missed(){
+        self.errors += 1
+        
+        if self.errors == 3 {
+            self.state = GameStateType.GameLost
+        }
     }
     
     func getScoreString(_ length:Int) -> String {

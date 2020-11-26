@@ -13,7 +13,7 @@ class TrashNinjaViewController: UIViewController {
     
     var gameView: SCNView!
     var gameHUD = GameHUD()
-    var gameScene: GameScene = GameScene()
+    var gameScene = GameScene()
     var game = GameHelper.sharedInstance
     var spawnTime: TimeInterval = 0
     
@@ -57,6 +57,7 @@ class TrashNinjaViewController: UIViewController {
             self.gameView.isPlaying = true
             self.game.restart()
             self.game.state = .Playing
+            self.gameHUD.tapToPlayLabel.isHidden = true
             return
         }
         
@@ -93,10 +94,7 @@ class TrashNinjaViewController: UIViewController {
     @objc func touchedDisplay(sender: UIButton) {
         switch sender.tag {
             case 0:
-                self.game.restart()
-                let mapVC = MapViewController()
-                mapVC.modalPresentationStyle = .fullScreen
-                self.present(mapVC, animated: true, completion: nil)
+                self.leaveGame()
             case 1:
                 self.game.pause()
                 self.gameScene.isPaused = self.game.state == .Paused ? true : false
@@ -111,16 +109,23 @@ class TrashNinjaViewController: UIViewController {
         }
     }
     
+    func leaveGame(){
+        self.game.restart()
+        let mapVC = MapViewController()
+        mapVC.modalPresentationStyle = .fullScreen
+        self.present(mapVC, animated: true, completion: nil)
+    }
+    
     func handleTouchFor(node: SCNNode) {
         if node.name == "GOOD" {
-            let score = self.game.changeScore(type: "GOOD")
-            self.gameHUD.updateScore(score)
+            self.game.hit()
+            self.gameHUD.updateScore()
             node.removeFromParentNode()
             self.checkGameState()
             
         } else if node.name == "BAD" {
-            let errors = self.game.changeScore(type: "BAD")
-            self.gameHUD.updateErrors(errors)
+            self.game.missed()
+            self.gameHUD.updateErrors()
             node.removeFromParentNode()
             self.checkGameState()
         }
@@ -137,7 +142,7 @@ class TrashNinjaViewController: UIViewController {
     func nextPhase(){
         self.game.restart()
         self.gameHUD.restart()
-        self.gameHUD.popUpView.isHidden = true
+        self.gameHUD.tapToPlayLabel.isHidden = false
         self.game.phase += 1
         self.gameScene.phase = self.game.phase
     }

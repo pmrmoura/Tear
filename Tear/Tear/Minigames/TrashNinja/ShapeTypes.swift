@@ -12,6 +12,7 @@ enum ShapeType:Int {
     case apple = 0
     case countryEgg
     case whiteEgg
+    case toiletPaper
     case banana
 
   static func random() -> ShapeType {

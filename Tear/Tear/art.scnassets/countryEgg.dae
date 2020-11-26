@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2020-11-25T14:19:40Z</created>
-  <modified>2020-11-25T14:19:40Z</modified>
+  <created>2020-11-26T12:45:29Z</created>
+  <modified>2020-11-26T12:45:29Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -85,7 +85,7 @@
  </library_geometries>
  <library_visual_scenes>
   <visual_scene id="scene6">
-   <node id="caipiraEgg" name="caipiraEgg">
+   <node id="caipiraEgg" name="countryEgg">
     <matrix>0.6399857 0 0 0 0 0.8926377 0 0 0 0 0.6399857 0 0 0 0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>
