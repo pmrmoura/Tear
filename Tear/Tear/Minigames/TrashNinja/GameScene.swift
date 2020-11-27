@@ -60,11 +60,23 @@ class GameScene: SCNScene{
         geometryNode.physicsBody?.applyForce(force, at: position, asImpulse: true)
         
         if self.phase == 1 {
-            geometryNode.name = geometryNode.name == "apple" ? "GOOD" : "BAD"
+            if ["apple", "banana", "whiteEgg", "countryEgg"].contains(geometryNode.name) {
+                geometryNode.name = "GOOD"
+            } else {
+                geometryNode.name = "BAD"
+            }
         } else if self.phase == 2 {
-            geometryNode.name = geometryNode.name == "banana" ? "GOOD" : "BAD"
+            if ["apple"].contains(geometryNode.name) {
+                geometryNode.name = "GOOD"
+            } else {
+                geometryNode.name = "BAD"
+            }
         } else if self.phase == 3 {
-            geometryNode.name = geometryNode.name == "countryEgg" ? "GOOD" : "BAD"
+            if ["apple"].contains(geometryNode.name) {
+                geometryNode.name = "GOOD"
+            } else {
+                geometryNode.name = "BAD"
+            }
         }
         
         self.rootNode.addChildNode(geometryNode)
