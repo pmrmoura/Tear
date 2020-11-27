@@ -56,7 +56,7 @@ class AnimationViewController: UIViewController {
         
         DispatchQueue.main.async {
             let mapVC = MapViewController()
-            sleep(4)
+//            sleep(4)
             self.changeVC(mapVC: mapVC)
         }
     }
