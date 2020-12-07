@@ -52,6 +52,24 @@ class GameScene: SCNScene{
             geometryNode = self.createObject(name: "whiteEgg")
         case ShapeType.toiletPaper:
             geometryNode = self.createObject(name: "toiletPaper")
+        case ShapeType.goblet:
+            geometryNode = self.createObject(name: "goblet")
+        case ShapeType.sodaCan:
+            geometryNode = self.createObject(name: "sodaCan")
+        case ShapeType.glassCup:
+            geometryNode = self.createObject(name: "glassCup")
+        case ShapeType.plasticCup:
+            geometryNode = self.createObject(name: "plasticCup")
+        case ShapeType.screw:
+            geometryNode = self.createObject(name: "screw")
+        case ShapeType.straw:
+            geometryNode = self.createObject(name: "straw")
+        case ShapeType.toothbrush:
+            geometryNode = self.createObject(name: "toothBrush")
+        case ShapeType.tunaCan:
+            geometryNode = self.createObject(name: "tunaCan")
+        case ShapeType.wineBottle:
+            geometryNode = self.createObject(name: "wineBottle")
         default:
             geometryNode = self.createObject(name: "countryEgg")
         }
@@ -66,7 +84,7 @@ class GameScene: SCNScene{
                 geometryNode.name = "BAD"
             }
         } else if self.phase == 2 {
-            if ["apple"].contains(geometryNode.name) {
+            if ["toiletPaper"].contains(geometryNode.name) {
                 geometryNode.name = "GOOD"
             } else {
                 geometryNode.name = "BAD"

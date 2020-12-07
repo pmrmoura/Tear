@@ -26,33 +26,15 @@ class MapScene: SCNScene{
     func setupCamera(){
         self.cameraNode = SCNNode()
         self.cameraNode.camera = SCNCamera()
-        self.cameraNode.position = SCNVector3(x: 0, y: 0, z: 10)
-        
+        self.cameraNode.position = SCNVector3(x: 257.582, y: 33.729, z: 290)
         self.rootNode.addChildNode(self.cameraNode)
     }
     
     func setupNodes(){
-        let floorScene = SCNScene(named: "art.scnassets/apple.dae")
+        let floorScene = SCNScene(named: "art.scnassets/Map.dae")
         self.floorNode = floorScene?.rootNode
         self.floorNode.name = "TRASHNINJA"
         
         self.rootNode.addChildNode(self.floorNode)
     }
-    
-    
-//    func clean() {
-//        for node in self.rootNode.childNodes {
-//            if node.presentation.position.y < -2 {
-//                node.removeFromParentNode()
-//            }
-//        }
-//    }
-//
-//    func clearAll(){
-//        for node in self.rootNode.childNodes {
-//            node.removeFromParentNode()
-//        }
-//
-//        self.isPaused = false
-//    }
 }

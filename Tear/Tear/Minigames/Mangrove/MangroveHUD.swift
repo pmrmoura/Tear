@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-class GameHUD: UIView, CodeView {
+class MangroveHUD: UIView, CodeView {
 
     
     var pauseButton: UIButton = UIButton()
@@ -16,9 +16,7 @@ class GameHUD: UIView, CodeView {
     var leaveButton: UIButton = UIButton()
     var audioButton: UIButton = UIButton()
     
-    var lifesLabel: UILabel = UILabel()
     var scoreLabel: UILabel = UILabel()
-    var errorsLabel: UILabel = UILabel()
     
     var popUpView: UIView = UIView()
     var endGameLabel: UILabel = UILabel()
@@ -32,7 +30,7 @@ class GameHUD: UIView, CodeView {
     var errorView1: UIView = UIView()
     var errorView2: UIView = UIView()
     
-    var materialDescription: UILabel = UILabel()
+    var movements = 0
     
     let game = GameHelper.sharedInstance
     
@@ -70,9 +68,7 @@ class GameHUD: UIView, CodeView {
         self.addSubview(leaveButton)
         self.addSubview(audioButton)
         
-        self.addSubview(lifesLabel)
         self.addSubview(scoreLabel)
-        self.addSubview(errorsLabel)
         
         self.addSubview(popUpView)
         self.addSubview(tapToPlayLabel)
@@ -80,8 +76,6 @@ class GameHUD: UIView, CodeView {
         self.addSubview(errorView)
         self.addSubview(errorView1)
         self.addSubview(errorView2)
-        
-        self.addSubview(materialDescription)
         
         self.popUpView.addSubview(endGameLabel)
         self.popUpView.addSubview(endGameText)
@@ -95,9 +89,7 @@ class GameHUD: UIView, CodeView {
         self.leaveButton.translatesAutoresizingMaskIntoConstraints = false
         self.audioButton.translatesAutoresizingMaskIntoConstraints = false
         
-        self.lifesLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scoreLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.errorsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.popUpView.translatesAutoresizingMaskIntoConstraints = false
         self.endGameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -105,13 +97,10 @@ class GameHUD: UIView, CodeView {
         self.nextPhaseButton.translatesAutoresizingMaskIntoConstraints = false
         self.leaveGameButton.translatesAutoresizingMaskIntoConstraints = false
         self.tapToPlayLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.errorsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.errorView.translatesAutoresizingMaskIntoConstraints = false
         self.errorView1.translatesAutoresizingMaskIntoConstraints = false
         self.errorView2.translatesAutoresizingMaskIntoConstraints = false
-        
-        self.materialDescription.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             self.leaveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
@@ -142,31 +131,10 @@ class GameHUD: UIView, CodeView {
         ])
         
         NSLayoutConstraint.activate([
-            self.lifesLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            self.lifesLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 124),
-            self.lifesLabel.heightAnchor.constraint(equalToConstant: 100),
-            self.lifesLabel.widthAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.materialDescription.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.materialDescription.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            self.materialDescription.widthAnchor.constraint(equalToConstant: 100),
-            self.materialDescription.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        NSLayoutConstraint.activate([
             self.scoreLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.scoreLabel.topAnchor.constraint(equalTo: self.materialDescription.topAnchor, constant: 30),
+            self.scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
             self.scoreLabel.heightAnchor.constraint(equalToConstant: 30),
             self.scoreLabel.widthAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.errorsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            self.errorsLabel.topAnchor.constraint(equalTo: self.scoreLabel.bottomAnchor, constant: 40),
-            self.errorsLabel.heightAnchor.constraint(equalToConstant: 20),
-            self.errorsLabel.widthAnchor.constraint(equalToConstant: 100)
         ])
         
         NSLayoutConstraint.activate([
@@ -246,16 +214,9 @@ class GameHUD: UIView, CodeView {
         self.audioButton.setBackgroundImage(audioButtonBackground, for: .normal)
         self.audioButton.tag = 3
         
-        self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
-        self.tapToPlayLabel.textColor = UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1)
-        
         self.scoreLabel.text = "\(game.score)/\(game.goal)"
         self.scoreLabel.textColor = .black
         self.scoreLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
-        
-        self.errorsLabel.text = ""
-        self.errorsLabel.textColor = .black
-        self.errorsLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
         
         self.popUpView.backgroundColor = UIColor(red: 234/255, green: 233/255, blue: 229/255, alpha: 1)
         self.popUpView.layer.borderWidth = 3
@@ -283,7 +244,6 @@ class GameHUD: UIView, CodeView {
         self.leaveGameButton.tintColor = .black
         self.leaveGameButton.tag = 0
         
-        
         self.errorView.backgroundColor = .gray
         self.errorView.layer.borderWidth = 3
         self.errorView.layer.cornerRadius = 10
@@ -295,8 +255,6 @@ class GameHUD: UIView, CodeView {
         self.errorView2.backgroundColor = .gray
         self.errorView2.layer.borderWidth = 3
         self.errorView2.layer.cornerRadius = 10
-        
-        self.materialDescription.text = "ORGÂNICO"
     }
     
     func gameLost() {
@@ -318,7 +276,8 @@ class GameHUD: UIView, CodeView {
     }
     
     func updateScore(){
-        self.scoreLabel.text = "\(game.score)/\(game.goal)"
+        self.movements += 1
+        self.scoreLabel.text = "\(self.movements)/\(game.goal)"
     }
     
     func updateErrors(){

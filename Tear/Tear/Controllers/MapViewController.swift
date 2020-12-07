@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
     var mapView: SCNView!
     var mapScene: MapScene = MapScene()
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
-
+    let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -36,6 +36,7 @@ class MapViewController: UIViewController {
         self.mapView.isPlaying = true
         self.mapView.allowsCameraControl = true
         self.setupProgressCircle()
+        self.setupProgressDetail()
     }
     
     func setupProgressCircle() {
@@ -49,6 +50,12 @@ class MapViewController: UIViewController {
             self.progressCircle.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor, constant: CGFloat(-35)),
             self.progressCircle.topAnchor.constraint(equalTo: self.mapView.topAnchor, constant: CGFloat(70)),
         ])
+    }
+    
+    func setupProgressDetail() {
+        self.progressDetail.isHidden = true
+        self.progressDetail.alpha = 0.0
+        self.view.addSubview(progressDetail)
     }
     
     @objc func animateProgress() {
@@ -80,9 +87,19 @@ class MapViewController: UIViewController {
         let touch = touches.first!
         let location = touch.location(in: mapView)
         let hitResults = mapView.hitTest(location, options: nil)
-        
-        if let result = hitResults.first {
-            handleTouchFor(node: result.node)
+        print(self.view.subviews)
+        if !hitResults.isEmpty {
+            if let result = hitResults.first {
+                handleTouchFor(node: result.node)
+            }
+        } else {
+            for subView in self.view.subviews {
+                let progressView = subView
+                
+                if (progressView.layer.presentation()?.hitTest(location) !== nil) {
+                    self.setIsHidden(self.progressDetail.isHidden, animated: true)
+                }
+            }
         }
     }
                 
@@ -98,3 +115,22 @@ extension MapViewController: SCNSceneRendererDelegate {
     }
 }
 
+extension MapViewController {
+    func setIsHidden(_ hidden: Bool, animated: Bool) {
+        var alpha = 1.0
+        if animated {
+            if !hidden {
+                alpha = 0.0
+            } else {
+//                self.progressDetail.alpha = 0.0
+            }
+            UIView.animate(withDuration: 0.5, animations: {
+                self.progressDetail.alpha = 1.0
+            }) { (complete) in
+                self.progressDetail.isHidden = !hidden
+            }
+        } else {
+            self.progressDetail.isHidden = !hidden
+        }
+    }
+}
