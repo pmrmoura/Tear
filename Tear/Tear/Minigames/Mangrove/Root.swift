@@ -38,6 +38,7 @@ class Root {
             anchorB: SCNVector3(position.0, position.1, 0)
         )
         
+        self.scene.mangrove.rootNode.addChildNode(self.startNode)
         self.scene.physicsWorld.addBehavior(joint)
         
     }
@@ -87,9 +88,10 @@ class Root {
                 anchorB: SCNVector3(x: 0.00, y: 0.02, z: 0)
             )
             
+            self.scene.mangrove.rootNode.addChildNode(node)
             self.scene.physicsWorld.addBehavior(joint)
             self.middleNodes.append(node)
-            previousNode!.addChildNode(node)
+            
             currentLength += 1
         }
     }

@@ -23,7 +23,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     var physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
     var removedJoint: SCNPhysicsBallSocketJoint!
     
-//    Variáveis para controlar o jogo
+//  Variáveis para controlar o jogo
     var numberOfHoles: Int = 3
     
     override func viewDidLoad() {
@@ -93,7 +93,6 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         self.roots = [
             Root(scene: self.gameScene, length: 5, position: rootsPosition[0]),
             Root(scene: self.gameScene, length: 5, position: rootsPosition[1]),
-            
             Root(scene: self.gameScene, length: 5, position: rootsPosition[2])
         ]
     }
@@ -102,9 +101,9 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         for _ in 0...self.numberOfHoles {
             self.joints.append([])
         }
-        
+
         var joint: SCNPhysicsBallSocketJoint
-        
+
         for i in 0...2{
             for j in 0...3 {
                 joint = SCNPhysicsBallSocketJoint(
@@ -113,11 +112,11 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
                     bodyB: self.holes[j].physicsBody!,
                     anchorB: SCNVector3(x: 0.00, y: -0.2, z: 0)
                 )
-                
+
                 self.joints[i].append(joint)
             }
         }
-        
+
         gameScene.physicsWorld.addBehavior(joints[0][3])
         gameScene.physicsWorld.addBehavior(joints[1][2])
         gameScene.physicsWorld.addBehavior(joints[2][0])
