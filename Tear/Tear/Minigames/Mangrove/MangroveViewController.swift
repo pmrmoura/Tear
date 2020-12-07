@@ -19,9 +19,9 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     var selectedNode: SCNNode!
     var holes: [Hole] = []
     var roots: [Root] = []
-    var joints: [[SCNPhysicsBallSocketJoint]] = []
+    var joints: [[SCNPhysicsHingeJoint]] = []
     var physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
-    var removedJoint: SCNPhysicsBallSocketJoint!
+    var removedJoint: SCNPhysicsHingeJoint!
     
 //  Variáveis para controlar o jogo
     var numberOfHoles: Int = 3
@@ -89,11 +89,12 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     func setupRoots(){
+        let length = 28
         let rootsPosition = [(-2, 0), (0, 0), (2, 0)]
         self.roots = [
-            Root(scene: self.gameScene, length: 5, position: rootsPosition[0]),
-            Root(scene: self.gameScene, length: 5, position: rootsPosition[1]),
-            Root(scene: self.gameScene, length: 5, position: rootsPosition[2])
+            Root(scene: self.gameScene, length: length, position: rootsPosition[0], number: 0),
+            Root(scene: self.gameScene, length: length, position: rootsPosition[1], number: 1),
+            Root(scene: self.gameScene, length: length, position: rootsPosition[2], number: 2)
         ]
     }
         
@@ -101,15 +102,15 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         for _ in 0...self.numberOfHoles {
             self.joints.append([])
         }
-
-        var joint: SCNPhysicsBallSocketJoint
-
+        
         for i in 0...2{
             for j in 0...3 {
-                joint = SCNPhysicsBallSocketJoint(
+                let joint = SCNPhysicsHingeJoint(
                     bodyA: self.roots[i].endNode.physicsBody!,
+                    axisA: SCNVector3(x: 0.0 , y: 0.2, z: 0),
                     anchorA: SCNVector3(x: 0.0 , y: 0.2, z: 0),
                     bodyB: self.holes[j].physicsBody!,
+                    axisB: SCNVector3(x: 0.0 , y: 0.2, z: 0),
                     anchorB: SCNVector3(x: 0.00, y: -0.2, z: 0)
                 )
 
@@ -134,7 +135,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         guard selectedNode != nil else { return }
         let touch = touches.first!
         let touchPoint = touch.location(in: self.gameView)
-        
+
         if ["0", "1", "2", "3", "4"].contains(selectedNode.name){
             guard let node = Int(selectedNode.name!) else {return}
             

@@ -15,12 +15,12 @@ class Root {
     var length: Int
     var scene: MangroveScene
     
-    init(scene: MangroveScene, length: Int, position: (Int, Int)) {
+    init(scene: MangroveScene, length: Int, position: (Int, Int), number: Int = 0) {
         self.length = length
         self.scene = scene
         self.setupStartNode(position)
         self.setupMiddleNodes()
-        self.setupEndNode()
+        self.setupEndNode(name: number)
     }
     
     func setupStartNode(_ position: (Int, Int)){
@@ -31,10 +31,12 @@ class Root {
         self.startNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         self.startNode.physicsBody?.mass = 2.0
         
-        let joint = SCNPhysicsBallSocketJoint(
+        let joint =  SCNPhysicsHingeJoint(
             bodyA: self.startNode.physicsBody!,
+            axisA: SCNVector3( 0, -0.3, 0),
             anchorA: SCNVector3( 0, -0.3, 0),
             bodyB: self.scene.mangrove.rootNode.physicsBody!,
+            axisB: SCNVector3(0, 0.1, 0),
             anchorB: SCNVector3(position.0, position.1, 0)
         )
         
@@ -43,7 +45,7 @@ class Root {
         
     }
     
-    func setupEndNode(){
+    func setupEndNode(name: Int){
         let geometry = SCNTorus(ringRadius: 0.2, pipeRadius: 0.1)
         geometry.materials.first?.diffuse.contents = UIColor.brown
         
@@ -52,13 +54,16 @@ class Root {
         self.endNode.physicsBody?.mass = 10.0
         self.endNode.physicsBody?.friction = 0.5;
         
-        let joint = SCNPhysicsBallSocketJoint(
+        let joint = SCNPhysicsHingeJoint(
             bodyA: self.endNode.physicsBody!,
+            axisA: SCNVector3(x: 0.0 , y: 0.01, z: 0),
             anchorA: SCNVector3(x: 0.0 , y: 0.0, z: 0),
             bodyB: self.middleNodes.last!.physicsBody!,
+            axisB: SCNVector3(x: 0.0, y: 0.01, z: 0.0),
             anchorB: SCNVector3(x: 0.0, y: 0.0, z: 0.0)
         )
         
+        self.endNode.name = String(name)
         self.scene.physicsWorld.addBehavior(joint)
         self.middleNodes.last!.addChildNode(self.endNode)
     }
@@ -81,10 +86,12 @@ class Root {
             let node = self.setupNode()
             let previousNode = self.middleNodes.count == 0 ? self.startNode : self.middleNodes.last
             
-            let joint = SCNPhysicsBallSocketJoint(
+            let joint = SCNPhysicsHingeJoint(
                 bodyA: node.physicsBody!,
+                axisA: SCNVector3(x: 0, y: 0.001, z: 0),
                 anchorA: SCNVector3(x: 0, y: 0.001, z: 0),
                 bodyB: previousNode!.physicsBody!,
+                axisB: SCNVector3(x: 0, y: 0.001, z: 0),
                 anchorB: SCNVector3(x: 0.00, y: 0.02, z: 0)
             )
             
