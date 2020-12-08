@@ -19,14 +19,10 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     var selectedNode: SCNNode!
     var holes: [String : Hole] = [:]
     var roots: [Root] = []
-    var joints: [[SCNPhysicsHingeJoint]] = []
     var physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
     var removedJoint: SCNPhysicsHingeJoint!
     
     var selectedRoot: Root? = nil
-    
-    
-//  Variáveis para controlar o jogo
     var numberOfHoles: Int = 4
     
     override func viewDidLoad() {
@@ -82,7 +78,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
 
     func setupHoles(){
         for i in 0...self.numberOfHoles {
-            let holeX: Float = Float(i) - 2 //Descobrir qual é o X do meio da tela e criar uma função para distribuir os buracos igualmente
+            let holeX: Float = Float(i) - 2
             let holeY: Float = 2
             let hole = Hole(holeX, holeY)
             let name = "hole\(i)"
@@ -103,10 +99,6 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     }
         
     func generateJoints(){
-        for _ in 0...self.numberOfHoles {
-            self.joints.append([])
-        }
-        
         for rootIndex in 0..<self.roots.count {
             let root = self.roots[rootIndex]
             
@@ -183,11 +175,13 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             self.gameScene.physicsWorld.removeBehavior(root.activeJoint)
             root.activeJoint = joint
             self.gameScene.physicsWorld.addBehavior(joint)
+            self.gameHUD.updateScore()
         } else {
             let joint = root.liftJoints[holeName]!
             self.gameScene.physicsWorld.removeBehavior(root.activeJoint)
             root.activeJoint = joint
             self.gameScene.physicsWorld.addBehavior(joint)
+            
         }
     }
     
