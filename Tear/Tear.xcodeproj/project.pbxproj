@@ -25,6 +25,7 @@
 		0C7DEB01257526AB0072B860 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEB00257526AB0072B860 /* Floor.swift */; };
 		0C7DEB06257526C30072B860 /* Ceiling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEB05257526C30072B860 /* Ceiling.swift */; };
 		0C990F90256593110035CAE8 /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C990F8F256593110035CAE8 /* GameHUD.swift */; };
+		0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */; };
 		0CCC36AB2579718E00FD0454 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC36AA2579718E00FD0454 /* Root.swift */; };
 		0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013B255D836A00C00084 /* AppDelegate.swift */; };
 		0CFE013E255D836A00C00084 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE013D255D836A00C00084 /* art.scnassets */; };
@@ -80,6 +81,7 @@
 		0C7DEB00257526AB0072B860 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
 		0C7DEB05257526C30072B860 /* Ceiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ceiling.swift; sourceTree = "<group>"; };
 		0C990F8F256593110035CAE8 /* GameHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHUD.swift; sourceTree = "<group>"; };
+		0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveGameHelper.swift; sourceTree = "<group>"; };
 		0CCC36AA2579718E00FD0454 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		0CFE0138255D836A00C00084 /* Tear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE013B255D836A00C00084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				0C7DEB05257526C30072B860 /* Ceiling.swift */,
 				0C2D1D162576664200F5E237 /* Hole.swift */,
 				0CCC36AA2579718E00FD0454 /* Root.swift */,
+				0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */,
 			);
 			path = Mangrove;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				C1FEFAA8257963BE00211C52 /* IndividualProgressBar.swift in Sources */,
 				0C990F90256593110035CAE8 /* GameHUD.swift in Sources */,
 				0CCC36AB2579718E00FD0454 /* Root.swift in Sources */,
+				0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */,
 				0C0F172A25640AA300C97208 /* TrashNinjaViewController.swift in Sources */,
 				0C0F173B25640AD100C97208 /* Generics.swift in Sources */,
 				C1FEFA872579232A00211C52 /* ProgressDetail.swift in Sources */,

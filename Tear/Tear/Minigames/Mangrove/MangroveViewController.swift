@@ -71,7 +71,6 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         self.gameHUD.leaveButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
         self.gameHUD.pauseButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
         self.gameHUD.restartButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
-        self.gameHUD.audioButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
         self.gameHUD.leaveGameButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
         self.gameHUD.nextPhaseButton.addTarget(self, action: #selector(self.touchedDisplay(sender:)), for: .touchUpInside)
     }
@@ -148,24 +147,6 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             zDepth = self.gameView.projectPoint(selectedNode.position).z
         }
     }
-
-    func checkRootMovement(){
-        
-        roots[0].startNode.convertPosition(SCNVector3(x: 0 , y: 0, z: -1), to: nil)
-        
-        for i in 0...2 {
-            let j = i == 2 ? i : i+1
-            print("First node: \(roots[i].startNode.worldPosition)" )
-            print("Second node: \(roots[j].middleNodes[5].worldPosition)" )
-            print("===========================")
-        }
-    }
-    
-    func finishGame(){
-        if self.gameHUD.movements == 5 {
-            self.gameHUD.gameLost()
-        }
-    }
     
     func liftInsertRoot(_ Optionalroot: Root?, insert: Bool, holeName: String){
         guard let root = Optionalroot else {return}
@@ -177,6 +158,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             self.gameScene.physicsWorld.addBehavior(joint)
             self.gameHUD.updateScore()
             self.checkWinCondition()
+            
         } else {
             let joint = root.liftJoints[holeName]!
             self.gameScene.physicsWorld.removeBehavior(root.activeJoint)
@@ -199,11 +181,18 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             $0.name! < $1.name!
         })
         
-        
+        //Check if game win
         if (sortedHoles[0].root?.endNode.name!)! < (sortedHoles[1].root?.endNode.name!)! &&
             (sortedHoles[1].root?.endNode.name!)! < (sortedHoles[2].root?.endNode.name!)! {
-            print("Win")
+            self.gameHUD.gameWin()
+            return
         }
+        
+        //Check if game lost
+        if self.gameHUD.movements == 5 {
+            self.gameHUD.gameLost()
+        }
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -235,12 +224,6 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         }
     }
     
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        selectedNode = nil
-    }
-    
-
-    
     @objc func touchedDisplay(sender: UIButton) {
         switch sender.tag {
         case 0:
@@ -251,19 +234,19 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
         case 2:
             self.gameHUD.restart()
             self.game.restart()
-        case 3:
-            self.nextPhase()
         default:
-            self.game.mute()
+            self.nextPhase()
         }
     }
     
     func leaveGame(){
         self.game.restart()
         let mapVC = MapViewController()
+        
         mapVC.perform(#selector(mapVC.animateProgress), with: nil, afterDelay: 2.0)
         mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
         mapVC.modalPresentationStyle = .fullScreen
+        
         self.present(mapVC, animated: true, completion: nil)
     }
     
@@ -278,43 +261,8 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     func nextPhase(){
         self.game.restart()
         self.gameHUD.restart()
-        self.gameHUD.tapToPlayLabel.isHidden = false
         self.game.phase += 1
         self.gameScene.phase = self.game.phase
-        
-        if self.game.phase == 1{
-            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
-        } else if self.game.phase == 2 {
-            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PAPEIS"
-        } else if self.game.phase == 3 {
-            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS VIDROS"
-        }
-    }
-}
-
-extension String {
-
-    var length: Int {
-        return count
-    }
-
-    subscript (i: Int) -> String {
-        return self[i ..< i + 1]
-    }
-
-    func substring(fromIndex: Int) -> String {
-        return self[min(fromIndex, length) ..< length]
-    }
-
-    func substring(toIndex: Int) -> String {
-        return self[0 ..< max(0, toIndex)]
-    }
-
-    subscript (r: Range<Int>) -> String {
-        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
-                                            upper: min(length, max(0, r.upperBound))))
-        let start = index(startIndex, offsetBy: range.lowerBound)
-        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
-        return String(self[start ..< end])
+        print("Teste")
     }
 }
