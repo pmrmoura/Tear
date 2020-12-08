@@ -261,8 +261,8 @@ class MangroveHUD: UIView, CodeView {
         self.nextPhaseButton.isHidden = true
         self.leaveGameButton.layer.maskedCorners = [.layerMinXMaxYCorner ,.layerMaxXMaxYCorner]
         self.popUpView.isHidden = false
-        self.endGameLabel.text = "Perdeu, você é um lixo"
-        self.endGameText.text = "Você ganhou! Lembre-se"
+        self.endGameLabel.text = "Você perdeu!"
+        self.endGameText.text = "Salvar o mangue não é uma tarefa fácil, mas não desanime"
         
         NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
         NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)

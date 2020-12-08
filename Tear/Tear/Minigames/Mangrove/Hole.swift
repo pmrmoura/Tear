@@ -9,6 +9,7 @@ import Foundation
 import SceneKit
 
 class Hole: SCNNode {
+    var root: Root? = nil
     
     init(_ argX: Float = 0.0, _ argY: Float = 0.0) {
         super.init()

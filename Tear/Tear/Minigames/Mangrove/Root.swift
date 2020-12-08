@@ -15,7 +15,11 @@ class Root {
     var length: Int
     var scene: MangroveScene
     
-    init(scene: MangroveScene, length: Int, position: (Int, Int), number: Int = 0) {
+    var liftJoints: [String : SCNPhysicsHingeJoint] = [:]
+    var insertJoints: [String : SCNPhysicsHingeJoint] = [:]
+    var activeJoint: SCNPhysicsHingeJoint!
+    
+    init(scene: MangroveScene, length: Int, position: (Double, Double), number: Int = 0) {
         self.length = length
         self.scene = scene
         self.setupStartNode(position)
@@ -23,7 +27,7 @@ class Root {
         self.setupEndNode(name: number)
     }
     
-    func setupStartNode(_ position: (Int, Int)){
+    func setupStartNode(_ position: (Double, Double)){
         let geometry = SCNCylinder(radius: 0.1, height: 0.3)
         geometry.materials.first?.diffuse.contents = UIColor.brown
         

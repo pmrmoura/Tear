@@ -17,14 +17,17 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     var game = GameHelper.sharedInstance
     var zDepth: Float!
     var selectedNode: SCNNode!
-    var holes: [Hole] = []
+    var holes: [String : Hole] = [:]
     var roots: [Root] = []
     var joints: [[SCNPhysicsHingeJoint]] = []
     var physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
     var removedJoint: SCNPhysicsHingeJoint!
     
+    var selectedRoot: Root? = nil
+    
+    
 //  Variáveis para controlar o jogo
-    var numberOfHoles: Int = 3
+    var numberOfHoles: Int = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,15 +85,16 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             let holeX: Float = Float(i) - 2 //Descobrir qual é o X do meio da tela e criar uma função para distribuir os buracos igualmente
             let holeY: Float = 2
             let hole = Hole(holeX, holeY)
-            hole.name = String(i+10) //Descobrir uma forma de nomear melhor os buracos
+            let name = "hole\(i)"
+            hole.name = name
             self.gameScene.rootNode.addChildNode(hole)
-            self.holes.append(hole)
+            self.holes[name] = hole
         }
     }
     
     func setupRoots(){
-        let length = 28
-        let rootsPosition = [(-2, 0), (0, 0), (2, 0)]
+        let length = 30
+        let rootsPosition = [(-1.0, -0.2), (0.0, -0.2), (1.0, -0.2)]
         self.roots = [
             Root(scene: self.gameScene, length: length, position: rootsPosition[0], number: 0),
             Root(scene: self.gameScene, length: length, position: rootsPosition[1], number: 1),
@@ -103,24 +107,46 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             self.joints.append([])
         }
         
-        for i in 0...2{
-            for j in 0...3 {
-                let joint = SCNPhysicsHingeJoint(
-                    bodyA: self.roots[i].endNode.physicsBody!,
-                    axisA: SCNVector3(x: 0.0 , y: 0.2, z: 0),
+        for rootIndex in 0..<self.roots.count {
+            let root = self.roots[rootIndex]
+            
+            for holeName in self.holes.keys{
+                let hole = self.holes[holeName]!
+                
+                let jointInsert = SCNPhysicsHingeJoint(
+                    bodyA: root.endNode.physicsBody!,
+                    axisA: SCNVector3(x: 0.2 , y: 0.0, z: 0),
                     anchorA: SCNVector3(x: 0.0 , y: 0.2, z: 0),
-                    bodyB: self.holes[j].physicsBody!,
+                    bodyB: hole.physicsBody!,
                     axisB: SCNVector3(x: 0.0 , y: 0.2, z: 0),
-                    anchorB: SCNVector3(x: 0.00, y: -0.2, z: 0)
+                    anchorB: SCNVector3(x: 0.00, y: 0.2, z: 0)
                 )
-
-                self.joints[i].append(joint)
+                
+                let jointLift = SCNPhysicsHingeJoint(
+                    bodyA: root.endNode.physicsBody!,
+                    axisA: SCNVector3(x: 0.2 , y: 1, z: 0),
+                    anchorA: SCNVector3(x: 0.0 , y: 1, z: 0),
+                    bodyB: hole.physicsBody!,
+                    axisB: SCNVector3(x: 0.0 , y: 0.2, z: 0),
+                    anchorB: SCNVector3(x: 0.00, y: 0.6, z: 0)
+                )
+                
+                root.insertJoints[hole.name!] = jointInsert
+                root.liftJoints[hole.name!] = jointLift
             }
         }
-
-        gameScene.physicsWorld.addBehavior(joints[0][3])
-        gameScene.physicsWorld.addBehavior(joints[1][2])
-        gameScene.physicsWorld.addBehavior(joints[2][0])
+        
+        gameScene.physicsWorld.addBehavior(roots[0].insertJoints["hole3"]!)
+        roots[0].activeJoint = roots[0].insertJoints["hole3"]
+        self.holes["hole3"]?.root = roots[0]
+        
+        gameScene.physicsWorld.addBehavior(roots[1].insertJoints["hole0"]!)
+        roots[1].activeJoint = roots[1].insertJoints["hole0"]
+        self.holes["hole0"]?.root = roots[1]
+        
+        gameScene.physicsWorld.addBehavior(roots[2].insertJoints["hole2"]!)
+        roots[2].activeJoint = roots[2].insertJoints["hole2"]
+        self.holes["hole2"]?.root = roots[2]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -130,60 +156,60 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             zDepth = self.gameView.projectPoint(selectedNode.position).z
         }
     }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        guard selectedNode != nil else { return }
-        let touch = touches.first!
-        let touchPoint = touch.location(in: self.gameView)
 
-        if ["0", "1", "2", "3", "4"].contains(selectedNode.name){
-            guard let node = Int(selectedNode.name!) else {return}
-            
-            for joint in self.joints[node] {
-                if gameScene.physicsWorld.allBehaviors.contains(joint) {
-                    self.removedJoint = joint
-                    self.gameScene.physicsWorld.removeBehavior(joint)
-                }
-            }
-            
-            selectedNode.position = self.gameView.unprojectPoint(
-                SCNVector3(x: Float(touchPoint.x),
-                           y: Float(touchPoint.y),
-                           z: zDepth))
+    func checkRootMovement(){
+        
+        roots[0].startNode.convertPosition(SCNVector3(x: 0 , y: 0, z: -1), to: nil)
+        
+        for i in 0...2 {
+            let j = i == 2 ? i : i+1
+            print("First node: \(roots[i].startNode.worldPosition)" )
+            print("Second node: \(roots[j].middleNodes[5].worldPosition)" )
+            print("===========================")
+        }
+    }
+    
+    func finishGame(){
+        if self.gameHUD.movements == 5 {
+            self.gameHUD.gameLost()
+        }
+    }
+    
+    func liftInsertRoot(_ Optionalroot: Root?, insert: Bool, holeName: String){
+        guard let root = Optionalroot else {return}
+        
+        if insert {
+            let joint = root.insertJoints[holeName]!
+            self.gameScene.physicsWorld.removeBehavior(root.activeJoint)
+            root.activeJoint = joint
+            self.gameScene.physicsWorld.addBehavior(joint)
+        } else {
+            let joint = root.liftJoints[holeName]!
+            self.gameScene.physicsWorld.removeBehavior(root.activeJoint)
+            root.activeJoint = joint
+            self.gameScene.physicsWorld.addBehavior(joint)
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        guard self.selectedNode != nil else {return}
-        guard self.selectedNode.name != nil else {return}
+        guard let name = self.selectedNode.name else {return}
+        guard name.contains("hole") else {return}
         
-        if ["0", "1", "2", "3", "4"].contains(selectedNode.name) {
-            for hole in self.holes {
-                
-                let ringXPosition = self.selectedNode!.position.x
-                let holeXPosition = hole.position.x
-                
-                let ringYPosition = self.selectedNode!.position.y
-                let holeYPosition = hole.position.y
-                
-                let ringIndex = Int(self.selectedNode.name!)!
-                let holeIndex = Int(hole.name!)! - 10
-                
-                if ringXPosition >= holeXPosition && ringXPosition <= holeXPosition + 1 &&
-                   ringYPosition >= holeXPosition && ringYPosition <= holeYPosition + 1{
-                    gameScene.physicsWorld.addBehavior(self.joints[ringIndex][holeIndex])
-                    print("Hole: \(holeIndex)")
-                    print("Ring: \(ringIndex)")
-                    self.gameHUD.updateScore()
-                    selectedNode = nil
-                    return
-                }
-            }
+        guard let hole = self.holes[name] else { return }
+        
+        if selectedRoot == nil {
+            selectedRoot = hole.root
+            hole.root = nil
+            liftInsertRoot(selectedRoot, insert: false, holeName: name)
+            return
         }
         
-        gameScene.physicsWorld.addBehavior(self.removedJoint)
-        selectedNode = nil
+        if hole.root == nil {
+            hole.root = selectedRoot
+            liftInsertRoot(selectedRoot, insert: true, holeName: name)
+            selectedRoot = nil
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
