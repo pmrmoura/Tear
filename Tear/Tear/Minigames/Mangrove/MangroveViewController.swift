@@ -176,12 +176,33 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             root.activeJoint = joint
             self.gameScene.physicsWorld.addBehavior(joint)
             self.gameHUD.updateScore()
+            self.checkWinCondition()
         } else {
             let joint = root.liftJoints[holeName]!
             self.gameScene.physicsWorld.removeBehavior(root.activeJoint)
             root.activeJoint = joint
             self.gameScene.physicsWorld.addBehavior(joint)
             
+        }
+    }
+    
+    func checkWinCondition(){
+        var holesWithRoots: [Hole] = []
+        
+        for holeIndex in self.holes.keys {
+            if self.holes[holeIndex]!.root != nil {
+                holesWithRoots.append(self.holes[holeIndex]!)
+            }
+        }
+        
+        let sortedHoles = holesWithRoots.sorted(by: {
+            $0.name! < $1.name!
+        })
+        
+        
+        if (sortedHoles[0].root?.endNode.name!)! < (sortedHoles[1].root?.endNode.name!)! &&
+            (sortedHoles[1].root?.endNode.name!)! < (sortedHoles[2].root?.endNode.name!)! {
+            print("Win")
         }
     }
     
