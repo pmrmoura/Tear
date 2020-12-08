@@ -26,7 +26,7 @@ class MapScene: SCNScene{
     func setupCamera(){
         self.cameraNode = SCNNode()
         self.cameraNode.camera = SCNCamera()
-        self.cameraNode.position = SCNVector3(x: 257.582, y: 33.729, z: 290)
+        self.cameraNode.position = SCNVector3(x: 0, y: 10, z: 7)
         self.rootNode.addChildNode(self.cameraNode)
     }
     

@@ -208,7 +208,15 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        guard let name = self.selectedNode.name else {return}
+        guard self.selectedNode != nil else {return}
+        var name = ""
+        
+        if selectedNode.name != nil {
+            name = selectedNode.name!
+        } else {
+            return
+        }
+        
         guard name.contains("hole") else {return}
         
         guard let hole = self.holes[name] else { return }
