@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2020-12-07T21:09:03Z</created>
-  <modified>2020-12-07T21:09:03Z</modified>
+  <created>2020-12-08T20:47:46Z</created>
+  <modified>2020-12-08T20:47:46Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -150,7 +150,7 @@
  <library_visual_scenes>
   <visual_scene id="scene8">
    <node id="mangroveTree" name="mangroveTree">
-    <matrix>4.172325e-08 -0 0.6999999 0 0 0.7 0 0 -0.6999999 0 4.172325e-08 0 0 0 0 1 </matrix>
+    <matrix>-7.152558e-08 0 0.6 0 0 0.6 0 0 -0.6 0 -7.152558e-08 0 0 0 0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>
       <technique_common>

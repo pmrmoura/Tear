@@ -29,7 +29,7 @@ class MangroveScene: SCNScene{
         let geometry = SCNBox(width: 5, height: 5, length: 1, chamferRadius: 0)
         let shape = SCNPhysicsShape(geometry: geometry, options: nil)
         self.mangrove.rootNode.physicsBody = SCNPhysicsBody(type: .static, shape: shape)
-        self.mangrove.rootNode.position = SCNVector3(x: 0, y: 5, z: 0)
+        self.mangrove.rootNode.position = SCNVector3(x: 0, y: 4.5, z: 0)
         self.rootNode.addChildNode(mangrove.rootNode)
     }
     

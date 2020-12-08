@@ -13,7 +13,7 @@ class Hole: SCNNode {
     
     init(_ argX: Float = 0.0, _ argY: Float = 0.0) {
         super.init()
-        let geometry = SCNTorus(ringRadius: 0.3, pipeRadius: 0.1)
+        let geometry = SCNTorus(ringRadius: 0.2, pipeRadius: 0.1)
         let holeShape = SCNPhysicsShape(geometry: geometry, options: nil)
         let holeBody = SCNPhysicsBody(type: .static, shape: holeShape)
         

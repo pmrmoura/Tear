@@ -22,8 +22,6 @@
 		0C7DEAE725751AF30072B860 /* MangroveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEAE625751AF30072B860 /* MangroveViewController.swift */; };
 		0C7DEAEC25751B6D0072B860 /* MangroveScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEAEB25751B6D0072B860 /* MangroveScene.swift */; };
 		0C7DEAF125751C290072B860 /* MangroveHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEAF025751C290072B860 /* MangroveHUD.swift */; };
-		0C7DEB01257526AB0072B860 /* Floor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEB00257526AB0072B860 /* Floor.swift */; };
-		0C7DEB06257526C30072B860 /* Ceiling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEB05257526C30072B860 /* Ceiling.swift */; };
 		0C990F90256593110035CAE8 /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C990F8F256593110035CAE8 /* GameHUD.swift */; };
 		0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */; };
 		0CCC36AB2579718E00FD0454 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC36AA2579718E00FD0454 /* Root.swift */; };
@@ -78,8 +76,6 @@
 		0C7DEAE625751AF30072B860 /* MangroveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveViewController.swift; sourceTree = "<group>"; };
 		0C7DEAEB25751B6D0072B860 /* MangroveScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveScene.swift; sourceTree = "<group>"; };
 		0C7DEAF025751C290072B860 /* MangroveHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveHUD.swift; sourceTree = "<group>"; };
-		0C7DEB00257526AB0072B860 /* Floor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floor.swift; sourceTree = "<group>"; };
-		0C7DEB05257526C30072B860 /* Ceiling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ceiling.swift; sourceTree = "<group>"; };
 		0C990F8F256593110035CAE8 /* GameHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHUD.swift; sourceTree = "<group>"; };
 		0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveGameHelper.swift; sourceTree = "<group>"; };
 		0CCC36AA2579718E00FD0454 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
@@ -161,8 +157,6 @@
 				0C7DEAE625751AF30072B860 /* MangroveViewController.swift */,
 				0C7DEAEB25751B6D0072B860 /* MangroveScene.swift */,
 				0C7DEAF025751C290072B860 /* MangroveHUD.swift */,
-				0C7DEB00257526AB0072B860 /* Floor.swift */,
-				0C7DEB05257526C30072B860 /* Ceiling.swift */,
 				0C2D1D162576664200F5E237 /* Hole.swift */,
 				0CCC36AA2579718E00FD0454 /* Root.swift */,
 				0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */,
@@ -419,9 +413,7 @@
 				0C77FC98256699ED002D9322 /* Protocols.swift in Sources */,
 				0C7DEAE725751AF30072B860 /* MangroveViewController.swift in Sources */,
 				0C0F174825640B8200C97208 /* Extensions.swift in Sources */,
-				0C7DEB06257526C30072B860 /* Ceiling.swift in Sources */,
 				0C0FF7CB256EA6C100B941B0 /* Trash.swift in Sources */,
-				0C7DEB01257526AB0072B860 /* Floor.swift in Sources */,
 				0C0FF7B3256D2D5000B941B0 /* MapScene.swift in Sources */,
 				0C7DEAEC25751B6D0072B860 /* MangroveScene.swift in Sources */,
 				C1FEFAA8257963BE00211C52 /* IndividualProgressBar.swift in Sources */,

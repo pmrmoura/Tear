@@ -78,7 +78,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     func setupHoles(){
         for i in 0...self.numberOfHoles {
             let holeX: Float = Float(i) - 2
-            let holeY: Float = 2
+            let holeY: Float = 1.5
             let hole = Hole(holeX, holeY)
             let name = "hole\(i)"
             hole.name = name
@@ -88,7 +88,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
     }
     
     func setupRoots(){
-        let length = 30
+        let length = 20
         let rootsPosition = [(-1.0, -0.2), (0.0, -0.2), (1.0, -0.2)]
         self.roots = [
             Root(scene: self.gameScene, length: length, position: rootsPosition[0], number: 0),
@@ -104,7 +104,7 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
             for holeName in self.holes.keys{
                 let hole = self.holes[holeName]!
                 
-                let jointInsert = SCNPhysicsHingeJoint(
+                let jointLift = SCNPhysicsHingeJoint(
                     bodyA: root.endNode.physicsBody!,
                     axisA: SCNVector3(x: 0.2 , y: 0.0, z: 0),
                     anchorA: SCNVector3(x: 0.0 , y: 0.2, z: 0),
@@ -113,13 +113,13 @@ class MangroveViewController: UIViewController, SCNSceneRendererDelegate {
                     anchorB: SCNVector3(x: 0.00, y: 0.2, z: 0)
                 )
                 
-                let jointLift = SCNPhysicsHingeJoint(
+                let jointInsert = SCNPhysicsHingeJoint(
                     bodyA: root.endNode.physicsBody!,
-                    axisA: SCNVector3(x: 0.2 , y: 1, z: 0),
-                    anchorA: SCNVector3(x: 0.0 , y: 1, z: 0),
+                    axisA: SCNVector3(x: 0.2 , y: 0.0, z: 0),
+                    anchorA: SCNVector3(x: 0.0 , y: 0.2, z: 0),
                     bodyB: hole.physicsBody!,
                     axisB: SCNVector3(x: 0.0 , y: 0.2, z: 0),
-                    anchorB: SCNVector3(x: 0.00, y: 0.6, z: 0)
+                    anchorB: SCNVector3(x: 0.0, y: -0.3, z: 0)
                 )
                 
                 root.insertJoints[hole.name!] = jointInsert
