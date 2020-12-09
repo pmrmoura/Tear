@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     var mapScene: MapScene = MapScene()
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
-    
+    let gameWinHud: GameWinHud = GameWinHud(frame: UIScreen.main.bounds)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -55,8 +55,10 @@ class MapViewController: UIViewController {
     
     func setupProgressDetail() {
         self.progressDetail.isHidden = true
+        self.gameWinHud.isHidden = true
         self.progressDetail.alpha = 0.0
         self.view.addSubview(progressDetail)
+        self.view.addSubview(gameWinHud)
     }
     
     @objc func animateProgress() {
@@ -97,7 +99,11 @@ class MapViewController: UIViewController {
                 let progressView = subView
                 
                 if (progressView.layer.presentation()?.hitTest(location) !== nil) {
-                    self.setIsHidden(self.progressDetail.isHidden, animated: true)
+                    if self.gameWinHud.isHidden == false {
+                        self.gameWinHud.isHidden = true
+                    } else {
+                        self.setIsHidden(self.progressDetail.isHidden, animated: true)
+                    }
                 }
             }
         }
