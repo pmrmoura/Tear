@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
     
     var mapView: SCNView!
     var mapScene: MapScene = MapScene()
-    var missionPopup: MissionPopup = MissionPopup()
+    var missionPopup: MissionPopup = MissionPopup(frame: UIScreen.main.bounds)
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
     let gameWinHud: GameWinHud = GameWinHud(frame: UIScreen.main.bounds)
@@ -38,6 +38,8 @@ class MapViewController: UIViewController {
     func setupPopupViews(){
         self.gameWinHud.isHidden = true
         self.missionPopup.isHidden = true
+        
+        //self.missionPopup.leaveGameButton.addTarget(self, action: #selector(), for: .touchUpInside)
     }
     
     func setupView(){
@@ -66,6 +68,8 @@ class MapViewController: UIViewController {
         NSLayoutConstraint.activate([
             self.missionPopup.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor),
             self.missionPopup.centerYAnchor.constraint(equalTo: self.mapView.centerYAnchor),
+            self.missionPopup.widthAnchor.constraint(equalToConstant: 300),
+            self.missionPopup.heightAnchor.constraint(equalToConstant: 300),
             
             self.progressCircle.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor, constant: CGFloat(-35)),
             self.progressCircle.topAnchor.constraint(equalTo: self.mapView.topAnchor, constant: CGFloat(70)),
@@ -98,14 +102,14 @@ class MapViewController: UIViewController {
     func handleTouchFor(node: SCNNode) {
         if node.name == "exclamation" {
             self.missionPopup.isHidden = false //POPUP DE MISSÃO NÃO ESTÁ ABRINDO
-            print("Teste")
-            let trashNinjaVC = TrashNinjaViewController()
-            trashNinjaVC.modalPresentationStyle = .fullScreen
-            //self.present(trashNinjaVC, animated: true, completion: nil)
         }
     }
     
-    
+    func startGame(){
+        let trashNinjaVC = TrashNinjaViewController()
+        trashNinjaVC.modalPresentationStyle = .fullScreen
+        self.present(trashNinjaVC, animated: true, completion: nil)
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!

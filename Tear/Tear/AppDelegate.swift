@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = MapViewController()
+        window?.rootViewController = TrashNinjaViewController()
         
         SeedDatabase.shared.seed()
         
