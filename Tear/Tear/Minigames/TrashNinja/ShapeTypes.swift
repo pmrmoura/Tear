@@ -13,6 +13,15 @@ enum ShapeType:Int {
     case countryEgg
     case whiteEgg
     case toiletPaper
+    case glassCup
+    case plasticCup
+    case toothbrush
+    case tunaCan
+    case screw
+    case goblet
+    case straw
+    case sodaCan
+    case wineBottle
     case banana
 
   static func random() -> ShapeType {

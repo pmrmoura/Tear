@@ -16,9 +16,15 @@
 		0C0FF7B8256D3DB800B941B0 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */; };
 		0C0FF7C3256D4D9400B941B0 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FF7C2256D4D9400B941B0 /* AnimationViewController.swift */; };
 		0C0FF7CB256EA6C100B941B0 /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FF7CA256EA6C100B941B0 /* Trash.swift */; };
+		0C2D1D172576664200F5E237 /* Hole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C2D1D162576664200F5E237 /* Hole.swift */; };
 		0C77FC98256699ED002D9322 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C77FC97256699ED002D9322 /* Protocols.swift */; };
 		0C77FCA52566BCBC002D9322 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C77FCA42566BCBC002D9322 /* GameScene.swift */; };
+		0C7DEAE725751AF30072B860 /* MangroveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEAE625751AF30072B860 /* MangroveViewController.swift */; };
+		0C7DEAEC25751B6D0072B860 /* MangroveScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEAEB25751B6D0072B860 /* MangroveScene.swift */; };
+		0C7DEAF125751C290072B860 /* MangroveHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C7DEAF025751C290072B860 /* MangroveHUD.swift */; };
 		0C990F90256593110035CAE8 /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C990F8F256593110035CAE8 /* GameHUD.swift */; };
+		0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */; };
+		0CCC36AB2579718E00FD0454 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC36AA2579718E00FD0454 /* Root.swift */; };
 		0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013B255D836A00C00084 /* AppDelegate.swift */; };
 		0CFE013E255D836A00C00084 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE013D255D836A00C00084 /* art.scnassets */; };
 		0CFE0140255D836A00C00084 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013F255D836A00C00084 /* MapViewController.swift */; };
@@ -66,9 +72,15 @@
 		0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		0C0FF7C2256D4D9400B941B0 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 		0C0FF7CA256EA6C100B941B0 /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
+		0C2D1D162576664200F5E237 /* Hole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hole.swift; sourceTree = "<group>"; };
 		0C77FC97256699ED002D9322 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		0C77FCA42566BCBC002D9322 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0C7DEAE625751AF30072B860 /* MangroveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveViewController.swift; sourceTree = "<group>"; };
+		0C7DEAEB25751B6D0072B860 /* MangroveScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveScene.swift; sourceTree = "<group>"; };
+		0C7DEAF025751C290072B860 /* MangroveHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveHUD.swift; sourceTree = "<group>"; };
 		0C990F8F256593110035CAE8 /* GameHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHUD.swift; sourceTree = "<group>"; };
+		0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveGameHelper.swift; sourceTree = "<group>"; };
+		0CCC36AA2579718E00FD0454 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		0CFE0138255D836A00C00084 /* Tear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE013B255D836A00C00084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFE013D255D836A00C00084 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -129,6 +141,7 @@
 		0C0F172725640A7700C97208 /* Minigames */ = {
 			isa = PBXGroup;
 			children = (
+				0C7DEAE525751A600072B860 /* Mangrove */,
 				0C0F172825640A8700C97208 /* TrashNinja */,
 			);
 			path = Minigames;
@@ -148,6 +161,26 @@
 				0C0FF7CA256EA6C100B941B0 /* Trash.swift */,
 			);
 			path = TrashNinja;
+			sourceTree = "<group>";
+		};
+		0C7DEAE525751A600072B860 /* Mangrove */ = {
+			isa = PBXGroup;
+			children = (
+				0C7DEAE625751AF30072B860 /* MangroveViewController.swift */,
+				0C7DEAEB25751B6D0072B860 /* MangroveScene.swift */,
+				0C7DEAF025751C290072B860 /* MangroveHUD.swift */,
+				0C2D1D162576664200F5E237 /* Hole.swift */,
+				0CCC36AA2579718E00FD0454 /* Root.swift */,
+				0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */,
+			);
+			path = Mangrove;
+			sourceTree = "<group>";
+		};
+		0C9341D9255EC403008FF592 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0C9341DA255EC409008FF592 /* Views */ = {
@@ -403,19 +436,25 @@
 				C1FEFAC32579AFF600211C52 /* MoreInformation.swift in Sources */,
 				C1FEFAB02579871900211C52 /* ProgressBadges.swift in Sources */,
 				0C0FF7C3256D4D9400B941B0 /* AnimationViewController.swift in Sources */,
+				0C7DEAF125751C290072B860 /* MangroveHUD.swift in Sources */,
 				C1FEFAA02579633500211C52 /* ProgressDetailData.swift in Sources */,
 				0CFE0140255D836A00C00084 /* MapViewController.swift in Sources */,
 				0C77FC98256699ED002D9322 /* Protocols.swift in Sources */,
+				0C7DEAE725751AF30072B860 /* MangroveViewController.swift in Sources */,
 				0C0F174825640B8200C97208 /* Extensions.swift in Sources */,
 				0C0FF7CB256EA6C100B941B0 /* Trash.swift in Sources */,
 				C1F63D25257E7EC70068FB40 /* CityModel.xcdatamodeld in Sources */,
 				0C0FF7B3256D2D5000B941B0 /* MapScene.swift in Sources */,
+				0C7DEAEC25751B6D0072B860 /* MangroveScene.swift in Sources */,
 				C1FEFAA8257963BE00211C52 /* IndividualProgressBar.swift in Sources */,
 				0C990F90256593110035CAE8 /* GameHUD.swift in Sources */,
+				0CCC36AB2579718E00FD0454 /* Root.swift in Sources */,
+				0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */,
 				0C0F172A25640AA300C97208 /* TrashNinjaViewController.swift in Sources */,
 				0C0F173B25640AD100C97208 /* Generics.swift in Sources */,
 				C1FEFA872579232A00211C52 /* ProgressDetail.swift in Sources */,
 				0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */,
+				0C2D1D172576664200F5E237 /* Hole.swift in Sources */,
 				C1F63D2A257E80C40068FB40 /* DatabaseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,7 +613,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2529YUQTU2;
+				DEVELOPMENT_TEAM = KBDYNQ5FQB;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -594,7 +633,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2529YUQTU2;
+				DEVELOPMENT_TEAM = KBDYNQ5FQB;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
