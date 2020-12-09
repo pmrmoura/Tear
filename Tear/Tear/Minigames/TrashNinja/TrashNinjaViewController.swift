@@ -142,11 +142,17 @@ class TrashNinjaViewController: UIViewController {
     }
     
     func nextPhase(){
+        
+        
         self.game.restart()
         self.gameHUD.restart()
         self.gameHUD.tapToPlayLabel.isHidden = false
         self.game.phase += 1
         self.gameScene.phase = self.game.phase
+        
+        if self.game.phase == 6 {
+            leaveGame()
+        }
         
         if self.game.phase == 1{
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
@@ -157,6 +163,12 @@ class TrashNinjaViewController: UIViewController {
         } else if self.game.phase == 3 {
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS VIDROS"
             self.gameHUD.materialDescription.text = "VIDRO"
+        } else if self.game.phase == 4 {
+            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PLÁSTICOS"
+            self.gameHUD.materialDescription.text = "PLÁSTICO"
+        } else if self.game.phase == 5 {
+            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS METAIS"
+            self.gameHUD.materialDescription.text = "METAL"
         }
     }
     

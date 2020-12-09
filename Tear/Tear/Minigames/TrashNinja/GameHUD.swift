@@ -300,6 +300,7 @@ class GameHUD: UIView, CodeView {
         self.errorView2.layer.cornerRadius = 10
         
         self.materialDescription.text = "ORGÂNICO"
+        self.materialDescription.textColor = color
     }
     
     func gameLost() {
@@ -318,9 +319,16 @@ class GameHUD: UIView, CodeView {
     func gameWin() {
         self.endGameLabel.text = "Parabéns"
         self.endGameText.text = "Você ganhou!"
+        self.endGameText.textColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center
         self.popUpView.isHidden = false
+        
+        if self.game.phase == 5 {
+            NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
+            NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
+            return
+        }
         
         NSLayoutConstraint.activate(self.leaveGameButtonWinConstraints)
     }

@@ -17,10 +17,18 @@ class GameScene: SCNScene{
         super.init()
         self.setupCamera()
         self.background.contents = "GeometryFighter.scnassets/Textures/Background.png"
+        self.setupLight()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupLight(){
+        let lightNode = SCNLight()
+        lightNode.type = .ambient
+        self.cameraNode.light = lightNode
+        //self.rootNode.light = lightNode
     }
     
     func setupCamera(){
@@ -33,6 +41,7 @@ class GameScene: SCNScene{
     
     func createObject(name: String) -> SCNNode {
         let appleScene = SCNScene(named: "art.scnassets/trashNinja/\(name).dae")!
+        //appleScene.rootNode.childNodes[0].scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
         return appleScene.rootNode.childNodes[0]
     }
     
@@ -65,11 +74,15 @@ class GameScene: SCNScene{
         case ShapeType.straw:
             geometryNode = self.createObject(name: "straw")
         case ShapeType.toothbrush:
-            geometryNode = self.createObject(name: "toothBrush")
+            geometryNode = self.createObject(name: "toothbrush")
         case ShapeType.tunaCan:
             geometryNode = self.createObject(name: "tunaCan")
         case ShapeType.wineBottle:
             geometryNode = self.createObject(name: "wineBottle")
+        case ShapeType.beigePaper:
+            geometryNode = self.createObject(name: "beigePaper")
+        case ShapeType.whitePaper:
+            geometryNode = self.createObject(name: "whitePaper")
         default:
             geometryNode = self.createObject(name: "countryEgg")
         }
@@ -84,13 +97,25 @@ class GameScene: SCNScene{
                 geometryNode.name = "BAD"
             }
         } else if self.phase == 2 {
-            if ["toiletPaper"].contains(geometryNode.name) {
+            if ["toiletPaper", "beigePaper", "whitePaper"].contains(geometryNode.name) {
                 geometryNode.name = "GOOD"
             } else {
                 geometryNode.name = "BAD"
             }
         } else if self.phase == 3 {
-            if ["apple"].contains(geometryNode.name) {
+            if ["wineBottle", "glassCup", "goblet"].contains(geometryNode.name) {
+                geometryNode.name = "GOOD"
+            } else {
+                geometryNode.name = "BAD"
+            }
+        } else if self.phase == 4 {
+            if ["toothbrush", "straw", "plasticCup"].contains(geometryNode.name) {
+                geometryNode.name = "GOOD"
+            } else {
+                geometryNode.name = "BAD"
+            }
+        } else if self.phase == 5 {
+            if ["sodaCan", "tunaCan", "screw"].contains(geometryNode.name) {
                 geometryNode.name = "GOOD"
             } else {
                 geometryNode.name = "BAD"
