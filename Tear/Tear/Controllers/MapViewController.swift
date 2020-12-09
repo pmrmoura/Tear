@@ -76,7 +76,7 @@ class MapViewController: UIViewController {
     }
     
     func handleTouchFor(node: SCNNode) {
-        if node.name == "apple" {
+        if node.name == "exclamation" {
             let trashNinjaVC = TrashNinjaViewController()
             trashNinjaVC.modalPresentationStyle = .fullScreen
             self.present(trashNinjaVC, animated: true, completion: nil)
@@ -87,7 +87,6 @@ class MapViewController: UIViewController {
         let touch = touches.first!
         let location = touch.location(in: mapView)
         let hitResults = mapView.hitTest(location, options: nil)
-        print(self.view.subviews)
         if !hitResults.isEmpty {
             if let result = hitResults.first {
                 handleTouchFor(node: result.node)

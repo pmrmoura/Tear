@@ -176,13 +176,6 @@
 			path = Mangrove;
 			sourceTree = "<group>";
 		};
-		0C9341D9255EC403008FF592 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		0C9341DA255EC409008FF592 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,7 +606,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBDYNQ5FQB;
+				DEVELOPMENT_TEAM = 2529YUQTU2;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -633,7 +626,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBDYNQ5FQB;
+				DEVELOPMENT_TEAM = 2529YUQTU2;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
