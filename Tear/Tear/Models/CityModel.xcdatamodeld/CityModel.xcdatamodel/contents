@@ -3,7 +3,7 @@
     <entity name="Badge" representedClassName="Badge" syncable="YES" codeGenerationType="class">
         <attribute name="explainText" optional="YES" attributeType="String"/>
         <attribute name="imageName" optional="YES" attributeType="String"/>
-        <attribute name="link" optional="YES" attributeType="URI"/>
+        <attribute name="link" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <entity name="City" representedClassName="City" syncable="YES" codeGenerationType="class">

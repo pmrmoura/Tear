@@ -26,6 +26,10 @@
 		0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */; };
 		0CCC36AB2579718E00FD0454 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC36AA2579718E00FD0454 /* Root.swift */; };
 		0CEA9E6F25810F3D00E9DCC9 /* GameWinHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */; };
+		0CEA9E7A258139B700E9DCC9 /* SeedDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA9E79258139B700E9DCC9 /* SeedDatabase.swift */; };
+		0CEA9E7F25813A2F00E9DCC9 /* BadgeManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA9E7E25813A2F00E9DCC9 /* BadgeManager .swift */; };
+		0CEA9E872581428C00E9DCC9 /* MissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA9E862581428C00E9DCC9 /* MissionManager.swift */; };
+		0CEA9E922581459A00E9DCC9 /* MissionPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA9E912581459A00E9DCC9 /* MissionPopup.swift */; };
 		0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013B255D836A00C00084 /* AppDelegate.swift */; };
 		0CFE013E255D836A00C00084 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE013D255D836A00C00084 /* art.scnassets */; };
 		0CFE0140255D836A00C00084 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013F255D836A00C00084 /* MapViewController.swift */; };
@@ -84,6 +88,10 @@
 		0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveGameHelper.swift; sourceTree = "<group>"; };
 		0CCC36AA2579718E00FD0454 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWinHUD.swift; sourceTree = "<group>"; };
+		0CEA9E79258139B700E9DCC9 /* SeedDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedDatabase.swift; sourceTree = "<group>"; };
+		0CEA9E7E25813A2F00E9DCC9 /* BadgeManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BadgeManager .swift"; sourceTree = "<group>"; };
+		0CEA9E862581428C00E9DCC9 /* MissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionManager.swift; sourceTree = "<group>"; };
+		0CEA9E912581459A00E9DCC9 /* MissionPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopup.swift; sourceTree = "<group>"; };
 		0CFE0138255D836A00C00084 /* Tear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE013B255D836A00C00084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFE013D255D836A00C00084 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 				C1FEFA9E2579630F00211C52 /* Progress */,
 				0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */,
 				0C0FF7B2256D2D5000B941B0 /* MapScene.swift */,
+				0CEA9E912581459A00E9DCC9 /* MissionPopup.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,6 +286,9 @@
 				C163EE9E257F9C9000CADABA /* Progress+CoreDataProperties.swift */,
 				C1F63D23257E7EC70068FB40 /* CityModel.xcdatamodeld */,
 				C1F63D29257E80C40068FB40 /* DatabaseController.swift */,
+				0CEA9E79258139B700E9DCC9 /* SeedDatabase.swift */,
+				0CEA9E7E25813A2F00E9DCC9 /* BadgeManager .swift */,
+				0CEA9E862581428C00E9DCC9 /* MissionManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -436,6 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CEA9E872581428C00E9DCC9 /* MissionManager.swift in Sources */,
 				0C77FCA52566BCBC002D9322 /* GameScene.swift in Sources */,
 				0C0F173625640AD100C97208 /* GameHelper.swift in Sources */,
 				C1C224BB256FDDAF00DAD429 /* ProgressCircle.swift in Sources */,
@@ -460,7 +473,10 @@
 				0CCC36AB2579718E00FD0454 /* Root.swift in Sources */,
 				0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */,
 				0C0F172A25640AA300C97208 /* TrashNinjaViewController.swift in Sources */,
+				0CEA9E7F25813A2F00E9DCC9 /* BadgeManager .swift in Sources */,
 				0C0F173B25640AD100C97208 /* Generics.swift in Sources */,
+				0CEA9E7A258139B700E9DCC9 /* SeedDatabase.swift in Sources */,
+				0CEA9E922581459A00E9DCC9 /* MissionPopup.swift in Sources */,
 				C1FEFA872579232A00211C52 /* ProgressDetail.swift in Sources */,
 				0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */,
 				0C2D1D172576664200F5E237 /* Hole.swift in Sources */,
@@ -622,7 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2529YUQTU2;
+				DEVELOPMENT_TEAM = KBDYNQ5FQB;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -642,7 +658,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2529YUQTU2;
+				DEVELOPMENT_TEAM = KBDYNQ5FQB;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

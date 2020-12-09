@@ -11,9 +11,12 @@ class MoreInformation: UIView {
     var titleLabel: UILabel = UILabel()
     var infoLabel: UILabel = UILabel()
     var buttonLabel: UIButton = UIButton()
-
+    var titleFont: UIFont = UIFont()
+    var labelFont: UIFont = UIFont()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.setupFonts()
         self.setupView()
         self.setupConstraints()
     }
@@ -22,44 +25,34 @@ class MoreInformation: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupFonts(){
+        guard let titleFont = UIFont(name: "Roboto-Bold", size: 14) else { fatalError("Failed to load Robot-bold font")}
+        guard let labelFont = UIFont(name: "Roboto", size: 12) else { fatalError("Failed to load Robot-bold font")}
+        
+        self.titleFont = titleFont
+        self.labelFont = labelFont
+    }
+    
     func setupView() {
         self.backgroundColor = UIColor(red: 0.92, green: 0.91, blue: 0.90, alpha: 1.00)
         self.layer.cornerRadius = 12
         
-        guard let titleFont = UIFont(name: "Roboto-Bold", size: 14) else {
-            fatalError("Failed to load Robot-bold font")
-        }
         self.titleLabel.textColor = UIColor(red: 0.42, green: 0.35, blue: 0.28, alpha: 1.00)
         self.titleLabel.font = UIFontMetrics.default.scaledFont(for: titleFont)
         self.titleLabel.adjustsFontForContentSizeCategory = true
-        self.titleLabel.text = "PATRONO DO MANGUE"
-        self.addSubview(self.titleLabel)
-        
-        guard let labelFont = UIFont(name: "Roboto", size: 12) else {
-            fatalError("Failed to load Robot-bold font")
-        }
         
         self.infoLabel.font = UIFontMetrics.default.scaledFont(for: labelFont)
         self.infoLabel.numberOfLines = 0
         self.infoLabel.adjustsFontForContentSizeCategory = true
         self.infoLabel.sizeToFit()
         self.infoLabel.textColor = .darkGray
-        self.infoLabel.text = "Adotar pequenas atitudes na rotina e preparar a casa ou empresa para separar corretamente o lixo é uma das melhores maneiras para ajudar na preservação do meio ambiente. A coleta seletiva evita a disseminação de doenças e contribui para que os resíduos se encaminhem para os seus devidos lugares."
-        self.addSubview(self.infoLabel)
         
-        self.buttonLabel.setTitle("Clique para saber mais", for: .normal)
         self.buttonLabel.setTitleColor(.black, for: .normal)
         self.buttonLabel.titleLabel?.font = UIFontMetrics.default.scaledFont(for: labelFont)
-        self.addSubview(self.buttonLabel)
         
-        let fontFamilyNames = UIFont.familyNames
-
-            for familyName in fontFamilyNames {
-
-                print("Font Family Name = [\(familyName)]")
-                let names = UIFont.fontNames(forFamilyName: familyName)
-                print("Font Names = [\(names)]")
-            }
+        self.addSubview(self.titleLabel)
+        self.addSubview(self.buttonLabel)
+        self.addSubview(self.infoLabel)
     }
     
     func setupConstraints() {
@@ -67,6 +60,7 @@ class MoreInformation: UIView {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.infoLabel.translatesAutoresizingMaskIntoConstraints = false
         self.buttonLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),

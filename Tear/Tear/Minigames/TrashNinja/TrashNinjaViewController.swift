@@ -110,8 +110,10 @@ class TrashNinjaViewController: UIViewController {
     }
     
     func leaveGame(){
-        self.game.restart()
+        
         let mapVC = MapViewController()
+        self.game.restart()
+        
         mapVC.perform(#selector(mapVC.animateProgress), with: nil, afterDelay: 2.0)
         mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
         mapVC.modalPresentationStyle = .fullScreen

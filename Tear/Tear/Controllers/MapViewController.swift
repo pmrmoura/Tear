@@ -14,13 +14,17 @@ class MapViewController: UIViewController {
     
     var mapView: SCNView!
     var mapScene: MapScene = MapScene()
+    var missionPopup: MissionPopup = MissionPopup()
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
     let gameWinHud: GameWinHud = GameWinHud(frame: UIScreen.main.bounds)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
         self.setupScene()
+        self.setupPopupViews()
+        self.setupConstraints()
     }
     
     override var shouldAutorotate: Bool {
@@ -31,6 +35,11 @@ class MapViewController: UIViewController {
         return true
     }
     
+    func setupPopupViews(){
+        self.gameWinHud.isHidden = true
+        self.missionPopup.isHidden = true
+    }
+    
     func setupView(){
         self.view = SCNView()
         self.mapView = self.view as? SCNView
@@ -38,16 +47,26 @@ class MapViewController: UIViewController {
         self.mapView.allowsCameraControl = true
         self.setupProgressCircle()
         self.setupProgressDetail()
+        
+        self.view.addSubview(progressCircle)
+        self.view.addSubview(missionPopup)
+        self.view.addSubview(progressDetail)
+        self.view.addSubview(gameWinHud)
     }
     
     func setupProgressCircle() {
         self.progressCircle.trackColor = UIColor(red: 0.92, green: 0.91, blue: 0.90, alpha: 1.00)
         self.progressCircle.progressColor = UIColor(red: 0.73, green: 0.23, blue: 0.26, alpha: 1.00)
+    }
+    
+    func setupConstraints(){
         self.progressCircle.translatesAutoresizingMaskIntoConstraints = false
-
-        self.view.addSubview(progressCircle)
+        self.missionPopup.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            self.missionPopup.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor),
+            self.missionPopup.centerYAnchor.constraint(equalTo: self.mapView.centerYAnchor),
+            
             self.progressCircle.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor, constant: CGFloat(-35)),
             self.progressCircle.topAnchor.constraint(equalTo: self.mapView.topAnchor, constant: CGFloat(70)),
         ])
@@ -57,8 +76,6 @@ class MapViewController: UIViewController {
         self.progressDetail.isHidden = true
         self.gameWinHud.isHidden = true
         self.progressDetail.alpha = 0.0
-        self.view.addSubview(progressDetail)
-        self.view.addSubview(gameWinHud)
     }
     
     @objc func animateProgress() {
@@ -80,11 +97,15 @@ class MapViewController: UIViewController {
     
     func handleTouchFor(node: SCNNode) {
         if node.name == "exclamation" {
+            self.missionPopup.isHidden = false //POPUP DE MISSÃO NÃO ESTÁ ABRINDO
+            print("Teste")
             let trashNinjaVC = TrashNinjaViewController()
             trashNinjaVC.modalPresentationStyle = .fullScreen
-            self.present(trashNinjaVC, animated: true, completion: nil)
+            //self.present(trashNinjaVC, animated: true, completion: nil)
         }
     }
+    
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!

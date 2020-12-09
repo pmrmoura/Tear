@@ -40,7 +40,6 @@ class GameWinHud: UIStackView {
         
         
         // Congratulations Setup
-        
         self.addArrangedSubview(self.congratulationsView)
 
         // Progress setup

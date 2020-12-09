@@ -56,6 +56,7 @@ class ProgressDetail: UIStackView {
         // Badges setup
         self.addArrangedSubview(self.progressDetailBadges)
         self.progressDetailBadges.details = self.moreInformation
+        
         // More Information Setup
         self.addArrangedSubview(self.moreInformation)
         

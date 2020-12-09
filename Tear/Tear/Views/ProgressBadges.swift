@@ -102,12 +102,13 @@ extension ProgressBadges: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row == 0 {
-            self.details?.titleLabel.text = "Astro do descarte"
-            self.details?.infoLabel.text = "Adotar pequenas atitudes na rotina e preparar a casa ou empresa para separar corretamente o lixo é uma das melhores maneiras para ajudar na preservação do meio ambiente. A coleta seletiva evita a disseminação de doenças e contribui para que os resíduos se encaminhem para os seus devidos lugares."
-        } else if indexPath.row == 1 {
-            self.details?.titleLabel.text = "Teste"
-            self.details?.infoLabel.text = "Flight"
+        guard let badge = BadgeManager.shared.get(name: "badge\(indexPath.row).jpeg") else {
+            self.details?.titleLabel.text = "Bloqueado"
+            self.details?.infoLabel.text = "Este badge ainda não foi desbloqueado, continue jogando para conquistá-lo"
+            return
         }
+        self.details?.titleLabel.text = badge.name
+        self.details?.infoLabel.text = badge.explainText
+        
     }
 }
