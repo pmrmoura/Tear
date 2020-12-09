@@ -16,7 +16,7 @@ class MapScene: SCNScene{
         super.init()
         self.setupCamera()
         self.setupNodes()
-        self.background.contents = "GeometryFighter.scnassets/Textures/Background.png"
+        self.background.contents = "GeometryFighter.scnassets/Textures/background-1.jpeg"
     }
     
     required init?(coder: NSCoder) {

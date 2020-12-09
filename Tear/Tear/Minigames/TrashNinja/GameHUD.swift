@@ -324,6 +324,12 @@ class GameHUD: UIView, CodeView {
         self.endGameText.textAlignment = .center
         self.popUpView.isHidden = false
         
+        if self.game.phase == 5 {
+            NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
+            NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
+            return
+        }
+        
         NSLayoutConstraint.activate(self.leaveGameButtonWinConstraints)
     }
     

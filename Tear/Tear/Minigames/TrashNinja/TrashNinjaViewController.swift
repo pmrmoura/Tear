@@ -142,11 +142,17 @@ class TrashNinjaViewController: UIViewController {
     }
     
     func nextPhase(){
+        
+        
         self.game.restart()
         self.gameHUD.restart()
         self.gameHUD.tapToPlayLabel.isHidden = false
         self.game.phase += 1
         self.gameScene.phase = self.game.phase
+        
+        if self.game.phase == 6 {
+            leaveGame()
+        }
         
         if self.game.phase == 1{
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
