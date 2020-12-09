@@ -33,6 +33,8 @@
 		0CFE015B255D836B00C00084 /* TearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE015A255D836B00C00084 /* TearUITests.swift */; };
 		C1C224BB256FDDAF00DAD429 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */; };
 		C1C224C0256FFA8E00DAD429 /* progressIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C224BF256FFA8E00DAD429 /* progressIcon.png */; };
+		C1F63D25257E7EC70068FB40 /* CityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F63D23257E7EC70068FB40 /* CityModel.xcdatamodeld */; };
+		C1F63D2A257E80C40068FB40 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F63D29257E80C40068FB40 /* DatabaseController.swift */; };
 		C1FEFA872579232A00211C52 /* ProgressDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FEFA862579232A00211C52 /* ProgressDetail.swift */; };
 		C1FEFAA02579633500211C52 /* ProgressDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FEFA9F2579633500211C52 /* ProgressDetailData.swift */; };
 		C1FEFAA8257963BE00211C52 /* IndividualProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FEFAA7257963BE00211C52 /* IndividualProgressBar.swift */; };
@@ -91,8 +93,18 @@
 		0CFE0156255D836B00C00084 /* TearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE015A255D836B00C00084 /* TearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TearUITests.swift; sourceTree = "<group>"; };
 		0CFE015C255D836B00C00084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C163EE97257F9C9000CADABA /* City+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C163EE98257F9C9000CADABA /* City+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "City+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C163EE99257F9C9000CADABA /* Badge+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C163EE9A257F9C9000CADABA /* Badge+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C163EE9B257F9C9000CADABA /* Mission+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mission+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C163EE9C257F9C9000CADABA /* Mission+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mission+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C163EE9D257F9C9000CADABA /* Progress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Progress+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C163EE9E257F9C9000CADABA /* Progress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Progress+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		C1C224BF256FFA8E00DAD429 /* progressIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressIcon.png; sourceTree = "<group>"; };
+		C1F63D24257E7EC70068FB40 /* CityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityModel.xcdatamodel; sourceTree = "<group>"; };
+		C1F63D29257E80C40068FB40 /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		C1FEFA862579232A00211C52 /* ProgressDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDetail.swift; sourceTree = "<group>"; };
 		C1FEFA9F2579633500211C52 /* ProgressDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressDetailData.swift; sourceTree = "<group>"; };
 		C1FEFAA7257963BE00211C52 /* IndividualProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualProgressBar.swift; sourceTree = "<group>"; };
@@ -213,11 +225,11 @@
 		0CFE013A255D836A00C00084 /* Tear */ = {
 			isa = PBXGroup;
 			children = (
+				C1F63D22257E7EB90068FB40 /* Models */,
 				C1FEFAB42579979700211C52 /* Fonts */,
 				0C0F172725640A7700C97208 /* Minigames */,
 				0C9341DB255EC40D008FF592 /* Controllers */,
 				0C9341DA255EC409008FF592 /* Views */,
-				0C9341D9255EC403008FF592 /* Models */,
 				0CFE013B255D836A00C00084 /* AppDelegate.swift */,
 				0CFE013D255D836A00C00084 /* art.scnassets */,
 				0CFE0144255D836B00C00084 /* Assets.xcassets */,
@@ -243,6 +255,23 @@
 				0CFE015C255D836B00C00084 /* Info.plist */,
 			);
 			path = TearUITests;
+			sourceTree = "<group>";
+		};
+		C1F63D22257E7EB90068FB40 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C163EE97257F9C9000CADABA /* City+CoreDataClass.swift */,
+				C163EE98257F9C9000CADABA /* City+CoreDataProperties.swift */,
+				C163EE99257F9C9000CADABA /* Badge+CoreDataClass.swift */,
+				C163EE9A257F9C9000CADABA /* Badge+CoreDataProperties.swift */,
+				C163EE9B257F9C9000CADABA /* Mission+CoreDataClass.swift */,
+				C163EE9C257F9C9000CADABA /* Mission+CoreDataProperties.swift */,
+				C163EE9D257F9C9000CADABA /* Progress+CoreDataClass.swift */,
+				C163EE9E257F9C9000CADABA /* Progress+CoreDataProperties.swift */,
+				C1F63D23257E7EC70068FB40 /* CityModel.xcdatamodeld */,
+				C1F63D29257E80C40068FB40 /* DatabaseController.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C1FEFA9E2579630F00211C52 /* Progress */ = {
@@ -414,6 +443,7 @@
 				0C7DEAE725751AF30072B860 /* MangroveViewController.swift in Sources */,
 				0C0F174825640B8200C97208 /* Extensions.swift in Sources */,
 				0C0FF7CB256EA6C100B941B0 /* Trash.swift in Sources */,
+				C1F63D25257E7EC70068FB40 /* CityModel.xcdatamodeld in Sources */,
 				0C0FF7B3256D2D5000B941B0 /* MapScene.swift in Sources */,
 				0C7DEAEC25751B6D0072B860 /* MangroveScene.swift in Sources */,
 				C1FEFAA8257963BE00211C52 /* IndividualProgressBar.swift in Sources */,
@@ -425,6 +455,7 @@
 				C1FEFA872579232A00211C52 /* ProgressDetail.swift in Sources */,
 				0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */,
 				0C2D1D172576664200F5E237 /* Hole.swift in Sources */,
+				C1F63D2A257E80C40068FB40 /* DatabaseController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -740,6 +771,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C1F63D23257E7EC70068FB40 /* CityModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C1F63D24257E7EC70068FB40 /* CityModel.xcdatamodel */,
+			);
+			currentVersion = C1F63D24257E7EC70068FB40 /* CityModel.xcdatamodel */;
+			path = CityModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0CFE0130255D836A00C00084 /* Project object */;
 }

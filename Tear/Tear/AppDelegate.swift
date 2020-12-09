@@ -14,6 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
+            if !firstRun {
+                UserDefaults.standard.set(true, forKey: "firstRun")
+            }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
