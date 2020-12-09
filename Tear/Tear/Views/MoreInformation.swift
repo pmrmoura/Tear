@@ -43,7 +43,8 @@ class MoreInformation: UIView {
         self.infoLabel.numberOfLines = 0
         self.infoLabel.adjustsFontForContentSizeCategory = true
         self.infoLabel.sizeToFit()
-        self.infoLabel.text = "Graças as suas ações e dos coletivos o mangue está limpo. Quer saber como isso impacta a vida dos moradores e dos animais?"
+        self.infoLabel.textColor = .darkGray
+        self.infoLabel.text = "Adotar pequenas atitudes na rotina e preparar a casa ou empresa para separar corretamente o lixo é uma das melhores maneiras para ajudar na preservação do meio ambiente. A coleta seletiva evita a disseminação de doenças e contribui para que os resíduos se encaminhem para os seus devidos lugares."
         self.addSubview(self.infoLabel)
         
         self.buttonLabel.setTitle("Clique para saber mais", for: .normal)

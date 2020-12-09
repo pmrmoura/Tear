@@ -9,6 +9,8 @@ import UIKit
 
 class ProgressBadges: UIView {
     var collectionView: UICollectionView?
+    var details: MoreInformation?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupView()
@@ -99,6 +101,13 @@ extension ProgressBadges: UICollectionViewDataSource {
 extension ProgressBadges: UICollectionViewDelegate {
  
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       print("User tapped on item \(indexPath.row)")
+        
+        if indexPath.row == 0 {
+            self.details?.titleLabel.text = "Astro do descarte"
+            self.details?.infoLabel.text = "Adotar pequenas atitudes na rotina e preparar a casa ou empresa para separar corretamente o lixo é uma das melhores maneiras para ajudar na preservação do meio ambiente. A coleta seletiva evita a disseminação de doenças e contribui para que os resíduos se encaminhem para os seus devidos lugares."
+        } else if indexPath.row == 1 {
+            self.details?.titleLabel.text = "Teste"
+            self.details?.infoLabel.text = "Flight"
+        }
     }
 }

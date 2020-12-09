@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     var mapScene: MapScene = MapScene()
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
