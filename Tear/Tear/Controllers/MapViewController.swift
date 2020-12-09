@@ -55,6 +55,7 @@ class MapViewController: UIViewController {
     
     func setupProgressDetail() {
         self.progressDetail.isHidden = true
+        self.gameWinHud.isHidden = true
         self.progressDetail.alpha = 0.0
         self.view.addSubview(progressDetail)
         self.view.addSubview(gameWinHud)

@@ -38,7 +38,7 @@ class CongratulationsView: UIView {
         self.titleLabel.text = "Parabéns"
         self.addSubview(self.titleLabel)
         
-        self.badgeView.image = UIImage(named: "awa.png")
+        self.badgeView.image = UIImage(named: "badge1.png")
         self.addSubview(self.badgeView)
         
         guard let labelFont = UIFont(name: "Roboto-Bold", size: 20) else {
