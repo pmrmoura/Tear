@@ -12,7 +12,7 @@ class MangroveScene: SCNScene{
     var cameraNode: SCNNode!
     var treeNode: SCNNode!
     var phase: Int = 1
-    var mangrove = SCNScene(named: "art.scnassets/mangroveTree.dae")!
+    var mangrove = SCNScene(named: "art.scnassets/mangroveHero/mangroveTree.dae")!
     
     override init(){
         super.init()

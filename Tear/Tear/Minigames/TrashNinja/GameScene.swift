@@ -32,7 +32,7 @@ class GameScene: SCNScene{
     }
     
     func createObject(name: String) -> SCNNode {
-        let appleScene = SCNScene(named: "art.scnassets/\(name).dae")!
+        let appleScene = SCNScene(named: "art.scnassets/trashNinja/\(name).dae")!
         return appleScene.rootNode.childNodes[0]
     }
     
