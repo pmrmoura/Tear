@@ -157,6 +157,12 @@ class TrashNinjaViewController: UIViewController {
         } else if self.game.phase == 3 {
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS VIDROS"
             self.gameHUD.materialDescription.text = "VIDRO"
+        } else if self.game.phase == 4 {
+            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PLÁSTICOS"
+            self.gameHUD.materialDescription.text = "PLÁSTICO"
+        } else if self.game.phase == 5 {
+            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS METAIS"
+            self.gameHUD.materialDescription.text = "METAL"
         }
     }
     

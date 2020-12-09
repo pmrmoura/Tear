@@ -31,7 +31,7 @@ class GameHelper {
         self.errors = 3
         self.score = 0
         self.audioIsEnabled = true
-        self.goal = 5
+        self.goal = 3
         self.phase = 1
     }
     
