@@ -16,7 +16,7 @@ class MapScene: SCNScene{
         super.init()
         self.setupCamera()
         self.setupNodes()
-        self.background.contents = "GeometryFighter.scnassets/Textures/background-1.jpeg"
+        self.background.contents = "GeometryFighter.scnassets/Textures/background-2.jpeg"
     }
     
     required init?(coder: NSCoder) {
@@ -26,6 +26,9 @@ class MapScene: SCNScene{
     func setupCamera(){
         self.cameraNode = SCNNode()
         self.cameraNode.camera = SCNCamera()
+        let light = SCNLight()
+        light.type = .omni
+        self.cameraNode.light = light
         self.cameraNode.position = SCNVector3(x: 0, y: 10, z: 7)
         self.rootNode.addChildNode(self.cameraNode)
     }
