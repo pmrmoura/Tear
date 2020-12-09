@@ -25,6 +25,7 @@
 		0C990F90256593110035CAE8 /* GameHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C990F8F256593110035CAE8 /* GameHUD.swift */; };
 		0CB66A05257FC73F0060AE25 /* MangroveGameHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */; };
 		0CCC36AB2579718E00FD0454 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CCC36AA2579718E00FD0454 /* Root.swift */; };
+		0CEA9E6F25810F3D00E9DCC9 /* GameWinHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */; };
 		0CFE013C255D836A00C00084 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013B255D836A00C00084 /* AppDelegate.swift */; };
 		0CFE013E255D836A00C00084 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE013D255D836A00C00084 /* art.scnassets */; };
 		0CFE0140255D836A00C00084 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE013F255D836A00C00084 /* MapViewController.swift */; };
@@ -81,6 +82,7 @@
 		0C990F8F256593110035CAE8 /* GameHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHUD.swift; sourceTree = "<group>"; };
 		0CB66A04257FC73F0060AE25 /* MangroveGameHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MangroveGameHelper.swift; sourceTree = "<group>"; };
 		0CCC36AA2579718E00FD0454 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWinHUD.swift; sourceTree = "<group>"; };
 		0CFE0138255D836A00C00084 /* Tear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tear.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE013B255D836A00C00084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFE013D255D836A00C00084 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				C1FEFA9E2579630F00211C52 /* Progress */,
 				0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */,
 				0C0FF7B2256D2D5000B941B0 /* MapScene.swift */,
+				0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				0C0FF7CB256EA6C100B941B0 /* Trash.swift in Sources */,
 				C1F63D25257E7EC70068FB40 /* CityModel.xcdatamodeld in Sources */,
 				0C0FF7B3256D2D5000B941B0 /* MapScene.swift in Sources */,
+				0CEA9E6F25810F3D00E9DCC9 /* GameWinHUD.swift in Sources */,
 				0C7DEAEC25751B6D0072B860 /* MangroveScene.swift in Sources */,
 				C1FEFAA8257963BE00211C52 /* IndividualProgressBar.swift in Sources */,
 				0C990F90256593110035CAE8 /* GameHUD.swift in Sources */,
