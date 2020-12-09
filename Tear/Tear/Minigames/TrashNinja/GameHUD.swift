@@ -184,6 +184,9 @@ class GameHUD: UIView, CodeView {
         NSLayoutConstraint.activate([
             self.endGameText.centerXAnchor.constraint(equalTo: self.popUpView.centerXAnchor),
             self.endGameText.centerYAnchor.constraint(equalTo: self.popUpView.centerYAnchor),
+            self.endGameText.leadingAnchor.constraint(equalTo: self.popUpView.leadingAnchor),
+            self.endGameText.trailingAnchor.constraint(equalTo: self.popUpView.trailingAnchor),
+            self.endGameText.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -304,7 +307,9 @@ class GameHUD: UIView, CodeView {
         self.leaveGameButton.layer.maskedCorners = [.layerMinXMaxYCorner ,.layerMaxXMaxYCorner]
         self.popUpView.isHidden = false
         self.endGameLabel.text = "Perdeu, você é um lixo"
-        self.endGameText.text = "Você ganhou! Lembre-se"
+        self.endGameText.text = "Você perdeu! Mas lembre-se que você pode continuar jogando"
+        self.endGameText.numberOfLines = 0
+        self.endGameText.textAlignment = .center
         
         NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
         NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
@@ -312,6 +317,9 @@ class GameHUD: UIView, CodeView {
     
     func gameWin() {
         self.endGameLabel.text = "Parabéns"
+        self.endGameText.text = "Você ganhou!"
+        self.endGameText.numberOfLines = 0
+        self.endGameText.textAlignment = .center
         self.popUpView.isHidden = false
         
         NSLayoutConstraint.activate(self.leaveGameButtonWinConstraints)
