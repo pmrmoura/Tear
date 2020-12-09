@@ -41,7 +41,7 @@ class MapScene: SCNScene{
     }
     
     func setupNodes(){
-        if let filePath = Bundle.main.path(forResource: "map", ofType: "scn", inDirectory: "art.scnassets") {
+        if let filePath = Bundle.main.path(forResource: "Map", ofType: "scn", inDirectory: "art.scnassets") {
             let referenceURL = URL(fileURLWithPath: filePath)
             print(filePath)
             if #available(iOS 9.0, *) {

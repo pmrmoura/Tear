@@ -325,6 +325,10 @@ class GameHUD: UIView, CodeView {
         self.popUpView.isHidden = false
         
         if self.game.phase == 5 {
+            self.endGameText.text = "Você realmente entende de coleta seletiva"
+            self.leaveGameButton.setTitle("Ganhar emblema", for: .normal)
+            self.nextPhaseButton.isHidden = true
+            self.leaveGameButton.layer.maskedCorners = [.layerMinXMaxYCorner ,.layerMaxXMaxYCorner]
             NSLayoutConstraint.deactivate(self.leaveGameButtonWinConstraints)
             NSLayoutConstraint.activate(self.leaveGameButtonLostConstraints)
             return
