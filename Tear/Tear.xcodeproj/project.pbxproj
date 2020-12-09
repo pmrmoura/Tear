@@ -32,6 +32,7 @@
 		0CFE0145255D836B00C00084 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE0144255D836B00C00084 /* Assets.xcassets */; };
 		0CFE0150255D836B00C00084 /* TearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE014F255D836B00C00084 /* TearTests.swift */; };
 		0CFE015B255D836B00C00084 /* TearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE015A255D836B00C00084 /* TearUITests.swift */; };
+		C1970E57258112A700D90785 /* CongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1970E56258112A700D90785 /* CongratulationsView.swift */; };
 		C1C224BB256FDDAF00DAD429 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */; };
 		C1C224C0256FFA8E00DAD429 /* progressIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C224BF256FFA8E00DAD429 /* progressIcon.png */; };
 		C1F63D25257E7EC70068FB40 /* CityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1F63D23257E7EC70068FB40 /* CityModel.xcdatamodeld */; };
@@ -103,6 +104,7 @@
 		C163EE9C257F9C9000CADABA /* Mission+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mission+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C163EE9D257F9C9000CADABA /* Progress+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Progress+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C163EE9E257F9C9000CADABA /* Progress+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Progress+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C1970E56258112A700D90785 /* CongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsView.swift; sourceTree = "<group>"; };
 		C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		C1C224BF256FFA8E00DAD429 /* progressIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressIcon.png; sourceTree = "<group>"; };
 		C1F63D24257E7EC70068FB40 /* CityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CityModel.xcdatamodel; sourceTree = "<group>"; };
@@ -181,10 +183,10 @@
 		0C9341DA255EC409008FF592 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C1970E552581128400D90785 /* GameWinHud */,
 				C1FEFA9E2579630F00211C52 /* Progress */,
 				0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */,
 				0C0FF7B2256D2D5000B941B0 /* MapScene.swift */,
-				0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,6 +253,15 @@
 				0CFE015C255D836B00C00084 /* Info.plist */,
 			);
 			path = TearUITests;
+			sourceTree = "<group>";
+		};
+		C1970E552581128400D90785 /* GameWinHud */ = {
+			isa = PBXGroup;
+			children = (
+				0CEA9E6E25810F3D00E9DCC9 /* GameWinHUD.swift */,
+				C1970E56258112A700D90785 /* CongratulationsView.swift */,
+			);
+			name = GameWinHud;
 			sourceTree = "<group>";
 		};
 		C1F63D22257E7EB90068FB40 /* Models */ = {
@@ -432,6 +443,7 @@
 				C1FEFAC32579AFF600211C52 /* MoreInformation.swift in Sources */,
 				C1FEFAB02579871900211C52 /* ProgressBadges.swift in Sources */,
 				0C0FF7C3256D4D9400B941B0 /* AnimationViewController.swift in Sources */,
+				C1970E57258112A700D90785 /* CongratulationsView.swift in Sources */,
 				0C7DEAF125751C290072B860 /* MangroveHUD.swift in Sources */,
 				C1FEFAA02579633500211C52 /* ProgressDetailData.swift in Sources */,
 				0CFE0140255D836A00C00084 /* MapViewController.swift in Sources */,
@@ -610,7 +622,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBDYNQ5FQB;
+				DEVELOPMENT_TEAM = 2529YUQTU2;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -630,7 +642,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KBDYNQ5FQB;
+				DEVELOPMENT_TEAM = 2529YUQTU2;
 				INFOPLIST_FILE = Tear/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
