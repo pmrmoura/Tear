@@ -107,10 +107,13 @@ extension ProgressBadges: UICollectionViewDelegate {
         guard let badge = BadgeManager.shared.get(name: "badge\(indexPath.row).jpeg") else {
             self.details?.titleLabel.text = "Bloqueado"
             self.details?.infoLabel.text = "Este badge ainda não foi desbloqueado, continue jogando para conquistá-lo"
+            self.details?.buttonLabel.setTitle("", for: .normal)
             return
         }
+        
+        
         self.details?.titleLabel.text = badge.name
         self.details?.infoLabel.text = badge.explainText
-        
+        self.details?.buttonLabel.setTitle("Saiba mais", for: .normal)
     }
 }

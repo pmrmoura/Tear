@@ -27,13 +27,13 @@ struct SeedDatabase {
             BadgeManager.shared.create(
                 explainText: "Adotar pequenas atitudes na rotina e preparar a casa ou empresa para separar corretamente o lixo é uma das melhores maneiras para ajudar na preservação do meio ambiente. A coleta seletiva evita a disseminação de doenças e contribui para que os resíduos se encaminhem para os seus devidos lugares.",
                 imageName: "badge0.jpeg",
-                link: "",
+                link: "Aperte para saber mais",
                 name: "Astro do descarte"
             ),
             BadgeManager.shared.create(
                 explainText: "Adotar pequenas atitudes na rotina e preparar a casa ou empresa para separar corretamente o lixo é uma das melhores maneiras para ajudar na preservação do meio ambiente. A coleta seletiva evita a disseminação de doenças e contribui para que os resíduos se encaminhem para os seus devidos lugares.",
                 imageName: "badge1.jpeg",
-                link: "",
+                link: "Aperte para saber mais",
                 name: "Patrono do mangue"
             ),
         ]
