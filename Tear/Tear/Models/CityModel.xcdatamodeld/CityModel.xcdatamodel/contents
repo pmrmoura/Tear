@@ -5,6 +5,7 @@
         <attribute name="imageName" optional="YES" attributeType="String"/>
         <attribute name="link" optional="YES" attributeType="URI"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="win" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
     </entity>
     <entity name="Mission" representedClassName="Mission" syncable="YES" codeGenerationType="class">
         <attribute name="modalText" optional="YES" attributeType="String"/>
@@ -20,7 +21,7 @@
         <attribute name="water" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Badge" positionX="-36" positionY="9" width="128" height="103"/>
+        <element name="Badge" positionX="-36" positionY="9" width="128" height="118"/>
         <element name="Mission" positionX="-18" positionY="27" width="128" height="103"/>
         <element name="Progress" positionX="-54" positionY="-9" width="128" height="118"/>
     </elements>

@@ -4,7 +4,7 @@ struct BadgeManager {
     static let shared = BadgeManager()
     static var context = DatabaseController.persistentContainer.viewContext
     
-    func create(explainText: String, imageName: String, link: String, name: String) -> Badge? {
+    func create(explainText: String, imageName: String, link: String, name: String, win: Bool) -> Badge? {
 
         let badgeObject = NSEntityDescription.insertNewObject(forEntityName: "Badge", into: BadgeManager.context)
 
@@ -16,6 +16,7 @@ struct BadgeManager {
         badge.imageName = imageName
         badge.link = URL(string: link)
         badge.name = name
+        badge.win = win
 
         return self.save() ? badge : nil
     }

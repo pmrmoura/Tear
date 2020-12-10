@@ -86,7 +86,11 @@ extension ProgressBadges: UICollectionViewDataSource {
             if let output = currentFilter.outputImage {
                 if let cgimg = context.createCGImage(output, from: output.extent) {
                     let processedImage = UIImage(cgImage: cgimg)
-                    badgeView.image = badge == nil ? processedImage : image
+                    if let badgeExist = badge {
+                        badgeView.image = badgeExist.win ? image : processedImage
+                    } else {
+                        badgeView.image = processedImage
+                    }
                 }
             }
         } else {
@@ -111,9 +115,16 @@ extension ProgressBadges: UICollectionViewDelegate {
             return
         }
         
+        if !badge.win {
+            self.details?.titleLabel.text = "Bloqueado"
+            self.details?.infoLabel.text = "Este badge ainda não foi desbloqueado, continue jogando para conquistá-lo"
+            self.details?.buttonLabel.setTitle("", for: .normal)
+        } else {
+            self.details?.titleLabel.text = badge.name
+            self.details?.infoLabel.text = badge.explainText
+            self.details?.buttonLabel.setTitle("Saiba mais", for: .normal)
+        }
         
-        self.details?.titleLabel.text = badge.name
-        self.details?.infoLabel.text = badge.explainText
-        self.details?.buttonLabel.setTitle("Saiba mais", for: .normal)
+
     }
 }

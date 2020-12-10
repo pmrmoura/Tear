@@ -93,19 +93,19 @@ class TrashNinjaViewController: UIViewController {
         
     @objc func touchedDisplay(sender: UIButton) {
         switch sender.tag {
-            case 0:
-                self.leaveGame(false)
-            case 1:
-                self.game.pause()
-                self.gameScene.isPaused = self.game.state == .Paused ? true : false
-            case 2:
-                self.gameScene.clearAll()
-                self.gameHUD.restart()
-                self.game.restart()
-            case 3:
-                self.nextPhase()
-            default:
-                self.game.mute()
+        case 0:
+            self.leaveGame(false)
+        case 1:
+            self.game.pause()
+            self.gameScene.isPaused = self.game.state == .Paused ? true : false
+        case 2:
+            self.gameScene.clearAll()
+            self.gameHUD.restart()
+            self.game.restart()
+        case 3:
+            self.nextPhase()
+        default:
+            self.game.mute()
         }
     }
     
@@ -117,6 +117,8 @@ class TrashNinjaViewController: UIViewController {
         mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
         
         if didWin {
+            let badge = BadgeManager.shared.get(name: "badge0.jpeg")
+            badge?.win = true
             mapVC.perform(#selector(mapVC.animateGameWin), with: nil)
         }
         
