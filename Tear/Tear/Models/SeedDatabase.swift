@@ -58,7 +58,7 @@ struct SeedDatabase {
 
     func createProgress() -> [Progress?]{
         return [
-            ProgressManager.shared.create(air: 0.25, water: 0.25, soil: 0.25, total: 0.75, name: "City"),
+            ProgressManager.shared.create(air: 0.25, water: 0.25, soil: 0.25, total: 0.05, name: "City"),
             ProgressManager.shared.create(air: 0.05, water: 0.05, soil: 0.05, total: 0.15, name: "TrashNinja")
         ]
     }
