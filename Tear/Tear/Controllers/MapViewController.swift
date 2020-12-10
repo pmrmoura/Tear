@@ -74,6 +74,10 @@ class MapViewController: UIViewController {
         self.mapView.allowsCameraControl = true
         self.mapView.autoenablesDefaultLighting = true
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap))
+        tap.numberOfTapsRequired = 2
+        self.mapView.addGestureRecognizer(tap)
+        
         self.setupProgressCircle()
         self.setupProgressDetail()
         
@@ -81,6 +85,10 @@ class MapViewController: UIViewController {
         self.view.addSubview(missionPopup)
         self.view.addSubview(progressDetail)
         self.view.addSubview(gameWinHud)
+    }
+    
+    @objc func doubleTap() {
+        print("Nothing")
     }
     
     func setupProgressCircle() {
