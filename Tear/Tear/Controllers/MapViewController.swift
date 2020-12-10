@@ -26,6 +26,7 @@ class MapViewController: UIViewController {
         self.setupScene()
         self.setupPopupViews()
         self.setupConstraints()
+        self.checkCompletedMissions()
     }
     
     override var shouldAutorotate: Bool {
@@ -34,6 +35,27 @@ class MapViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func checkCompletedMissions(){
+        let progress = ProgressManager.shared.get(name: "City")
+        let value = progress?.total
+        print(value)
+        switch value {
+        case value where value! >= 0.5:
+            let trash = self.mapScene.rootNode.childNode(withName: "Lixooceano2", recursively: true)
+            trash?.removeFromParentNode()
+            
+        case value where value! >= 0.25:
+            let trash = self.mapScene.rootNode.childNode(withName: "trash", recursively: true)
+            let dumpster = self.mapScene.rootNode.childNode(withName: "dumpster", recursively: true)
+            trash?.removeFromParentNode()
+            dumpster?.removeFromParentNode()
+        default:
+            print("Nois")
+        //            let trash = self.mapScene.rootNode.childNode(withName: "", recursively: true)
+        //            trash?.removeFromParentNode()
+        }
     }
     
     func setupPopupViews(){
@@ -50,7 +72,7 @@ class MapViewController: UIViewController {
         self.mapView.showsStatistics = false
         self.mapView.allowsCameraControl = true
         self.mapView.autoenablesDefaultLighting = true
-    
+        
         self.setupProgressCircle()
         self.setupProgressDetail()
         
@@ -100,7 +122,6 @@ class MapViewController: UIViewController {
     
     @objc func animateGameWin(){
         self.gameWinHud.isHidden = false
-        print("Teste")
     }
     
     func setupScene(){
@@ -150,9 +171,9 @@ class MapViewController: UIViewController {
             }
         }
     }
-                
+    
     @objc func touchedDisplay(sender: UIButton) {
-
+        
     }
     
 }
@@ -170,7 +191,7 @@ extension MapViewController {
             if !hidden {
                 alpha = 0.0
             } else {
-//                self.progressDetail.alpha = 0.0
+                //                self.progressDetail.alpha = 0.0
             }
             UIView.animate(withDuration: 0.5, animations: {
                 self.progressDetail.alpha = 1.0
