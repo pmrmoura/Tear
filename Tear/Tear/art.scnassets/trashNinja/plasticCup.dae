@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2020-12-09T11:59:49Z</created>
-  <modified>2020-12-09T11:59:49Z</modified>
+  <created>2020-12-10T17:13:59Z</created>
+  <modified>2020-12-10T17:13:59Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -20,7 +20,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>1 1 1 1</color>
+       <color>0.83972 0.83365 0.844367 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
