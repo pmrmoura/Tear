@@ -50,13 +50,13 @@ class AnimationViewController: UIViewController {
         }
         
         self.imageView.animationImages = images
-        self.imageView.animationDuration = 4
+        self.imageView.animationDuration = 3
         self.imageView.animationRepeatCount = 1
         self.imageView.startAnimating()
         
         DispatchQueue.main.async {
             let mapVC = MapViewController()
-//            sleep(4)
+            sleep(4)
             self.changeVC(mapVC: mapVC)
         }
     }

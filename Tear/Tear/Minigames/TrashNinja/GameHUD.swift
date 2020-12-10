@@ -251,6 +251,7 @@ class GameHUD: UIView, CodeView {
         
         self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
         self.tapToPlayLabel.textColor = UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1)
+        self.tapToPlayLabel.textAlignment = .center
         
         self.scoreLabel.text = "\(game.score)/\(game.goal)"
         self.scoreLabel.textColor = .black
@@ -307,8 +308,8 @@ class GameHUD: UIView, CodeView {
         self.nextPhaseButton.isHidden = true
         self.leaveGameButton.layer.maskedCorners = [.layerMinXMaxYCorner ,.layerMaxXMaxYCorner]
         self.popUpView.isHidden = false
-        self.endGameLabel.text = "Perdeu, você é um lixo"
-        self.endGameText.text = "Você perdeu! Mas lembre-se que você pode continuar jogando"
+        self.endGameLabel.text = "ops"
+        self.endGameText.text = "ainda não chegamos lá! resíduos que não são separados corretamente dificilmente podem ser reciclados"
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center
         
@@ -317,8 +318,8 @@ class GameHUD: UIView, CodeView {
     }
     
     func gameWin() {
-        self.endGameLabel.text = "Parabéns"
-        self.endGameText.text = "Você ganhou!"
+        self.endGameLabel.text = "Muito bem!"
+        self.endGameText.text = "lembre-se! Os resíduos organicos devem ser descartados nas lixeiras MARRONS da coleta seletiva!"
         self.endGameText.textColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center

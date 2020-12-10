@@ -77,9 +77,7 @@ class MapScene: SCNScene{
     
     func createCameraAnimation() -> SCNAction{
         let firstAnimation = SCNAction.move(by: SCNVector3(x: 0, y: -40, z: 20), duration: 4.0)
-        let secondAnimation = SCNAction.move(by: SCNVector3(x: -10, y: 15, z: 0), duration: 2.0)
-        let sequence = SCNAction.sequence([firstAnimation, secondAnimation])
-        
+        let sequence = SCNAction.sequence([firstAnimation])
         return sequence
     }
 }

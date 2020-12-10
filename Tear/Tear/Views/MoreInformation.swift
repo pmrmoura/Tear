@@ -19,10 +19,16 @@ class MoreInformation: UIView {
         self.setupFonts()
         self.setupView()
         self.setupConstraints()
+        self.setupInitialText()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupInitialText(){
+        self.titleLabel.text = "Selecione um badge"
+        self.infoLabel.text = "Nenhum badge foi selecionado, escolha um para ver mais sobre ele"
     }
     
     func setupFonts(){

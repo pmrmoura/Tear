@@ -119,7 +119,13 @@ class TrashNinjaViewController: UIViewController {
         if didWin {
             let badge = BadgeManager.shared.get(name: "badge0.jpeg")
             badge?.win = true
-            mapVC.perform(#selector(mapVC.animateGameWin), with: nil)
+            let gameProgress = ProgressManager.shared.get(name: "TrashNinja")
+            let cityProgress = ProgressManager.shared.get(name: "City")
+
+            cityProgress?.total += gameProgress!.total
+            ProgressManager.shared.save()
+            
+            mapVC.perform(#selector(mapVC.animateGameWin), with: nil, afterDelay: 1.0)
         }
         
         mapVC.modalPresentationStyle = .fullScreen
