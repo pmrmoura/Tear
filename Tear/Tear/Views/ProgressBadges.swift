@@ -70,21 +70,23 @@ extension ProgressBadges: UICollectionViewDataSource {
             badgeView.heightAnchor.constraint(equalToConstant: 80),
         ])
         
-        let imageName = "badge\(indexPath.item).png"
+        let imageName = "badge\(indexPath.item).jpeg"
         guard let image = UIImage(named: imageName) else {return myCell}
         
         
         let context = CIContext()
+        let badge = BadgeManager.shared.get(name: imageName)
         
-        if let currentFilter = CIFilter(name: "CISepiaTone") {
+        if let currentFilter = CIFilter(name: "CIColorMonochrome") {
             let beginImage = CIImage(image: image)
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-            currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
+            currentFilter.setValue(CIColor(red: 105/255, green: 105/255, blue: 105/255), forKey: "inputColor")
+            currentFilter.setValue(1, forKey: "inputIntensity")
 
             if let output = currentFilter.outputImage {
                 if let cgimg = context.createCGImage(output, from: output.extent) {
                     let processedImage = UIImage(cgImage: cgimg)
-                    badgeView.image = processedImage
+                    badgeView.image = badge == nil ? processedImage : image
                 }
             }
         } else {
