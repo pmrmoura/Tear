@@ -38,17 +38,17 @@ class CongratulationsView: UIView {
         self.titleLabel.text = "Parabéns"
         self.addSubview(self.titleLabel)
         
-        self.badgeView.image = UIImage(named: "badge1.png")
+        self.badgeView.image = UIImage(named: "badge0.png")
         self.addSubview(self.badgeView)
         
-        guard let labelFont = UIFont(name: "Roboto-Bold", size: 20) else {
+        guard let labelFont = UIFont(name: "Roboto-Bold", size: 18) else {
             fatalError("Failed to load Robot-bold font")
         }
 
         self.congratulationsText.textColor = UIColor(red: 0.42, green: 0.35, blue: 0.28, alpha: 1.00)
         self.congratulationsText.font = UIFontMetrics.default.scaledFont(for: labelFont)
         self.congratulationsText.adjustsFontForContentSizeCategory = true
-        self.congratulationsText.text = "Agora você é um patrono do mangue"
+        self.congratulationsText.text = "Agora você é o Astro do Descarte"
         self.congratulationsText.textAlignment = .center
         self.congratulationsText.numberOfLines = 0
         self.addSubview(self.congratulationsText)
@@ -64,7 +64,7 @@ class CongratulationsView: UIView {
             self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
-            self.badgeView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 40),
+            self.badgeView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),
             self.badgeView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.badgeView.widthAnchor.constraint(equalToConstant: 200),
             self.badgeView.heightAnchor.constraint(equalToConstant: 200),

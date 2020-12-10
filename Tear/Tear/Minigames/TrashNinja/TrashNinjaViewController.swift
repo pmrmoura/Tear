@@ -123,15 +123,14 @@ class TrashNinjaViewController: UIViewController {
     func leaveGameAfterWin(){
         
         let mapVC = MapViewController()
-
         self.game.restart()
         
-        mapVC.perform(#selector(mapVC.animateProgress), with: nil, afterDelay: 2.0)
+        mapVC.perform(#selector(mapVC.animateGameWin), with: nil, afterDelay: 2.0)
         mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
+        mapVC.perform(#selector(mapVC.animateGameWin), with: nil)
         mapVC.modalPresentationStyle = .fullScreen
-        self.present(mapVC, animated: true, completion: nil)
         
-        mapVC.setCongratulationsViewHiddeness()
+        self.present(mapVC, animated: true, completion: nil)
     }
     
     func handleTouchFor(node: SCNNode) {
@@ -158,8 +157,6 @@ class TrashNinjaViewController: UIViewController {
     }
     
     func nextPhase(){
-        
-        
         self.game.restart()
         self.gameHUD.restart()
         self.gameHUD.tapToPlayLabel.isHidden = false

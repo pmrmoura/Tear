@@ -68,10 +68,11 @@ class ProgressDetail: UIStackView {
     func setupContraints() {
         self.clearView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.progressCircleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
+            
+            //self.progressCircleView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             self.progressCircle.centerXAnchor.constraint(equalTo: self.progressCircleView.centerXAnchor, constant: CGFloat(-35)),
 
-            self.progressDetailData.topAnchor.constraint(equalTo: self.progressCircle.bottomAnchor, constant: 70),
+            //self.progressDetailData.topAnchor.constraint(equalTo: self.progressCircle.bottomAnchor, constant: 70),
             self.progressDetailData.heightAnchor.constraint(equalToConstant: 200),
             
             self.progressDetailBadges.heightAnchor.constraint(equalToConstant: 200),

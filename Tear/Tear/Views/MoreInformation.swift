@@ -66,8 +66,7 @@ class MoreInformation: UIView {
             self.titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
             
             self.infoLabel.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10),
-            self.infoLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
-            self.infoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.infoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
             self.infoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
             self.buttonLabel.topAnchor.constraint(equalTo: self.infoLabel.bottomAnchor, constant: 5),

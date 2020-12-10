@@ -18,6 +18,8 @@ class MapViewController: UIViewController {
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
     let gameWinHud: GameWinHud = GameWinHud(frame: UIScreen.main.bounds)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -94,7 +96,11 @@ class MapViewController: UIViewController {
         let progress = ProgressManager.shared.get(name: "City")
         progressCircle.handleColorChangeWithAnimation(duration: 1.0, value: progress!.total)
     }
-
+    
+    @objc func animateGameWin(){
+        self.gameWinHud.isHidden = false
+    }
+    
     func setupScene(){
         self.mapView.scene = self.mapScene
         self.mapView.showsStatistics = true
