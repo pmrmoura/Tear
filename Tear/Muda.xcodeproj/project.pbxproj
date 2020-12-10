@@ -93,16 +93,16 @@
 		0CEA9E7E25813A2F00E9DCC9 /* BadgeManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BadgeManager .swift"; sourceTree = "<group>"; };
 		0CEA9E862581428C00E9DCC9 /* MissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionManager.swift; sourceTree = "<group>"; };
 		0CEA9E912581459A00E9DCC9 /* MissionPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionPopup.swift; sourceTree = "<group>"; };
-		0CFE0138255D836A00C00084 /* Tear.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tear.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CFE0138255D836A00C00084 /* Muda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE013B255D836A00C00084 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CFE013D255D836A00C00084 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		0CFE013F255D836A00C00084 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0CFE0144255D836B00C00084 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CFE0146255D836B00C00084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CFE014B255D836B00C00084 /* TearTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TearTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CFE014B255D836B00C00084 /* MudaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MudaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE014F255D836B00C00084 /* TearTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TearTests.swift; sourceTree = "<group>"; };
 		0CFE0151255D836B00C00084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CFE0156255D836B00C00084 /* TearUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TearUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0CFE0156255D836B00C00084 /* MudaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MudaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE015A255D836B00C00084 /* TearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TearUITests.swift; sourceTree = "<group>"; };
 		0CFE015C255D836B00C00084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1970E56258112A700D90785 /* CongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsView.swift; sourceTree = "<group>"; };
@@ -216,9 +216,9 @@
 		0CFE0139255D836A00C00084 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0CFE0138255D836A00C00084 /* Tear.app */,
-				0CFE014B255D836B00C00084 /* TearTests.xctest */,
-				0CFE0156255D836B00C00084 /* TearUITests.xctest */,
+				0CFE0138255D836A00C00084 /* Muda.app */,
+				0CFE014B255D836B00C00084 /* MudaTests.xctest */,
+				0CFE0156255D836B00C00084 /* MudaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -304,9 +304,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0CFE0137255D836A00C00084 /* Tear */ = {
+		0CFE0137255D836A00C00084 /* Muda */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CFE015F255D836B00C00084 /* Build configuration list for PBXNativeTarget "Tear" */;
+			buildConfigurationList = 0CFE015F255D836B00C00084 /* Build configuration list for PBXNativeTarget "Muda" */;
 			buildPhases = (
 				0CFE0134255D836A00C00084 /* Sources */,
 				0CFE0135255D836A00C00084 /* Frameworks */,
@@ -316,14 +316,14 @@
 			);
 			dependencies = (
 			);
-			name = Tear;
+			name = Muda;
 			productName = Tear;
-			productReference = 0CFE0138255D836A00C00084 /* Tear.app */;
+			productReference = 0CFE0138255D836A00C00084 /* Muda.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0CFE014A255D836B00C00084 /* TearTests */ = {
+		0CFE014A255D836B00C00084 /* MudaTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CFE0162255D836B00C00084 /* Build configuration list for PBXNativeTarget "TearTests" */;
+			buildConfigurationList = 0CFE0162255D836B00C00084 /* Build configuration list for PBXNativeTarget "MudaTests" */;
 			buildPhases = (
 				0CFE0147255D836B00C00084 /* Sources */,
 				0CFE0148255D836B00C00084 /* Frameworks */,
@@ -334,14 +334,14 @@
 			dependencies = (
 				0CFE014D255D836B00C00084 /* PBXTargetDependency */,
 			);
-			name = TearTests;
+			name = MudaTests;
 			productName = TearTests;
-			productReference = 0CFE014B255D836B00C00084 /* TearTests.xctest */;
+			productReference = 0CFE014B255D836B00C00084 /* MudaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		0CFE0155255D836B00C00084 /* TearUITests */ = {
+		0CFE0155255D836B00C00084 /* MudaUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0CFE0165255D836B00C00084 /* Build configuration list for PBXNativeTarget "TearUITests" */;
+			buildConfigurationList = 0CFE0165255D836B00C00084 /* Build configuration list for PBXNativeTarget "MudaUITests" */;
 			buildPhases = (
 				0CFE0152255D836B00C00084 /* Sources */,
 				0CFE0153255D836B00C00084 /* Frameworks */,
@@ -352,9 +352,9 @@
 			dependencies = (
 				0CFE0158255D836B00C00084 /* PBXTargetDependency */,
 			);
-			name = TearUITests;
+			name = MudaUITests;
 			productName = TearUITests;
-			productReference = 0CFE0156255D836B00C00084 /* TearUITests.xctest */;
+			productReference = 0CFE0156255D836B00C00084 /* MudaUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -379,7 +379,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0CFE0133255D836A00C00084 /* Build configuration list for PBXProject "Tear" */;
+			buildConfigurationList = 0CFE0133255D836A00C00084 /* Build configuration list for PBXProject "Muda" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -392,9 +392,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0CFE0137255D836A00C00084 /* Tear */,
-				0CFE014A255D836B00C00084 /* TearTests */,
-				0CFE0155255D836B00C00084 /* TearUITests */,
+				0CFE0137255D836A00C00084 /* Muda */,
+				0CFE014A255D836B00C00084 /* MudaTests */,
+				0CFE0155255D836B00C00084 /* MudaUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -493,12 +493,12 @@
 /* Begin PBXTargetDependency section */
 		0CFE014D255D836B00C00084 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0CFE0137255D836A00C00084 /* Tear */;
+			target = 0CFE0137255D836A00C00084 /* Muda */;
 			targetProxy = 0CFE014C255D836B00C00084 /* PBXContainerItemProxy */;
 		};
 		0CFE0158255D836B00C00084 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 0CFE0137255D836A00C00084 /* Tear */;
+			target = 0CFE0137255D836A00C00084 /* Muda */;
 			targetProxy = 0CFE0157255D836B00C00084 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -678,7 +678,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tear.app/Tear";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Muda.app/Muda";
 			};
 			name = Debug;
 		};
@@ -700,7 +700,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tear.app/Tear";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Muda.app/Muda";
 			};
 			name = Release;
 		};
@@ -747,7 +747,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0CFE0133255D836A00C00084 /* Build configuration list for PBXProject "Tear" */ = {
+		0CFE0133255D836A00C00084 /* Build configuration list for PBXProject "Muda" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFE015D255D836B00C00084 /* Debug */,
@@ -756,7 +756,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CFE015F255D836B00C00084 /* Build configuration list for PBXNativeTarget "Tear" */ = {
+		0CFE015F255D836B00C00084 /* Build configuration list for PBXNativeTarget "Muda" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFE0160255D836B00C00084 /* Debug */,
@@ -765,7 +765,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CFE0162255D836B00C00084 /* Build configuration list for PBXNativeTarget "TearTests" */ = {
+		0CFE0162255D836B00C00084 /* Build configuration list for PBXNativeTarget "MudaTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFE0163255D836B00C00084 /* Debug */,
@@ -774,7 +774,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0CFE0165255D836B00C00084 /* Build configuration list for PBXNativeTarget "TearUITests" */ = {
+		0CFE0165255D836B00C00084 /* Build configuration list for PBXNativeTarget "MudaUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0CFE0166255D836B00C00084 /* Debug */,

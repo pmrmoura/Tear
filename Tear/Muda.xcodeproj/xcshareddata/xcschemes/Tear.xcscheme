@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CFE0137255D836A00C00084"
-               BuildableName = "Tear.app"
-               BlueprintName = "Tear"
-               ReferencedContainer = "container:Tear.xcodeproj">
+               BuildableName = "Muda.app"
+               BlueprintName = "Muda"
+               ReferencedContainer = "container:Muda.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CFE014A255D836B00C00084"
-               BuildableName = "TearTests.xctest"
-               BlueprintName = "TearTests"
-               ReferencedContainer = "container:Tear.xcodeproj">
+               BuildableName = "MudaTests.xctest"
+               BlueprintName = "MudaTests"
+               ReferencedContainer = "container:Muda.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0CFE0155255D836B00C00084"
-               BuildableName = "TearUITests.xctest"
-               BlueprintName = "TearUITests"
-               ReferencedContainer = "container:Tear.xcodeproj">
+               BuildableName = "MudaUITests.xctest"
+               BlueprintName = "MudaUITests"
+               ReferencedContainer = "container:Muda.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0CFE0137255D836A00C00084"
-            BuildableName = "Tear.app"
-            BlueprintName = "Tear"
-            ReferencedContainer = "container:Tear.xcodeproj">
+            BuildableName = "Muda.app"
+            BlueprintName = "Muda"
+            ReferencedContainer = "container:Muda.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0CFE0137255D836A00C00084"
-            BuildableName = "Tear.app"
-            BlueprintName = "Tear"
-            ReferencedContainer = "container:Tear.xcodeproj">
+            BuildableName = "Muda.app"
+            BlueprintName = "Muda"
+            ReferencedContainer = "container:Muda.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
