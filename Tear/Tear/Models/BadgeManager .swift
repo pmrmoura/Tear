@@ -14,7 +14,7 @@ struct BadgeManager {
 
         badge.explainText = explainText
         badge.imageName = imageName
-        badge.link = link
+        badge.link = URL(string: link)
         badge.name = name
 
         return self.save() ? badge : nil

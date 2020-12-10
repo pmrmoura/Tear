@@ -35,9 +35,10 @@ class MapScene: SCNScene{
         self.orbitNode.position = SCNVector3(x: 10, y: 30, z: -20)
         self.orbitNode.addChildNode(self.cameraNode)
         self.rootNode.addChildNode(self.orbitNode)
-        let light = SCNLight()
-        light.type = .omni
-        self.cameraNode.light = light
+//        let light = SCNLight()
+//        light.type = .omni
+//        self.cameraNode.light = light
+        
     }
     
     func setupNodes(){
@@ -57,6 +58,7 @@ class MapScene: SCNScene{
             distanceConstraint.minimumDistance = 10
             self.cameraNode.constraints = [lookAtConstraint, distanceConstraint]
         }
+
         let firstAnimation = SCNAction.move(by: SCNVector3(x: 0, y: -40, z: 20), duration: 4.0)
         let secondAnimation = SCNAction.move(by: SCNVector3(x: -10, y: 15, z: 0), duration: 2.0)
 
@@ -67,20 +69,27 @@ class MapScene: SCNScene{
         if let filePath = Bundle.main.path(forResource: "exclamacao", ofType: "scn", inDirectory: "art.scnassets") {
             let referenceURL = URL(fileURLWithPath: filePath)
             print(filePath)
+            
             if #available(iOS 9.0, *) {
                 let referenceNode = SCNReferenceNode(url: referenceURL)
                     referenceNode?.load()
                     referenceNode?.name = "mangrooveExclamation"
-                referenceNode?.position.y = 3
-                guard let mangroove = self.rootNode.childNode(withName: "mangroveTree-021", recursively: true) else { return }
+                    referenceNode?.position.y = 3
+//                    referenceNode!.scale = SCNVector3(0.1, 0.1, 0.1)
+                
+                guard let mangroove = self.rootNode.childNode(withName: "Mangrove-019", recursively: true) else { return }
                     
                     mangroove.addChildNode(referenceNode!)
+                
                     let moveUp = SCNAction.moveBy(x: 0, y: 7, z: 0, duration: 1)
-                    moveUp.timingMode = .easeInEaseOut;
                     let moveDown = SCNAction.moveBy(x: 0, y: -7, z: 0, duration: 1)
+                    
+                    moveUp.timingMode = .easeInEaseOut;
                     moveDown.timingMode = .easeInEaseOut;
+                    
                     let moveSequence = SCNAction.sequence([moveUp,moveDown])
                     let moveLoop = SCNAction.repeatForever(moveSequence)
+                    
                     referenceNode!.runAction(moveLoop)
             }
         }

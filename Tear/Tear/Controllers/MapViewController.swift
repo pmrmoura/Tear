@@ -38,8 +38,8 @@ class MapViewController: UIViewController {
     func setupPopupViews(){
         self.gameWinHud.isHidden = true
         self.missionPopup.isHidden = true
-        
-        //self.missionPopup.leaveGameButton.addTarget(self, action: #selector(), for: .touchUpInside)
+        self.missionPopup.leaveGameButton.addTarget(self, action: #selector(self.exitModal), for: .touchUpInside)
+        self.missionPopup.startGameButton.addTarget(self, action: #selector(self.startGame), for: .touchUpInside)
     }
     
     func setupView(){
@@ -47,6 +47,8 @@ class MapViewController: UIViewController {
         self.mapView = self.view as? SCNView
         self.mapView.isPlaying = true
         self.mapView.allowsCameraControl = true
+        self.mapView.autoenablesDefaultLighting = true
+    
         self.setupProgressCircle()
         self.setupProgressDetail()
         
@@ -101,14 +103,18 @@ class MapViewController: UIViewController {
     
     func handleTouchFor(node: SCNNode) {
         if node.name == "exclamation" {
-            self.missionPopup.isHidden = false //POPUP DE MISSÃO NÃO ESTÁ ABRINDO
+            self.missionPopup.isHidden = false
         }
     }
     
-    func startGame(){
+    @objc func startGame(){
         let trashNinjaVC = TrashNinjaViewController()
         trashNinjaVC.modalPresentationStyle = .fullScreen
         self.present(trashNinjaVC, animated: true, completion: nil)
+    }
+    
+    @objc func exitModal() {
+        self.missionPopup.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
