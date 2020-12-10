@@ -40,6 +40,7 @@ class ProgressDetailData: UIView {
         self.waterBar.translatesAutoresizingMaskIntoConstraints = false
         self.airBar.translatesAutoresizingMaskIntoConstraints = false
         self.soilBar.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             self.waterBar.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: -30),
             self.waterBar.heightAnchor.constraint(equalToConstant: 50),
