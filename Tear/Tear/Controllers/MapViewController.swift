@@ -40,7 +40,7 @@ class MapViewController: UIViewController {
     func checkCompletedMissions(){
         let progress = ProgressManager.shared.get(name: "City")
         let value = progress?.total
-        print(value)
+        
         switch value {
         case value where value! >= 0.5:
             let trash = self.mapScene.rootNode.childNode(withName: "Lixooceano2", recursively: true)
@@ -52,7 +52,8 @@ class MapViewController: UIViewController {
             trash?.removeFromParentNode()
             dumpster?.removeFromParentNode()
         default:
-            print("Nois")
+            let trash = self.mapScene.rootNode.childNode(withName: "Lixooceano2", recursively: true)
+            trash?.removeFromParentNode()
         //            let trash = self.mapScene.rootNode.childNode(withName: "", recursively: true)
         //            trash?.removeFromParentNode()
         }
