@@ -47,6 +47,7 @@ class MapViewController: UIViewController {
         self.view = SCNView()
         self.mapView = self.view as? SCNView
         self.mapView.isPlaying = true
+        self.mapView.showsStatistics = false
         self.mapView.allowsCameraControl = true
         self.mapView.autoenablesDefaultLighting = true
     
@@ -103,7 +104,6 @@ class MapViewController: UIViewController {
     
     func setupScene(){
         self.mapView.scene = self.mapScene
-        self.mapView.showsStatistics = true
         self.mapView.autoenablesDefaultLighting = true
         self.mapView.delegate = self
     }
