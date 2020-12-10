@@ -94,7 +94,7 @@ class TrashNinjaViewController: UIViewController {
     @objc func touchedDisplay(sender: UIButton) {
         switch sender.tag {
             case 0:
-                self.leaveGame()
+                self.leaveGame(false)
             case 1:
                 self.game.pause()
                 self.gameScene.isPaused = self.game.state == .Paused ? true : false
@@ -109,27 +109,18 @@ class TrashNinjaViewController: UIViewController {
         }
     }
     
-    func leaveGame(){
-        
+    func leaveGame(_ didWin: Bool){
         let mapVC = MapViewController()
         self.game.restart()
         
         mapVC.perform(#selector(mapVC.animateProgress), with: nil, afterDelay: 2.0)
         mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
+        
+        if didWin {
+            mapVC.perform(#selector(mapVC.animateGameWin), with: nil)
+        }
+        
         mapVC.modalPresentationStyle = .fullScreen
-        self.present(mapVC, animated: true, completion: nil)
-    }
-    
-    func leaveGameAfterWin(){
-        
-        let mapVC = MapViewController()
-        self.game.restart()
-        
-        mapVC.perform(#selector(mapVC.animateGameWin), with: nil, afterDelay: 2.0)
-        mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
-        mapVC.perform(#selector(mapVC.animateGameWin), with: nil)
-        mapVC.modalPresentationStyle = .fullScreen
-        
         self.present(mapVC, animated: true, completion: nil)
     }
     
@@ -163,26 +154,29 @@ class TrashNinjaViewController: UIViewController {
         self.game.phase += 1
         self.gameScene.phase = self.game.phase
         
-        if self.game.phase == 6 {
-            self.leaveGameAfterWin()
-        }
-        
-        if self.game.phase == 1{
+        switch self.game.phase {
+        case 0:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
             self.gameHUD.materialDescription.text = "ORGÂNICO"
-        } else if self.game.phase == 2 {
+        case 1:
+            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
+            self.gameHUD.materialDescription.text = "ORGÂNICO"
+        case 2:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PAPEIS"
             self.gameHUD.materialDescription.text = "PAPEL"
-        } else if self.game.phase == 3 {
+        case 3:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS VIDROS"
             self.gameHUD.materialDescription.text = "VIDRO"
-        } else if self.game.phase == 4 {
+        case 4:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PLÁSTICOS"
             self.gameHUD.materialDescription.text = "PLÁSTICO"
-        } else if self.game.phase == 5 {
+        case 5:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS METAIS"
             self.gameHUD.materialDescription.text = "METAL"
+        default:
+            self.leaveGame(true)
         }
+        
     }
     
 }

@@ -17,7 +17,7 @@ class MapScene: SCNScene{
         super.init()
         self.setupCamera()
         self.setupNodes()
-        self.setupExclamation()
+        self.createExclamationAnimation()
         self.background.contents = "GeometryFighter.scnassets/Textures/background-2.jpeg"
     }
     
@@ -41,31 +41,7 @@ class MapScene: SCNScene{
         self.rootNode.addChildNode(self.orbitNode)
     }
     
-    func setupLights(){
-//        let light = SCNLight()
-//        light.type = .omni
-//        self.cameraNode.light = light
-    }
-    
-    func setupExclamation(){
-        guard let exclamationSupport = self.rootNode.childNode(withName: "Cube-005", recursively: true) else { return }
-        guard let filePath = Bundle.main.path(forResource: "exclamacao", ofType: "scn", inDirectory: "art.scnassets") else {return}
-            
-        let referenceURL = URL(fileURLWithPath: filePath)
-            
-        if #available(iOS 9.0, *) {
-            let referenceNode = SCNReferenceNode(url: referenceURL)
-            referenceNode?.load()
-            referenceNode?.name = "mangrooveExclamation"
-            referenceNode?.position.y = -2.5
-            referenceNode!.runAction(createExclamationAnimation())
-            referenceNode!.scale = SCNVector3(0.2, 0.2, 0.2)
-            
-            exclamationSupport.addChildNode(referenceNode!)
-        }
-    }
-    
-    func createExclamationAnimation() -> SCNAction{
+    func createExclamationAnimation() {
         let moveUp = SCNAction.moveBy(x: 0, y: 0.4, z: 0, duration: 1)
         let moveDown = SCNAction.moveBy(x: 0, y: -0.4, z: 0, duration: 1)
         let moveSequence = SCNAction.sequence([moveUp,moveDown])
@@ -74,7 +50,8 @@ class MapScene: SCNScene{
         moveUp.timingMode = .easeInEaseOut;
         moveDown.timingMode = .easeInEaseOut;
         
-        return moveLoop
+        let exclamation = self.rootNode.childNode(withName: "exclamation", recursively: true)
+        exclamation!.runAction(moveLoop)
     }
     
     func setupNodes(){
@@ -87,14 +64,14 @@ class MapScene: SCNScene{
                 self.rootNode.addChildNode(referenceNode!)
             }
         }
+        
         if let target = self.rootNode.childNode(withName: "mangroveTree-021", recursively: true) {
             let lookAtConstraint = SCNLookAtConstraint(target:target)
             let distanceConstraint = SCNDistanceConstraint(target: target)
             distanceConstraint.minimumDistance = 10
             self.cameraNode.constraints = [lookAtConstraint, distanceConstraint]
         }
-        
-
+    
         self.orbitNode.runAction(createCameraAnimation())
     }
     
