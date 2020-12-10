@@ -14,7 +14,6 @@ struct SeedDatabase {
     static var badge: [Badge?] = []
     static var mission: [Mission?] = []
     static var progress: [Progress?] = []
-    static var city: [City?] = []
     
     func seed() {
         let badges = self.createBadges()
@@ -44,13 +43,11 @@ struct SeedDatabase {
             MissionManager.shared.create(
                 modalText: "A coleta seletiva é uma parte muito importante no descarte correto do nosso lixo! Vamos aprender a colocar cada coisa em seu lugar?",
                 modalTitle: "Lixo não é tudo igual!",
-                progressEarned: 1,
                 badge: badges[0]
             ),
             MissionManager.shared.create(
                 modalText: "A vida no mangue está morrendo devido ao lixo. Junte-se ao movimento PE SEM LIXO para limpá-lo.",
                 modalTitle: "Mutirão",
-                progressEarned: 1,
                 badge: badges[1]
             ),
         ]

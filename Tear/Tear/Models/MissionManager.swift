@@ -4,7 +4,7 @@ struct MissionManager {
     static let shared = MissionManager()
     static var context = DatabaseController.persistentContainer.viewContext
     
-    func create(modalText: String, modalTitle: String, progressEarned: Float, badge: Badge?) -> Mission? {
+    func create(modalText: String, modalTitle: String, badge: Badge?) -> Mission? {
 
         let missionObject = NSEntityDescription.insertNewObject(forEntityName: "Mission", into: MissionManager.context)
 
@@ -14,7 +14,6 @@ struct MissionManager {
 
         mission.modalText = modalText
         mission.modalTitle = modalTitle
-        mission.progressEarned = progressEarned
         mission.badge = badge
 
         return self.save() ? mission : nil
