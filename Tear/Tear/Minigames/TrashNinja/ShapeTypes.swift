@@ -12,22 +12,28 @@ enum ShapeType:Int {
     case apple = 0
     case countryEgg
     case whiteEgg
-    case glassCup
-    case goblet
-    case wineBottle
-    case plasticCup
-    case toothbrush
-    case straw
-    case tunaCan
-    case screw
-    case sodaCan
+    case banana
+    
     case toiletPaper
     case beigePaper
     case whitePaper
-    case banana
+    
+    case glassCup
+    case goblet
+    case wineBottle
+    
+    case plasticCup
+    case toothbrush
+    case straw
+    
+    case tunaCan
+    case screw
+    case sodaCan
 
-  static func random() -> ShapeType {
-    let maxValue = banana.rawValue
+    
+
+    static func random(phase: Int) -> ShapeType {
+    let maxValue = 6 + (3 * (phase - 1))
     let rand = arc4random_uniform(UInt32(maxValue+1))
     return ShapeType(rawValue: Int(rand))!
   }

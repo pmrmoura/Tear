@@ -233,6 +233,11 @@ class GameHUD: UIView, CodeView {
         let audioButtonBackground = #imageLiteral(resourceName: "Asset 39")
         let color = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         
+        guard let titleFont = UIFont(name: "Roboto-Bold", size: 34) else {
+            fatalError("Failed to load Robot-bold font")
+        }
+
+        
         self.leaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         self.leaveButton.setBackgroundImage(leaveButtonBackground, for: .normal)
         self.leaveButton.tag = 0
@@ -270,7 +275,7 @@ class GameHUD: UIView, CodeView {
         self.endGameLabel.textColor = color
         self.endGameLabel.font = UIFont.systemFont(ofSize: 30, weight: .medium)
         
-        self.nextPhaseButton.setTitle("Próxima", for: .normal)
+        self.nextPhaseButton.setTitle("Continuar", for: .normal)
         self.nextPhaseButton.layer.borderColor = color.cgColor
         self.nextPhaseButton.layer.borderWidth = 3
         self.nextPhaseButton.layer.maskedCorners = [.layerMinXMaxYCorner]
@@ -302,14 +307,18 @@ class GameHUD: UIView, CodeView {
         
         self.materialDescription.text = "ORGÂNICO"
         self.materialDescription.textColor = color
+        
+        self.endGameText.text = "Lembre-se! Os resíduos organicos devem ser descartados nas lixeiras MARRONS da coleta seletiva!"
+        self.endGameText.textColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
     }
     
     func gameLost() {
         self.nextPhaseButton.isHidden = true
         self.leaveGameButton.layer.maskedCorners = [.layerMinXMaxYCorner ,.layerMaxXMaxYCorner]
         self.popUpView.isHidden = false
-        self.endGameLabel.text = "ops"
-        self.endGameText.text = "ainda não chegamos lá! resíduos que não são separados corretamente dificilmente podem ser reciclados"
+        self.endGameLabel.text = "Ainda não chegamos lá"
+        self.endGameText.text = "Resíduos que não são separados corretamente dificilmente podem ser reciclados"
+        
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center
         
@@ -319,8 +328,6 @@ class GameHUD: UIView, CodeView {
     
     func gameWin() {
         self.endGameLabel.text = "Muito bem!"
-        self.endGameText.text = "lembre-se! Os resíduos organicos devem ser descartados nas lixeiras MARRONS da coleta seletiva!"
-        self.endGameText.textColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center
         self.popUpView.isHidden = false

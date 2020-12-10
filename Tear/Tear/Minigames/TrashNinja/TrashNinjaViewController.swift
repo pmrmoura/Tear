@@ -24,14 +24,6 @@ class TrashNinjaViewController: UIViewController {
         self.setupHUD()
     }
     
-    override var shouldAutorotate: Bool {
-        return true
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
     func setupView(){
         self.view = SCNView()
         self.gameView = self.view as? SCNView
@@ -163,24 +155,22 @@ class TrashNinjaViewController: UIViewController {
         self.gameScene.phase = self.game.phase
         
         switch self.game.phase {
-        case 0:
-            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
-            self.gameHUD.materialDescription.text = "ORGÂNICO"
-        case 1:
-            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
-            self.gameHUD.materialDescription.text = "ORGÂNICO"
         case 2:
-            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PAPEIS"
+            self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PAPÉIS"
             self.gameHUD.materialDescription.text = "PAPEL"
+            self.gameHUD.endGameText.text = "Lembre-se! Os papéis devem ser descartados nas lixeiras AZUIS da coleta seletiva!"
         case 3:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS VIDROS"
             self.gameHUD.materialDescription.text = "VIDRO"
+            self.gameHUD.endGameText.text = "Lembre-se! Os vidros devem ser descartados nas lixeiras VERDES da coleta seletiva!"
         case 4:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS PLÁSTICOS"
             self.gameHUD.materialDescription.text = "PLÁSTICO"
+            self.gameHUD.endGameText.text = "Lembre-se! Os plásticos devem ser descartados nas lixeiras VERMELHAS da coleta seletiva!"
         case 5:
             self.gameHUD.tapToPlayLabel.text = "SELECIONE APENAS OS METAIS"
             self.gameHUD.materialDescription.text = "METAL"
+            self.gameHUD.endGameText.text = "Lembre-se! Os metais devem ser descartados nas lixeiras AMARELAS da coleta seletiva!"
         default:
             self.leaveGame(true)
         }
