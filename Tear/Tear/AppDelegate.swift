@@ -18,13 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let firstRun = UserDefaults.standard.bool(forKey: "firstRun") as Bool
             if !firstRun {
                 UserDefaults.standard.set(true, forKey: "firstRun")
+                SeedDatabase.shared.seed()
             }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = MapViewController()
-        
-        SeedDatabase.shared.seed()
         
         return true
     }

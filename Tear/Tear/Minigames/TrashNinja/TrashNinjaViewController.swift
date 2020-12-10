@@ -120,6 +120,20 @@ class TrashNinjaViewController: UIViewController {
         self.present(mapVC, animated: true, completion: nil)
     }
     
+    func leaveGameAfterWin(){
+        
+        let mapVC = MapViewController()
+
+        self.game.restart()
+        
+        mapVC.perform(#selector(mapVC.animateProgress), with: nil, afterDelay: 2.0)
+        mapVC.perform(#selector(mapVC.animateColorChange), with: nil, afterDelay: 3.0)
+        mapVC.modalPresentationStyle = .fullScreen
+        self.present(mapVC, animated: true, completion: nil)
+        
+        mapVC.setCongratulationsViewHiddeness()
+    }
+    
     func handleTouchFor(node: SCNNode) {
         if node.name == "GOOD" {
             self.game.hit()
@@ -153,7 +167,7 @@ class TrashNinjaViewController: UIViewController {
         self.gameScene.phase = self.game.phase
         
         if self.game.phase == 6 {
-            leaveGame()
+            self.leaveGameAfterWin()
         }
         
         if self.game.phase == 1{

@@ -18,7 +18,6 @@ class MapViewController: UIViewController {
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
     let gameWinHud: GameWinHud = GameWinHud(frame: UIScreen.main.bounds)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -36,8 +35,8 @@ class MapViewController: UIViewController {
     }
     
     func setupPopupViews(){
-        self.gameWinHud.isHidden = true
         self.missionPopup.isHidden = true
+        self.gameWinHud.isHidden = true
         self.missionPopup.leaveGameButton.addTarget(self, action: #selector(self.exitModal), for: .touchUpInside)
         self.missionPopup.startGameButton.addTarget(self, action: #selector(self.startGame), for: .touchUpInside)
     }
@@ -60,7 +59,10 @@ class MapViewController: UIViewController {
     
     func setupProgressCircle() {
         self.progressCircle.trackColor = UIColor(red: 0.92, green: 0.91, blue: 0.90, alpha: 1.00)
-        self.progressCircle.progressColor = UIColor(red: 0.73, green: 0.23, blue: 0.26, alpha: 1.00)
+    }
+    
+    func setCongratulationsViewHiddeness() {
+        self.gameWinHud.isHidden = false
     }
     
     func setupConstraints(){
@@ -85,10 +87,12 @@ class MapViewController: UIViewController {
     }
     
     @objc func animateProgress() {
-        progressCircle.setProgressWithAnimation(duration: 1.0, value: 0.6)
+        let progress = ProgressManager.shared.get(name: "City")
+        progressCircle.setProgressWithAnimation(duration: 1.0, value: progress!.total)
     }
     @objc func animateColorChange() {
-        progressCircle.handleColorChangeWithAnimation(duration: 1.0, value: 0.6)
+        let progress = ProgressManager.shared.get(name: "City")
+        progressCircle.handleColorChangeWithAnimation(duration: 1.0, value: progress!.total)
     }
 
     func setupScene(){

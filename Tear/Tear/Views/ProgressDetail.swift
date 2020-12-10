@@ -45,8 +45,8 @@ class ProgressDetail: UIStackView {
         self.addArrangedSubview(self.progressCircleView)
         
         // Progress circle setup
-        self.progressCircle.trackColor = UIColor(red: 0.92, green: 0.91, blue: 0.90, alpha: 1.00)
-        self.progressCircle.progressColor = UIColor(red: 0.73, green: 0.23, blue: 0.26, alpha: 1.00)
+//        self.progressCircle.trackColor = UIColor(red: 0.92, green: 0.91, blue: 0.90, alpha: 1.00)
+//        self.progressCircle.progressColor = UIColor(red: 0.73, green: 0.23, blue: 0.26, alpha: 1.00)
         self.progressCircle.translatesAutoresizingMaskIntoConstraints = false
         self.progressCircleView.addSubview(self.progressCircle)
 

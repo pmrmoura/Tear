@@ -15,21 +15,22 @@ class ProgressCircle: UIView {
         super.init(frame: frame)
         createCircularPath()
         setProgressIcon()
+        self.setProgressInitialValue()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         createCircularPath()
         setProgressIcon()
-
+        self.setProgressInitialValue()
         fatalError("init(coder:) has not been implemented")
     }
     
-    var progressColor = UIColor.red {
-        didSet {
-            progressLayer.strokeColor = progressColor.cgColor
-        }
-    }
+//    var progressColor = UIColor.red {
+//        didSet {
+//            progressLayer.strokeColor = progressColor.cgColor
+//        }
+//    }
     
     var trackColor = UIColor.yellow {
         didSet {
@@ -68,10 +69,18 @@ class ProgressCircle: UIView {
         
         progressLayer.path = circlePath.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.strokeColor = progressColor.cgColor
+        progressLayer.strokeColor = UIColor(red: 0.73, green: 0.23, blue: 0.26, alpha: 1.00).cgColor
         progressLayer.lineWidth = 15.0
-        progressLayer.strokeEnd = 0.2
+        progressLayer.strokeEnd = 0
         layer.addSublayer(progressLayer)
+    }
+    
+    func setProgressInitialValue() {
+        if let progress = ProgressManager.shared.get(name: "City") {
+            self.setProgressWithAnimation(duration: 1.0, value: progress.total)
+            
+            self.handleColorChangeWithAnimation(duration: 1.0, value: progress.total)
+        }
     }
     
     func setProgressWithAnimation(duration: TimeInterval, value: Float) {
