@@ -100,6 +100,7 @@ class MapViewController: UIViewController {
     
     @objc func animateGameWin(){
         self.gameWinHud.isHidden = false
+        print("Teste")
     }
     
     func setupScene(){

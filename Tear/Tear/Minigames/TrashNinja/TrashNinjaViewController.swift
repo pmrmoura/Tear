@@ -125,7 +125,7 @@ class TrashNinjaViewController: UIViewController {
             cityProgress?.total += gameProgress!.total
             ProgressManager.shared.save()
             
-            mapVC.perform(#selector(mapVC.animateGameWin), with: nil)
+            mapVC.perform(#selector(mapVC.animateGameWin), with: nil, afterDelay: 1.0)
         }
         
         mapVC.modalPresentationStyle = .fullScreen
