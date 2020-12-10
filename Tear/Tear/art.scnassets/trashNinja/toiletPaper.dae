@@ -4,8 +4,13 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
+<<<<<<< HEAD
+  <created>2020-12-10T23:14:25Z</created>
+  <modified>2020-12-10T23:14:25Z</modified>
+=======
   <created>2020-12-10T20:52:05Z</created>
   <modified>2020-12-10T20:52:05Z</modified>
+>>>>>>> 6ac157cb5e9095aa510a60c33d3d90f5924d73b5
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -23,7 +28,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>1 1 1 1</color>
+       <color>0.920756 0.915283 0.924964 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -46,7 +51,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>0.40724 0.351533 0.234551 1</color>
+       <color>0.670588 0.627451 0.521569 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -118,7 +123,11 @@
  <library_visual_scenes>
   <visual_scene id="scene7">
    <node id="toiletPaper" name="toiletPaper">
+<<<<<<< HEAD
+    <matrix>0.6 0 0 0 0 0.6 0 0 0 0 0.6 0 0 0 0 1 </matrix>
+=======
     <matrix>1 0 0 9.454567 0 1 0 0 0 0 1 -7.137558 0 0 0 1 </matrix>
+>>>>>>> 6ac157cb5e9095aa510a60c33d3d90f5924d73b5
     <instance_geometry url="#geometry1">
      <bind_material>
       <technique_common>

@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2020-12-09T11:59:48Z</created>
-  <modified>2020-12-09T11:59:48Z</modified>
+  <created>2020-12-10T22:41:10Z</created>
+  <modified>2020-12-10T22:41:10Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -20,7 +20,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>0.142404 0.142404 0.142404 1</color>
+       <color>0.670588 0.698039 0.701961 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -86,7 +86,7 @@
  <library_visual_scenes>
   <visual_scene id="scene6">
    <node id="screw" name="screw">
-    <matrix>0.07361925 0 0 0 0 -0.1300259 -0.0006335868 0 -0 0.001119107 -0.07361469 0 0 0 0 1 </matrix>
+    <matrix>0.07361925 0 0 0 0 -0.1300259 -0.0006335868 0 0 0.001119107 -0.07361469 0 0 0 0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>
       <technique_common>
