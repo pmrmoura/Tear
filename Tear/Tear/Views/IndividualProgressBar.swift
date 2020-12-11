@@ -42,7 +42,9 @@ class IndividualProgressBar: UIView {
         DispatchQueue.global().async  {
             DispatchQueue.main.async {
                 () -> Void in
-                self.progressBar.setProgress(progress, animated: true)
+                UIView.animate(withDuration: 3.0) {
+                    self.progressBar.setProgress(progress, animated: true)
+                }
             }
         }
     }
