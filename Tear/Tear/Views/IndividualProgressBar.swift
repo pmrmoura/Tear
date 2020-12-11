@@ -35,8 +35,7 @@ class IndividualProgressBar: UIView {
         self.progressBar.clipsToBounds = true
         self.progressBar.layer.cornerRadius = 12
         self.addSubview(self.progressBar)
-        
-        updateProgress(progress: 0.5)
+
     }
     
     func updateProgress(progress: Float) {

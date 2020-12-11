@@ -16,10 +16,19 @@ class ProgressDetailData: UIView {
         super.init(frame: frame)
         self.setupView()
         self.setupConstraints()
+        self.setPersistentProgress()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setPersistentProgress() {
+        if let progress = ProgressManager.shared.get(name: "City") {
+            self.waterBar.updateProgress(progress: progress.water)
+            self.airBar.updateProgress(progress: progress.air)
+            self.soilBar.updateProgress(progress: progress.soil)
+        }
     }
     
     func setupView() {

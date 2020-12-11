@@ -41,14 +41,26 @@ class MapViewController: UIViewController {
         let progress = ProgressManager.shared.get(name: "City")
         let value = progress?.total
         
+        
         switch value {
         case value where value! >= 0.5:
             let trash = self.mapScene.rootNode.childNode(withName: "Lixooceano2", recursively: true)
+            let trashCans = self.mapScene.rootNode.childNode(withName: "trashCans", recursively: true)
+            let trashBags = self.mapScene.rootNode.childNode(withName: "trash", recursively: true)
+            let dumpster = self.mapScene.rootNode.childNode(withName: "dumpster", recursively: true)
+
+            trashCans?.isHidden = false
+            trashBags?.removeFromParentNode()
+            dumpster?.removeFromParentNode()
             trash?.removeFromParentNode()
+            
             
         case value where value! >= 0.25:
             let trash = self.mapScene.rootNode.childNode(withName: "trash", recursively: true)
             let dumpster = self.mapScene.rootNode.childNode(withName: "dumpster", recursively: true)
+            let trashCans = self.mapScene.rootNode.childNode(withName: "trashCans", recursively: true)
+            
+            trashCans?.isHidden = false
             trash?.removeFromParentNode()
             dumpster?.removeFromParentNode()
         default:
@@ -123,14 +135,20 @@ class MapViewController: UIViewController {
     @objc func animateProgress() {
         let progress = ProgressManager.shared.get(name: "City")
         progressCircle.setProgressWithAnimation(duration: 1.0, value: progress!.total)
+        
+        self.progressDetail.progressCircle.setProgressWithAnimation(duration: 1.0, value: progress!.total)
+        self.progressDetail.progressDetailData.setPersistentProgress()
+        
     }
     @objc func animateColorChange() {
         let progress = ProgressManager.shared.get(name: "City")
         progressCircle.handleColorChangeWithAnimation(duration: 1.0, value: progress!.total)
+        self.progressDetail.progressCircle.handleColorChangeWithAnimation(duration: 1.0, value: progress!.total)
     }
     
     @objc func animateGameWin(){
         self.gameWinHud.isHidden = false
+        self.gameWinHud.progressDetailData.setPersistentProgress()
     }
     
     func setupScene(){

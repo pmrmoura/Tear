@@ -115,6 +115,10 @@ class TrashNinjaViewController: UIViewController {
             let cityProgress = ProgressManager.shared.get(name: "City")
 
             cityProgress?.total += gameProgress!.total
+            cityProgress?.water += gameProgress!.water
+            cityProgress?.air += gameProgress!.air
+            cityProgress?.soil += gameProgress!.soil
+
             ProgressManager.shared.save()
             
             mapVC.perform(#selector(mapVC.animateGameWin), with: nil, afterDelay: 1.0)

@@ -101,7 +101,7 @@ class ProgressCircle: UIView {
         case let value where value < 0.8:
             color = UIColor(red: 0.85, green: 0.65, blue: 0.32, alpha: 1.00)
         default:
-            color = UIColor(red: 0.68, green: 0.85, blue: 0.32, alpha: 1.00)
+            color = UIColor(red: 0.46, green: 0.56, blue: 0.38, alpha: 1.00)
         }
         let animation = CABasicAnimation(keyPath: "strokeColor")
         animation.duration = duration
