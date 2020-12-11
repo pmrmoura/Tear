@@ -17,7 +17,7 @@ class GameScene: SCNScene{
         super.init()
         self.setupCamera()
         self.background.contents = "GeometryFighter.scnassets/Textures/Background.png"
-        self.setupLight()
+        //self.setupLight()
     }
     
     required init?(coder: NSCoder) {
@@ -25,10 +25,9 @@ class GameScene: SCNScene{
     }
     
     func setupLight(){
-        let lightNode = SCNLight()
-        lightNode.type = .ambient
-        self.cameraNode.light = lightNode
-        //self.rootNode.light = lightNode
+//        let lightNode = SCNLight()
+//        lightNode.type = .ambient
+//        self.cameraNode.light = lightNode
     }
     
     func setupCamera(){
@@ -40,9 +39,8 @@ class GameScene: SCNScene{
     }
     
     func createObject(name: String) -> SCNNode {
-        let appleScene = SCNScene(named: "art.scnassets/trashNinja/\(name).dae")!
-        //appleScene.rootNode.childNodes[0].scale = SCNVector3(x: 0.5, y: 0.5, z: 0.5)
-        return appleScene.rootNode.childNodes[0]
+        let trashScene = SCNScene(named: "art.scnassets/trashNinja/\(name).dae")!
+        return trashScene.rootNode.childNodes[0]
     }
     
     func spawnShape(){
@@ -52,7 +50,9 @@ class GameScene: SCNScene{
         let force = SCNVector3(x: randomX, y: randomY, z: 0)
         let position = SCNVector3(x: 0.05, y: 0.05, z: 0.05)
         
-        switch ShapeType.random() {
+        let phase = ShapeType.random(phase: self.phase)
+        
+        switch phase {
         case ShapeType.apple:
             geometryNode = self.createObject(name: "apple")
         case ShapeType.banana:

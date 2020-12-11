@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2020-12-10T17:12:18Z</created>
-  <modified>2020-12-10T17:12:18Z</modified>
+  <created>2020-12-10T22:58:26Z</created>
+  <modified>2020-12-10T22:58:26Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -23,8 +23,11 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>0.41711 0.548457 0.638279 1</color>
+       <color>0.494118 0.521569 0.466667 1</color>
       </diffuse>
+      <reflective>
+       <color>0 0 0 1</color>
+      </reflective>
       <transparent opaque="A_ONE">
        <color>0 0 0 0.314961</color>
       </transparent>
@@ -49,7 +52,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>0.162029 0.119538 0.0481718 1</color>
+       <color>0.439216 0.380392 0.243137 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -121,7 +124,7 @@
  <library_visual_scenes>
   <visual_scene id="scene7">
    <node id="windeBottle" name="wineBottle">
-    <matrix>0.41 0 0 0 0 1.275 0 0 0 0 0.414 0 0 0 0 1 </matrix>
+    <matrix>0.51 0 0 0 0 1.377 0 0 0 0 0.51 0 0 0 0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>
       <technique_common>

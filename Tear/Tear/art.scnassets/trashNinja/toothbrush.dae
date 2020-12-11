@@ -4,8 +4,8 @@
   <contributor>
    <authoring_tool>SceneKit Collada Exporter v1.0</authoring_tool>
   </contributor>
-  <created>2020-12-10T17:18:16Z</created>
-  <modified>2020-12-10T17:18:16Z</modified>
+  <created>2020-12-10T23:13:16Z</created>
+  <modified>2020-12-10T23:13:16Z</modified>
   <unit meter="1.000000"/>
   <up_axis>Y_UP</up_axis>
  </asset>
@@ -23,7 +23,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>0.301447 0.505188 0.187364 1</color>
+       <color>0.721569 0.388235 0.603922 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -46,7 +46,7 @@
     <technique sid="common">
      <lambert>
       <diffuse>
-       <color>0.970106 0.963093 0.975475 1</color>
+       <color>0.879251 0.874024 0.883269 1</color>
       </diffuse>
       <transparency>
        <float>1</float>
@@ -118,7 +118,7 @@
  <library_visual_scenes>
   <visual_scene id="scene7">
    <node id="toothbrush" name="toothbrush">
-    <matrix>-1.93 -0 -0 0 -0 -0.1278715 1.59884e-08 0 -0 -1.117888e-08 -0.182886 0 -0 -0 -0 1 </matrix>
+    <matrix>-1.112846 -0 -0 0 0 0.08546998 -8.752943e-09 0 -0 7.472024e-09 0.100122 0 -0 -0 -0 1 </matrix>
     <instance_geometry url="#geometry1">
      <bind_material>
       <technique_common>

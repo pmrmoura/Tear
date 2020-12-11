@@ -14,7 +14,6 @@ class GameHUD: UIView, CodeView {
     var pauseButton: UIButton = UIButton()
     var restartButton: UIButton = UIButton()
     var leaveButton: UIButton = UIButton()
-    var audioButton: UIButton = UIButton()
     
     var lifesLabel: UILabel = UILabel()
     var scoreLabel: UILabel = UILabel()
@@ -27,6 +26,7 @@ class GameHUD: UIView, CodeView {
     var leaveGameButton: UIButton = UIButton()
     
     var tapToPlayLabel: UILabel = UILabel()
+    var tapToPlayLabelText: UILabel = UILabel()
     
     var errorView: UIView = UIView()
     var errorView1: UIView = UIView()
@@ -68,7 +68,6 @@ class GameHUD: UIView, CodeView {
         self.addSubview(pauseButton)
         self.addSubview(restartButton)
         self.addSubview(leaveButton)
-        self.addSubview(audioButton)
         
         self.addSubview(lifesLabel)
         self.addSubview(scoreLabel)
@@ -76,6 +75,7 @@ class GameHUD: UIView, CodeView {
         
         self.addSubview(popUpView)
         self.addSubview(tapToPlayLabel)
+        self.addSubview(tapToPlayLabelText)
         
         self.addSubview(errorView)
         self.addSubview(errorView1)
@@ -93,7 +93,6 @@ class GameHUD: UIView, CodeView {
         self.pauseButton.translatesAutoresizingMaskIntoConstraints = false
         self.restartButton.translatesAutoresizingMaskIntoConstraints = false
         self.leaveButton.translatesAutoresizingMaskIntoConstraints = false
-        self.audioButton.translatesAutoresizingMaskIntoConstraints = false
         
         self.lifesLabel.translatesAutoresizingMaskIntoConstraints = false
         self.scoreLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -105,6 +104,8 @@ class GameHUD: UIView, CodeView {
         self.nextPhaseButton.translatesAutoresizingMaskIntoConstraints = false
         self.leaveGameButton.translatesAutoresizingMaskIntoConstraints = false
         self.tapToPlayLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.tapToPlayLabelText.translatesAutoresizingMaskIntoConstraints = false
+        
         self.errorsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.errorView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +116,7 @@ class GameHUD: UIView, CodeView {
         
         NSLayoutConstraint.activate([
             self.leaveButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.leaveButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            self.leaveButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 70),
             self.leaveButton.heightAnchor.constraint(equalToConstant: 14.73),
             self.leaveButton.widthAnchor.constraint(equalToConstant: 15.42)
         ])
@@ -132,13 +133,6 @@ class GameHUD: UIView, CodeView {
             self.restartButton.topAnchor.constraint(equalTo: self.pauseButton.bottomAnchor, constant: 20),
             self.restartButton.heightAnchor.constraint(equalToConstant: 14.73),
             self.restartButton.widthAnchor.constraint(equalToConstant: 15.42)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.audioButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
-            self.audioButton.topAnchor.constraint(equalTo: self.restartButton.bottomAnchor, constant: 20),
-            self.audioButton.heightAnchor.constraint(equalToConstant: 14.73),
-            self.audioButton.widthAnchor.constraint(equalToConstant: 15.42)
         ])
         
         NSLayoutConstraint.activate([
@@ -184,9 +178,7 @@ class GameHUD: UIView, CodeView {
         NSLayoutConstraint.activate([
             self.endGameText.centerXAnchor.constraint(equalTo: self.popUpView.centerXAnchor),
             self.endGameText.centerYAnchor.constraint(equalTo: self.popUpView.centerYAnchor),
-            self.endGameText.leadingAnchor.constraint(equalTo: self.popUpView.leadingAnchor),
-            self.endGameText.trailingAnchor.constraint(equalTo: self.popUpView.trailingAnchor),
-            self.endGameText.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor)
+            self.endGameText.widthAnchor.constraint(equalTo: self.popUpView.widthAnchor, constant: -60)
         ])
         
         NSLayoutConstraint.activate([
@@ -199,7 +191,11 @@ class GameHUD: UIView, CodeView {
         NSLayoutConstraint.activate([
             self.tapToPlayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.tapToPlayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.tapToPlayLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
+            self.tapToPlayLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            
+            self.tapToPlayLabelText.centerXAnchor.constraint(equalTo: self.tapToPlayLabel.centerXAnchor),
+            self.tapToPlayLabelText.topAnchor.constraint(equalTo: self.tapToPlayLabel.bottomAnchor, constant: 20),
+            self.tapToPlayLabelText.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4)
         ])
         
         NSLayoutConstraint.activate([
@@ -233,6 +229,13 @@ class GameHUD: UIView, CodeView {
         let audioButtonBackground = #imageLiteral(resourceName: "Asset 39")
         let color = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         
+        guard let titleFont = UIFont(name: "Roboto-Bold", size: 20) else {
+            fatalError("Failed to load Robot-bold font")
+        }
+
+        self.tapToPlayLabelText.text = "Toque para começar"
+        self.tapToPlayLabelText.textColor = color
+
         self.leaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
         self.leaveButton.setBackgroundImage(leaveButtonBackground, for: .normal)
         self.leaveButton.tag = 0
@@ -245,18 +248,12 @@ class GameHUD: UIView, CodeView {
         self.restartButton.setBackgroundImage(restartButtonBackground, for: .normal)
         self.restartButton.tag = 2
         
-        self.audioButton.titleLabel?.font = UIFont.systemFont(ofSize: 5, weight: .semibold)
-        self.audioButton.setBackgroundImage(audioButtonBackground, for: .normal)
-        self.audioButton.tag = 3
-        
-        self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
+        self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGÂNICO"
         self.tapToPlayLabel.textColor = UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1)
         self.tapToPlayLabel.textAlignment = .center
-        
-        self.scoreLabel.text = "\(game.score)/\(game.goal)"
-        self.scoreLabel.textColor = .black
-        self.scoreLabel.font = UIFont.systemFont(ofSize: 36, weight: .medium)
-        
+        self.tapToPlayLabel.font = titleFont
+        self.tapToPlayLabel.numberOfLines = 2
+            
         self.errorsLabel.text = ""
         self.errorsLabel.textColor = .black
         self.errorsLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
@@ -270,7 +267,7 @@ class GameHUD: UIView, CodeView {
         self.endGameLabel.textColor = color
         self.endGameLabel.font = UIFont.systemFont(ofSize: 30, weight: .medium)
         
-        self.nextPhaseButton.setTitle("Próxima", for: .normal)
+        self.nextPhaseButton.setTitle("Continuar", for: .normal)
         self.nextPhaseButton.layer.borderColor = color.cgColor
         self.nextPhaseButton.layer.borderWidth = 3
         self.nextPhaseButton.layer.maskedCorners = [.layerMinXMaxYCorner]
@@ -288,28 +285,34 @@ class GameHUD: UIView, CodeView {
         self.leaveGameButton.tag = 0
         
         
-        self.errorView.backgroundColor = .gray
-        self.errorView.layer.borderWidth = 3
+        self.errorView.backgroundColor = UIColor(red: 0.49, green: 0.57, blue: 0.58, alpha: 1.00)
         self.errorView.layer.cornerRadius = 10
         
-        self.errorView1.backgroundColor = .gray
-        self.errorView1.layer.borderWidth = 3
+        self.errorView1.backgroundColor = UIColor(red: 0.49, green: 0.57, blue: 0.58, alpha: 1.00)
         self.errorView1.layer.cornerRadius = 10
         
-        self.errorView2.backgroundColor = .gray
-        self.errorView2.layer.borderWidth = 3
+        self.errorView2.backgroundColor = UIColor(red: 0.49, green: 0.57, blue: 0.58, alpha: 1.00)
         self.errorView2.layer.cornerRadius = 10
         
         self.materialDescription.text = "ORGÂNICO"
         self.materialDescription.textColor = color
+        self.materialDescription.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+            
+        self.scoreLabel.text = "\(game.score)/\(game.goal)"
+        self.scoreLabel.textColor = UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1)
+        self.scoreLabel.font = UIFont.systemFont(ofSize: 35, weight: .bold)
+            
+        self.endGameText.text = "Lembre-se! Os resíduos organicos devem ser descartados nas lixeiras MARRONS da coleta seletiva!"
+        self.endGameText.textColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
     }
     
     func gameLost() {
         self.nextPhaseButton.isHidden = true
         self.leaveGameButton.layer.maskedCorners = [.layerMinXMaxYCorner ,.layerMaxXMaxYCorner]
         self.popUpView.isHidden = false
-        self.endGameLabel.text = "ops"
-        self.endGameText.text = "ainda não chegamos lá! resíduos que não são separados corretamente dificilmente podem ser reciclados"
+        self.endGameLabel.text = "Quase lá"
+        self.endGameText.text = "Resíduos que não são separados corretamente dificilmente podem ser reciclados"
+        
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center
         
@@ -319,8 +322,6 @@ class GameHUD: UIView, CodeView {
     
     func gameWin() {
         self.endGameLabel.text = "Muito bem!"
-        self.endGameText.text = "lembre-se! Os resíduos organicos devem ser descartados nas lixeiras MARRONS da coleta seletiva!"
-        self.endGameText.textColor = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         self.endGameText.numberOfLines = 0
         self.endGameText.textAlignment = .center
         self.popUpView.isHidden = false
@@ -352,11 +353,11 @@ class GameHUD: UIView, CodeView {
         }
         
         if game.errors == 1 {
-            self.errorView.backgroundColor = .red
+            self.errorView.backgroundColor = UIColor(red: 0.72, green: 0.00, blue: 0.16, alpha: 1.00)
         } else if game.errors == 2 {
-            self.errorView1.backgroundColor = .red
+            self.errorView1.backgroundColor = UIColor(red: 0.72, green: 0.00, blue: 0.16, alpha: 1.00)
         } else if game.errors == 3 {
-            self.errorView2.backgroundColor = .red
+            self.errorView2.backgroundColor = UIColor(red: 0.72, green: 0.00, blue: 0.16, alpha: 1.00)
         }
     }
     
