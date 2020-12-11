@@ -97,10 +97,10 @@ class MissionPopup: UIView {
             
             self.descriptionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.descriptionLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -20),
+            self.descriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -60),
             
             self.titleLabel.centerYAnchor.constraint(equalTo: self.topAnchor, constant: 40),
-            self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
 }

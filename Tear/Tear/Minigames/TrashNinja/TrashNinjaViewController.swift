@@ -50,6 +50,7 @@ class TrashNinjaViewController: UIViewController {
             self.game.restart()
             self.game.state = .Playing
             self.gameHUD.tapToPlayLabel.isHidden = true
+            self.gameHUD.tapToPlayLabelText.isHidden = true
             return
         }
         
@@ -151,6 +152,7 @@ class TrashNinjaViewController: UIViewController {
         self.game.restart()
         self.gameHUD.restart()
         self.gameHUD.tapToPlayLabel.isHidden = false
+        self.gameHUD.tapToPlayLabelText.isHidden = false
         self.game.phase += 1
         self.gameScene.phase = self.game.phase
         

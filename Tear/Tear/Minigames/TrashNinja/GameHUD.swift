@@ -27,6 +27,7 @@ class GameHUD: UIView, CodeView {
     var leaveGameButton: UIButton = UIButton()
     
     var tapToPlayLabel: UILabel = UILabel()
+    var tapToPlayLabelText: UILabel = UILabel()
     
     var errorView: UIView = UIView()
     var errorView1: UIView = UIView()
@@ -76,6 +77,7 @@ class GameHUD: UIView, CodeView {
         
         self.addSubview(popUpView)
         self.addSubview(tapToPlayLabel)
+        self.addSubview(tapToPlayLabelText)
         
         self.addSubview(errorView)
         self.addSubview(errorView1)
@@ -105,6 +107,8 @@ class GameHUD: UIView, CodeView {
         self.nextPhaseButton.translatesAutoresizingMaskIntoConstraints = false
         self.leaveGameButton.translatesAutoresizingMaskIntoConstraints = false
         self.tapToPlayLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.tapToPlayLabelText.translatesAutoresizingMaskIntoConstraints = false
+        
         self.errorsLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.errorView.translatesAutoresizingMaskIntoConstraints = false
@@ -199,7 +203,11 @@ class GameHUD: UIView, CodeView {
         NSLayoutConstraint.activate([
             self.tapToPlayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             self.tapToPlayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            self.tapToPlayLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9)
+            self.tapToPlayLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            
+            self.tapToPlayLabelText.centerXAnchor.constraint(equalTo: self.tapToPlayLabel.centerXAnchor),
+            self.tapToPlayLabelText.topAnchor.constraint(equalTo: self.tapToPlayLabel.bottomAnchor, constant: 20),
+            self.tapToPlayLabelText.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4)
         ])
         
         NSLayoutConstraint.activate([
@@ -233,9 +241,12 @@ class GameHUD: UIView, CodeView {
         let audioButtonBackground = #imageLiteral(resourceName: "Asset 39")
         let color = UIColor(red: 108/255, green: 97/255, blue: 70/255, alpha: 1)
         
-        guard let titleFont = UIFont(name: "Roboto-Bold", size: 34) else {
+        guard let titleFont = UIFont(name: "Roboto-Bold", size: 20) else {
             fatalError("Failed to load Robot-bold font")
         }
+
+        self.tapToPlayLabelText.text = "Toque para começar"
+        self.tapToPlayLabelText.textColor = color
 
         
         self.leaveButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -254,9 +265,11 @@ class GameHUD: UIView, CodeView {
         self.audioButton.setBackgroundImage(audioButtonBackground, for: .normal)
         self.audioButton.tag = 3
         
-        self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGANICO"
+        self.tapToPlayLabel.text = "SELECIONE APENAS O MATERIAL ORGÂNICO"
         self.tapToPlayLabel.textColor = UIColor(red: 126/255, green: 140/255, blue: 106/255, alpha: 1)
         self.tapToPlayLabel.textAlignment = .center
+        self.tapToPlayLabel.font = titleFont
+        self.tapToPlayLabel.numberOfLines = 2
         
         self.scoreLabel.text = "\(game.score)/\(game.goal)"
         self.scoreLabel.textColor = .black

@@ -33,7 +33,12 @@ enum ShapeType:Int {
     
 
     static func random(phase: Int) -> ShapeType {
-    let maxValue = 6 + (3 * (phase - 1))
+    var maxValue = 6 + (3 * (phase - 1))
+    
+    if maxValue >= sodaCan.rawValue {
+        maxValue = sodaCan.rawValue - 1
+    }
+        
     let rand = arc4random_uniform(UInt32(maxValue+1))
     return ShapeType(rawValue: Int(rand))!
   }
