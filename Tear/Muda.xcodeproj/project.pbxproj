@@ -36,6 +36,7 @@
 		0CFE0145255D836B00C00084 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CFE0144255D836B00C00084 /* Assets.xcassets */; };
 		0CFE0150255D836B00C00084 /* TearTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE014F255D836B00C00084 /* TearTests.swift */; };
 		0CFE015B255D836B00C00084 /* TearUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFE015A255D836B00C00084 /* TearUITests.swift */; };
+		C168503B2583094B00785ADB /* MissionNotAvailablePopUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C168503A2583094B00785ADB /* MissionNotAvailablePopUP.swift */; };
 		C1970E57258112A700D90785 /* CongratulationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1970E56258112A700D90785 /* CongratulationsView.swift */; };
 		C1C224BB256FDDAF00DAD429 /* ProgressCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */; };
 		C1C224C0256FFA8E00DAD429 /* progressIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C224BF256FFA8E00DAD429 /* progressIcon.png */; };
@@ -105,6 +106,7 @@
 		0CFE0156255D836B00C00084 /* MudaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MudaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CFE015A255D836B00C00084 /* TearUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TearUITests.swift; sourceTree = "<group>"; };
 		0CFE015C255D836B00C00084 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C168503A2583094B00785ADB /* MissionNotAvailablePopUP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionNotAvailablePopUP.swift; sourceTree = "<group>"; };
 		C1970E56258112A700D90785 /* CongratulationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsView.swift; sourceTree = "<group>"; };
 		C1C224BA256FDDAF00DAD429 /* ProgressCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircle.swift; sourceTree = "<group>"; };
 		C1C224BF256FFA8E00DAD429 /* progressIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressIcon.png; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				0C0FF7B7256D3DB800B941B0 /* Launch Screen.storyboard */,
 				0C0FF7B2256D2D5000B941B0 /* MapScene.swift */,
 				0CEA9E912581459A00E9DCC9 /* MissionPopup.swift */,
+				C168503A2583094B00785ADB /* MissionNotAvailablePopUP.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				0C0F172A25640AA300C97208 /* TrashNinjaViewController.swift in Sources */,
 				0CEA9E7F25813A2F00E9DCC9 /* BadgeManager .swift in Sources */,
 				0C0F173B25640AD100C97208 /* Generics.swift in Sources */,
+				C168503B2583094B00785ADB /* MissionNotAvailablePopUP.swift in Sources */,
 				0CEA9E7A258139B700E9DCC9 /* SeedDatabase.swift in Sources */,
 				0CEA9E922581459A00E9DCC9 /* MissionPopup.swift in Sources */,
 				C1FEFA872579232A00211C52 /* ProgressDetail.swift in Sources */,

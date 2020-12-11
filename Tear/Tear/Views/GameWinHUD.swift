@@ -53,7 +53,7 @@ class GameWinHud: UIStackView {
     func setupContraints() {
         self.clearView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.congratulationsView.heightAnchor.constraint(equalToConstant: 450),
+            self.congratulationsView.heightAnchor.constraint(equalToConstant: 380),
             self.progressDetailData.heightAnchor.constraint(equalToConstant: 200),
             
         ])

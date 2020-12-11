@@ -15,6 +15,7 @@ class MapViewController: UIViewController {
     var mapView: SCNView!
     var mapScene: MapScene = MapScene()
     var missionPopup: MissionPopup = MissionPopup(frame: UIScreen.main.bounds)
+    var missionNotAvailablePopUp = MissionNotAvailablePopUp(frame: UIScreen.main.bounds)
     var progressCircle: ProgressCircle = ProgressCircle(frame: CGRect())
     let progressDetail: ProgressDetail = ProgressDetail(frame: UIScreen.main.bounds)
     let gameWinHud: GameWinHud = GameWinHud(frame: UIScreen.main.bounds)
@@ -73,9 +74,13 @@ class MapViewController: UIViewController {
     
     func setupPopupViews(){
         self.missionPopup.isHidden = true
+        self.missionNotAvailablePopUp.isHidden = true
         self.gameWinHud.isHidden = true
+        
         self.missionPopup.leaveGameButton.addTarget(self, action: #selector(self.exitModal), for: .touchUpInside)
         self.missionPopup.startGameButton.addTarget(self, action: #selector(self.startGame), for: .touchUpInside)
+        
+        self.missionNotAvailablePopUp.startGameButton.addTarget(self, action: #selector(self.notAvailable), for: .touchUpInside)
     }
     
     func setupView(){
@@ -95,6 +100,7 @@ class MapViewController: UIViewController {
         
         self.view.addSubview(progressCircle)
         self.view.addSubview(missionPopup)
+        self.view.addSubview(missionNotAvailablePopUp)
         self.view.addSubview(progressDetail)
         self.view.addSubview(gameWinHud)
     }
@@ -114,12 +120,18 @@ class MapViewController: UIViewController {
     func setupConstraints(){
         self.progressCircle.translatesAutoresizingMaskIntoConstraints = false
         self.missionPopup.translatesAutoresizingMaskIntoConstraints = false
+        self.missionNotAvailablePopUp.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             self.missionPopup.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor),
             self.missionPopup.centerYAnchor.constraint(equalTo: self.mapView.centerYAnchor),
             self.missionPopup.widthAnchor.constraint(equalToConstant: 300),
             self.missionPopup.heightAnchor.constraint(equalToConstant: 300),
+            
+            self.missionNotAvailablePopUp.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor),
+            self.missionNotAvailablePopUp.centerYAnchor.constraint(equalTo: self.mapView.centerYAnchor),
+            self.missionNotAvailablePopUp.widthAnchor.constraint(equalToConstant: 300),
+            self.missionNotAvailablePopUp.heightAnchor.constraint(equalToConstant: 300),
             
             self.progressCircle.centerXAnchor.constraint(equalTo: self.mapView.centerXAnchor, constant: CGFloat(-35)),
             self.progressCircle.topAnchor.constraint(equalTo: self.mapView.topAnchor, constant: CGFloat(70)),
@@ -163,6 +175,8 @@ class MapViewController: UIViewController {
     func handleTouchFor(node: SCNNode) {
         if node.name == "exclamation" {
             self.missionPopup.isHidden = false
+        } else if node.name == "exclamation-2" {
+            self.missionNotAvailablePopUp.isHidden = false
         }
     }
     
@@ -174,6 +188,10 @@ class MapViewController: UIViewController {
     
     @objc func exitModal() {
         self.missionPopup.isHidden = true
+    }
+    
+    @objc func notAvailable() {
+        self.missionNotAvailablePopUp.isHidden = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

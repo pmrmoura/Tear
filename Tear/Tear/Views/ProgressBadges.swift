@@ -26,7 +26,7 @@ class ProgressBadges: UIView {
         self.layer.cornerRadius = 12
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 18, bottom: 12, right: 18)
         layout.itemSize = CGSize(width: 80, height: 80)
         
         self.collectionView = UICollectionView(frame: self.frame, collectionViewLayout: layout)

@@ -41,7 +41,7 @@ class CongratulationsView: UIView {
         self.badgeView.image = UIImage(named: "badge0.png")
         self.addSubview(self.badgeView)
         
-        guard let labelFont = UIFont(name: "Roboto-Bold", size: 18) else {
+        guard let labelFont = UIFont(name: "Roboto-Bold", size: 16) else {
             fatalError("Failed to load Robot-bold font")
         }
 
@@ -61,7 +61,7 @@ class CongratulationsView: UIView {
         self.congratulationsText.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            self.titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 30),
             self.titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             
             self.badgeView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 20),

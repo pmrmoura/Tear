@@ -51,7 +51,9 @@ class MapScene: SCNScene{
         moveDown.timingMode = .easeInEaseOut;
         
         let exclamation = self.rootNode.childNode(withName: "exclamation", recursively: true)
+        let exclamation2 = self.rootNode.childNode(withName: "exclamation-2", recursively: true)
         exclamation!.runAction(moveLoop)
+        exclamation2!.runAction(moveLoop)
     }
     
     func setupNodes(){

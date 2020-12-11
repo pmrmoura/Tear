@@ -32,7 +32,7 @@ class GameHelper {
         self.score = 0
         self.audioIsEnabled = true
         self.goal = 3
-        self.phase = 5
+        self.phase = 1
     }
     
     func pause(){
